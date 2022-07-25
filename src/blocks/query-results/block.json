@@ -1,0 +1,49 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "wpps-result/query",
+	"title": "Results Query Loop",
+	"category": "wp-predictive-search-result-blocks",
+	"description": "An advanced block that allows displaying card item and visual configurations.",
+	"textdomain": "wp-predictive-search",
+	"attributes": {
+		"blockID": {
+			"type": "string"
+		},
+		"perPage": {
+			"type": "number",
+			"default": 12
+		},
+		"columns": {
+			"type": "number",
+			"default": 3
+		},
+		"tagName": {
+			"type": "string",
+			"default": "div"
+		}
+	},
+	"providesContext": {
+		"perPage": "perPage",
+		"columns": "columns"
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"html": false,
+		"color": {
+			"gradients": true,
+			"link": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true
+			}
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"__experimentalLayout": true
+	},
+	"editorStyle": ["predictive-search-block-editor", "wp-block-query-editor"],
+	"style": "predictive-search-block-frontend"
+}

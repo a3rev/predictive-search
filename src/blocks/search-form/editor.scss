@@ -1,0 +1,191 @@
+.a3-blockpress-row.wp-block-a3-blockpress-row {
+	overflow: visible;
+}
+
+.block-editor-block-navigation-leaf {
+
+	.block-editor-block-icon svg.child-icon_svg__ps-child-icon {
+		width: 12px;
+		height: 12px;
+		min-width: 12px;
+		min-height: 12px;
+	}
+
+	&.is-selected {
+		.block-editor-block-icon svg.child-icon_svg__ps-child-icon {
+			color: #ee6707 !important;
+		}
+	}
+}
+
+[data-type="wp-predictive-search/form"] {
+	[data-type^="wp-predictive-search/"] {
+		margin: 0;
+	}
+
+	[data-type="wp-predictive-search/mobile-icon"],
+	[data-type="wp-predictive-search/results-dropdown"] {
+		display: none;
+	}
+
+	&.is-selected,
+	&.has-child-selected {
+		[data-type="wp-predictive-search/mobile-icon"],
+		[data-type="wp-predictive-search/results-dropdown"],
+		.wpps_searching_icon,
+		.ps_close,
+		.wpps_cat_dropdown.disabled {
+			display: inherit !important;
+		}
+
+		.wpps_bar {
+			&.search_icon_desktop_only,
+			&.search_icon_tablet_only,
+			&.search_icon_only {
+				padding-top: 30px;
+
+				.wpps_container {
+					visibility: visible !important;
+					height: auto !important;
+					position: relative;
+				}
+			}
+		}
+
+		.wpps_cat_dropdown {
+			&.disabled {
+				opacity: 0.1;
+			}
+		}
+	}
+
+	.wpps_block {
+		&.align-right {
+			.wpps_mobile_icon,
+			[data-type="wp-predictive-search/results-dropdown"] {
+				left: auto;
+				right: 0;
+			}
+		}
+	}
+
+	.wpps_bar {
+		position: relative;
+		overflow: inherit;
+		padding: 0 0 20px;
+
+		&:not(.search_icon_desktop_only):not(.search_icon_tablet_only):not(.search_icon_only) {
+			.wpps_mobile_icon {
+				display: none !important;
+			}
+		}
+	}
+
+	[data-type="wp-predictive-search/mobile-icon"] {
+		position: absolute;
+		top: 0;
+		left: 0;
+
+		.a3blockpress-svg-icon {
+			display: inherit !important;
+
+			svg {
+				vertical-align: top !important;
+			}
+		}
+	}
+
+	[data-type="wp-predictive-search/search-input"] {
+		.wpps_search_keyword {
+			display: flex !important;
+			align-items: center;
+			line-height: inherit !important;
+		}
+
+		.wpps_searching_icon {
+			top: 0 !important;
+			width: 14px;
+		}
+
+		[data-rich-text-placeholder] {
+			white-space: nowrap;
+		}
+	}
+
+	[data-type="wp-predictive-search/results-dropdown"] {
+		position: absolute;
+		top: calc( 100% - 20px + 1px);
+		left: 0;
+		width: 100%;
+
+		ul.predictive_search_results {
+			margin: 0 !important;
+			padding: 0 !important;
+		}
+
+		a, a:hover {
+			box-shadow: none;
+		}
+	}
+
+	[data-type="wp-predictive-search/dropdown-items"] {
+		.ajax_search_content {
+			padding: 0 10px;
+		}
+		.rs_avatar {
+			.a3blockpress-svg-icon {
+				background-color: #e8e8e8;
+    			padding: 5px;
+				width: 100%;
+				border-radius: 5px;
+
+				svg {
+					width: 100%;
+					height: 100%;
+					color: #676767;
+				}
+			}
+		}
+
+		&:not(.ac_over) a:hover {
+			color: #000 !important;
+		}
+	}
+
+	[data-type="wp-predictive-search/dropdown-footer"] {
+		.see_more_arrow {
+			display: inline !important;
+			vertical-align: middle;
+		}
+	}
+}
+
+@media only screen and (min-width: 1025px) {
+	[data-type="wp-predictive-search/form"] {
+		.wpps_block {
+			&.align-center {
+				.wpps_bar.search_icon_desktop_only {
+					[data-type="wp-predictive-search/search-bar"] {
+						margin-left: auto;
+						margin-right: auto;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 681px) {
+	[data-type="wp-predictive-search/form"] {
+		.wpps_block {
+			&.align-center {
+				.wpps_bar.search_icon_tablet_only {
+					[data-type="wp-predictive-search/search-bar"] {
+						margin-left: auto;
+						margin-right: auto;
+					}
+				}
+			}
+		}
+	}
+}

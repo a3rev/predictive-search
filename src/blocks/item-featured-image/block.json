@@ -1,0 +1,54 @@
+{
+	"apiVersion": 2,
+	"name": "wpps-result/item-featured-image",
+	"title": "Item Featured Image",
+	"category": "wp-predictive-search-result-blocks",
+	"description": "Displays the link of a post, page, or any other content-type on search result.",
+	"textdomain": "wp-predictive-search",
+	"attributes":{
+		"blockID": {
+			"type": "string"
+		},
+		"isLink": {
+			"type": "boolean",
+			"default": false
+		},
+		"linkTarget": {
+			"type": "string",
+			"default": "_self"
+		},
+		"width": {
+			"type": "string"
+		},
+		"height": {
+			"type": "string"
+		},
+		"scale": {
+			"type": "string",
+			"default": "cover"
+		},
+		"sizeSlug": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"align": true,
+		"html": false,
+		"color": {
+			"__experimentalDuotone": "img, .wp-block-post-featured-image__placeholder, .components-placeholder__illustration, .components-placeholder::before",
+			"text": false,
+			"background": false
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"width": true
+		}
+	},
+	"editorStyle": [ "wp-block-post-featured-image-editor", "predictive-search-block-editor" ],
+	"style": [ "wp-block-post-featured-image", "predictive-search-block-frontend" ]
+}

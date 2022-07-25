@@ -1,0 +1,67 @@
+{
+	"apiVersion": 2,
+	"name": "wpps-result/item-title",
+	"title": "Item Title",
+	"category": "wp-predictive-search-result-blocks",
+	"description": "Displays the title of a post, page, or any other content-type on search result.",
+	"textdomain": "wp-predictive-search",
+	"attributes":{
+		"blockID": {
+			"type": "string"
+		},
+		"textAlign": {
+			"type": "string"
+		},
+		"level": {
+			"type": "number",
+			"default": 2
+		},
+		"isLink": {
+			"type": "boolean",
+			"default": false
+		},
+		"rel": {
+			"type": "string",
+			"attribute": "rel",
+			"default": ""
+		},
+		"linkTarget": {
+			"type": "string",
+			"default": "_self"
+		}
+	},
+	"supports": {
+		"align": [ "wide", "full" ],
+		"html": false,
+		"color": {
+			"gradients": true,
+			"link": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true,
+				"link": true
+			}
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalLineHeight": true,
+			"__experimentalFontWeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalTextTransform": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true,
+				"fontAppearance": true,
+				"textTransform": true
+			}
+		}
+	},
+	"editorStyle": "predictive-search-block-editor",
+	"style": [ "predictive-search-block-frontend" ]
+}

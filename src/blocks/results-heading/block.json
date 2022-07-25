@@ -1,0 +1,56 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "wpps-result/heading",
+	"title": "Results Heading",
+	"category": "wp-predictive-search-result-blocks",
+	"ancestor": [ "wpps-result/query" ],
+	"description": "Show results heading with %%object%% and %%keyword%% are fill dynamic.",
+	"textdomain": "wp-predictive-search",
+	"attributes": {
+		"blockID": {
+			"type": "string"
+		},
+		"textAlign": {
+			"type": "string"
+		},
+		"content": {
+			"type": "string",
+			"source": "html",
+			"selector": "div",
+			"default": "Viewing all %%object%% search results for your search query %%keyword%%"
+		}
+	},
+	"supports": {
+		"align": true,
+		"html": false,
+		"color": {
+			"gradients": true,
+			"link": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true
+			}
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextTransform": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true,
+				"__experimentalFontFamily": true,
+				"__experimentalFontStyle": true,
+				"__experimentalFontWeight": true
+			}
+		}
+	},
+	"editorStyle": ["predictive-search-block-editor"],
+	"style": "predictive-search-block-frontend"
+}

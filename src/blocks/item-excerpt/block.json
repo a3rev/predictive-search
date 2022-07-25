@@ -1,0 +1,56 @@
+{
+	"apiVersion": 2,
+	"name": "wpps-result/item-excerpt",
+	"title": "Item Excerpt",
+	"category": "wp-predictive-search-result-blocks",
+	"description": "Displays the excerpt of a post, page, or any other content-type on search result.",
+	"textdomain": "wp-predictive-search",
+	"attributes":{
+		"blockID": {
+			"type": "string"
+		},
+		"textAlign": {
+			"type": "string"
+		},
+		"moreText": {
+			"type": "string"
+		},
+		"showMoreOnNewLine": {
+			"type": "boolean",
+			"default": true
+		},
+		"linkTarget": {
+			"type": "string",
+			"default": "_self"
+		}
+	},
+	"supports": {
+		"html": false,
+		"color": {
+			"gradients": true,
+			"link": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"text": true,
+				"link": true
+			}
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontWeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalTextTransform": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true
+			}
+		}
+	},
+	"editorStyle": "predictive-search-block-editor",
+	"style": [ "predictive-search-block-frontend" ]
+}

@@ -1,0 +1,58 @@
+{
+	"apiVersion": 2,
+	"name": "wpps-result/read-more",
+	"title": "Read More",
+	"category": "wp-predictive-search-result-blocks",
+	"description": "Displays the link of a post, page, or any other content-type on search result.",
+	"textdomain": "wp-predictive-search",
+	"attributes":{
+		"blockID": {
+			"type": "string"
+		},
+		"content": {
+			"type": "string"
+		},
+		"linkTarget": {
+			"type": "string",
+			"default": "_self"
+		}
+	},
+	"supports": {
+		"html": false,
+		"color": {
+			"gradients": true,
+			"text": true
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true,
+			"__experimentalDefaultControls": {
+				"padding": true
+			}
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalFontWeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalTextTransform": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true,
+				"textDecoration": true
+			}
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"width": true,
+			"__experimentalDefaultControls": {
+				"width": true
+			}
+		}
+	},
+	"editorStyle": "predictive-search-block-editor",
+	"style": [ "predictive-search-block-frontend" ]
+}

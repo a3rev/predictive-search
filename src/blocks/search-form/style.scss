@@ -1,0 +1,50 @@
+.wpps_block {
+	&.align-right .wpps_bar {
+		float: right;
+		width: 100%;
+
+		.wpps_mobile_icon {
+			width: 100%;
+			text-align: right;
+		}
+	}
+	&.align-center .wpps_bar {
+		margin-left: auto;
+		margin-right: auto;
+
+		.wpps_mobile_icon {
+			width: 100%;
+			text-align: center;
+		}
+	}
+	.wpps_nav_fill {
+		.wpps_searching_icon {
+			overflow: visible;
+		}
+	}
+	.wpps_cat_dropdown {
+		&.disabled {
+			display: none;
+		}
+	}
+}
+
+.ps-number-items-container {
+	display: flex;
+	column-gap: 10%;
+	row-gap: 20px;
+	flex-wrap: wrap;
+	margin-bottom: 30px;
+
+	.left-col {
+		flex-direction: column;
+		margin: 0;
+		width: 50%;
+	}
+
+	.right-col {
+		flex-direction: column;
+		margin: 0;
+		width: 40%;
+	}
+}

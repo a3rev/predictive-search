@@ -1,0 +1,83 @@
+{
+	"$schema": "https://schemas.wp.org/trunk/block.json",
+	"apiVersion": 2,
+	"name": "wpps-result/filter-by",
+	"title": "Results Filter By",
+	"category": "wp-predictive-search-result-blocks",
+	"ancestor": [ "wpps-result/query" ],
+	"description": "Show results filter by.",
+	"textdomain": "wp-predictive-search",
+	"attributes": {
+		"blockID": {
+			"type": "string"
+		},
+		"textAlign": {
+			"type": "string"
+		},
+		"enableDivider": {
+			"type": "boolean",
+			"default": true
+		},
+		"dividerSize": {
+			"type": "number",
+			"default": 1
+		},
+		"dividerColor": {
+			"type": "string"
+		},
+		"dividerSpace": {
+			"type": "string",
+			"default": 10
+		},
+		"itemActiveColor": {
+			"type": "string"
+		},
+		"itemActiveBgColor": {
+			"type": "string"
+		}
+	},
+	"supports": {
+		"align": true,
+		"html": false,
+		"color": {
+			"gradients": true,
+			"text": false,
+			"link": true,
+			"__experimentalDefaultControls": {
+				"background": true,
+				"link": true
+			}
+		},
+		"typography": {
+			"fontSize": true,
+			"lineHeight": true,
+			"__experimentalFontStyle": true,
+			"__experimentalFontWeight": true,
+			"__experimentalFontFamily": true,
+			"__experimentalTextTransform": true,
+			"__experimentalLetterSpacing": true,
+			"__experimentalTextDecoration": true,
+			"__experimentalDefaultControls": {
+				"fontSize": true,
+				"textDecoration": true
+			}
+		},
+		"spacing": {
+			"margin": true,
+			"padding": true,
+			"__experimentalDefaultControls": {
+				"padding": true
+			}
+		},
+		"__experimentalBorder": {
+			"color": true,
+			"radius": true,
+			"width": true,
+			"__experimentalDefaultControls": {
+				"width": true
+			}
+		}
+	},
+	"editorStyle": ["predictive-search-block-editor"],
+	"style": "predictive-search-block-frontend"
+}
