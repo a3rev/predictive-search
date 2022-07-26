@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: WP Predictive Search
+Plugin Name: Predictive Search for WordPress
 Description: Predictive Search for WordPress - featuring "Smart Search" technology. Give your store customers the most awesome search experience on the web via widgets, shortcodes, Search results pages and the Predictive Search function.
 Version: 1.0.0
 Author: a3rev Software

@@ -1,4 +1,4 @@
-=== WP Predictive Search ===
+=== Predictive Search for WordPress ===
 
 Contributors: a3rev, nguyencongtuan
 Tags: WordPress search, Predictive Search, Live Search, Elementor Search
