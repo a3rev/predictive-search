@@ -1,17 +1,14 @@
 <?php
 /*
-Plugin Name: Predictive Search for WordPress
+Plugin Name: WP Predictive Search
 Description: Predictive Search for WordPress - featuring "Smart Search" technology. Give your store customers the most awesome search experience on the web via widgets, shortcodes, Search results pages and the Predictive Search function.
 Version: 1.0.0
 Author: a3rev Software
 Author URI: https://a3rev.com/
 Requires at least: 5.6
-Tested up to: 5.9.1
+Tested up to: 6.0
 Text Domain: wp-predictive-search
 Domain Path: /languages
-WC requires at least: 3.0.0
-WC tested up to: 6.2
-Update URI: a3-wp-predictive-search
 License: GPLv2 or later
 
 	WordPress Predictive Search.
@@ -37,7 +34,7 @@ define( 'WPPS_IMAGES_URL',  WPPS_URL . '/assets/images' );
 define( 'WPPS_TEMPLATE_PATH', WPPS_FILE_PATH . '/templates' );
 
 if(!defined("WPPS_DOCS_URI"))
-    define("WPPS_DOCS_URI", "https://docs.a3rev.com/user-guides/wordpress/wp-predictive-search/");
+    define("WPPS_DOCS_URI", "https://docs.a3rev.com/wordpress/predictive-search-for-wordpress/");
 
 define( 'WPPS_KEY', 'wp_predictive_search' );
 define( 'WPPS_PREFIX', 'wp_predictive_search_' );

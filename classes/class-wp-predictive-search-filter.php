@@ -76,7 +76,10 @@ class Hook_Filter
 		if ( $plugin_name != WPPS_NAME) {
 			return $links;
 		}
+		
+		$links[] = '<a href="' . esc_url( WPPS_DOCS_URI ).' " target="_blank">'.__('Documentation', 'wp-predictive-search').'</a>';
 		$links[] = '<a href="'.$GLOBALS[WPPS_PREFIX.'admin_init']->support_url.'" target="_blank">'.__('Support', 'wp-predictive-search' ).'</a>';
+
 		return $links;
 	}
 
