@@ -1,7 +1,7 @@
 <?php
 /*
-Plugin Name: Predictive Search for WordPress
-Description: Predictive Search for WordPress - featuring "Smart Search" technology. Give your store customers the most awesome search experience on the web via widgets, shortcodes, Search results pages and the Predictive Search function.
+Plugin Name: Predictive Search
+Description: Predictive Search - featuring "Smart Search" technology. Give your store customers the most awesome search experience on the web via widgets, shortcodes, Search results pages and the Predictive Search function.
 Version: 1.0.0
 Author: a3rev Software
 Author URI: https://a3rev.com/
@@ -11,7 +11,7 @@ Text Domain: wp-predictive-search
 Domain Path: /languages
 License: GPLv2 or later
 
-	WordPress Predictive Search.
+	Predictive Search.
 	Copyright © 2011 A3 Revolution Software Development team
 
 	A3 Revolution Software Development team
