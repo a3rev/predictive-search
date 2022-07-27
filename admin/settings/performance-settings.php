@@ -533,7 +533,7 @@ class Performance extends FrameWork\Admin_UI
 				'is_box'	=> true,
            	),
 			array(  
-				'name' 		=> __( "Charaters Before Query", 'wp-predictive-search' ),
+				'name' 		=> __( "Characters Before Query", 'wp-predictive-search' ),
 				'desc' 		=> __("characters", 'wp-predictive-search' ). '. ' .__( 'Number of Characters min 1, max 6', 'wp-predictive-search' ),
 				'id' 		=> 'wpps_search_min_characters',
 				'type' 		=> 'slider',

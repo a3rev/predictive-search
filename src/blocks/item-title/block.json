@@ -12,6 +12,10 @@
 		"textAlign": {
 			"type": "string"
 		},
+		"charactersCount": {
+			"type": "number",
+			"default": 100
+		},
 		"level": {
 			"type": "number",
 			"default": 2

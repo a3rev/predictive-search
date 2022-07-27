@@ -42,6 +42,9 @@ function wpps_render_block_item_title( $attributes, $content, $block ) {
 		return '';
 	}
 
+	$character_count = ! empty( $attributes['charactersCount'] ) ? $attributes['charactersCount'] : 100;
+	$title = \A3Rev\WPPredictiveSearch\Functions::woops_limit_words( strip_tags( \A3Rev\WPPredictiveSearch\Functions::strip_shortcodes( strip_shortcodes ( $title ) ) ), $character_count );
+
 	$tag_name         = 'h2';
 	$align_class_name = empty( $attributes['textAlign'] ) ? '' : "has-text-align-{$attributes['textAlign']}";
 	// $align_class_name .= ' wp-block-post-title';

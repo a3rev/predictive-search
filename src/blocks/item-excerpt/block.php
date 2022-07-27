@@ -48,6 +48,11 @@ function wpps_render_block_item_excerpt( $attributes, $content, $block ) {
 		return '';
 	}
 
+	$character_count = ! empty( $attributes['charactersCount'] ) ? $attributes['charactersCount'] : 100;
+	if ( ! empty( $excerpt ) ) {
+		$excerpt = \A3Rev\WPPredictiveSearch\Functions::woops_limit_words( strip_tags( \A3Rev\WPPredictiveSearch\Functions::strip_shortcodes( strip_shortcodes ( $excerpt ) ) ), $character_count );
+	}
+
 	$classes = '';
 	if ( isset( $attributes['textAlign'] ) ) {
 		$classes .= "has-text-align-{$attributes['textAlign']}";

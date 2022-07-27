@@ -12,6 +12,7 @@ const {
 	PanelBody,
 	ToggleControl,
 	TextControl,
+	RangeControl,
 } = wp.components;
 
 const {
@@ -24,6 +25,7 @@ export default class Inspector extends Component {
 	render() {
 		const {
 			attributes: {
+				charactersCount,
 				isLink,
 				linkTarget,
 				rel,
@@ -33,7 +35,16 @@ export default class Inspector extends Component {
 
 		return (
 			<InspectorControls>
-				<PanelBody title={ __( 'Link settings' ) }>
+				<PanelBody title={ __( 'Settings' ) }>
+					<RangeControl
+						label={ __( 'Character Count' ) }
+						value={ charactersCount }
+						onChange={ ( value ) =>
+							setAttributes( { charactersCount: value } )
+						}
+						min={ 20 }
+						max={ 500 }
+					/>
 					<ToggleControl
 						label={ __( 'Make title a link' ) }
 						onChange={ () => setAttributes( { isLink: ! isLink } ) }

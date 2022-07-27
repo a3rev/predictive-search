@@ -11,6 +11,7 @@ const { __ } = wp.i18n;
 const {
 	PanelBody,
 	ToggleControl,
+	RangeControl,
 } = wp.components;
 
 const {
@@ -23,6 +24,7 @@ export default class Inspector extends Component {
 	render() {
 		const {
 			attributes: {
+				charactersCount,
 				showMoreOnNewLine,
 				linkTarget,
 			},
@@ -31,7 +33,16 @@ export default class Inspector extends Component {
 
 		return (
 			<InspectorControls>
-				<PanelBody title={ __( 'Link settings' ) }>
+				<PanelBody title={ __( 'Settings' ) }>
+					<RangeControl
+						label={ __( 'Character Count' ) }
+						value={ charactersCount }
+						onChange={ ( value ) =>
+							setAttributes( { charactersCount: value } )
+						}
+						min={ 20 }
+						max={ 500 }
+					/>
 					<ToggleControl
 						label={ __( 'Show link on new line' ) }
 						checked={ showMoreOnNewLine }
