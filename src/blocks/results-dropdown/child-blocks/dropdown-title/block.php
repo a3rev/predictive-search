@@ -58,15 +58,6 @@ class Title extends Blocks\Frontend {
         }
 
         if ( isset( $attributes['parentID'] ) ) {
-			$typo_key = $this->field_name . 'typo';
-
-            if ( isset( $attributes[ 'enableCustomFont' ] ) && $attributes[ 'enableCustomFont' ] ) {
-                $block_gfonts = $this->get_block_google_fonts( $typo_key, $attributes );
-                if ( $block_gfonts ) {
-                    $content = $this->render_block_google_font( $block_gfonts ) . $content;
-                }
-			}
-
             $content = $this->block_render_inline_css( $this->block_name, $attributes, $content );
         }
 

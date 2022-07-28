@@ -135,12 +135,12 @@ class Performance extends FrameWork\Admin_UI
 	public function before_save_settings() {
 		$old_schedule_time = get_option( 'wpps_search_schedule_time_sync_data', '00:00' );
 		$new_schedule_time = $old_schedule_time;
-		if ( isset( $_POST['wpps_search_schedule_time_sync_data'] ) && '' != $_POST['wpps_search_schedule_time_sync_data'] ) {
-			$new_schedule_time = date( 'H:i', strtotime( $_POST['wpps_search_schedule_time_sync_data'] ) );
+		if ( isset( $_POST['wpps_search_schedule_time_sync_data'] ) && '' != sanitize_text_field( wp_unslash( $_POST['wpps_search_schedule_time_sync_data'] ) ) ) {
+			$new_schedule_time = date( 'H:i', strtotime( sanitize_text_field( $_POST['wpps_search_schedule_time_sync_data'] ) ) );
 		}
 
 		$new_allow_auto_sync_data = 'yes';
-		if ( ! isset( $_POST['wpps_search_allow_auto_sync_data'] ) || 'yes' != $_POST['wpps_search_allow_auto_sync_data'] ) {
+		if ( ! isset( $_POST['wpps_search_allow_auto_sync_data'] ) || 'yes' != sanitize_key( wp_unslash( $_POST['wpps_search_allow_auto_sync_data'] ) ) ) {
 			$new_allow_auto_sync_data = 'no';
 		}
 
@@ -247,7 +247,7 @@ class Performance extends FrameWork\Admin_UI
 
 		$sync_button_text = __( 'Start Sync', 'wp-predictive-search' );
 		$synced_full_data = false;
-		if ( isset( $_GET['page'] ) && 'wp-predictive-search' == sanitize_key( $_GET['page'] ) && isset( $_GET['tab'] ) && $this->parent_tab == sanitize_key( $_GET['tab'] ) ) {
+		if ( isset( $_GET['page'] ) && 'wp-predictive-search' == sanitize_key( wp_unslash( $_GET['page'] ) ) && isset( $_GET['tab'] ) && $this->parent_tab == sanitize_key( wp_unslash( $_GET['tab'] ) ) ) {
 			if ( ! isset( $_SESSION ) ) {
 				@session_start();
 			}
@@ -717,7 +717,7 @@ class Performance extends FrameWork\Admin_UI
 	?>
     	<tr valign="top" class="min_characters_yellow_message_tr" style=" ">
 			<th scope="row" class="titledesc">&nbsp;</th>
-			<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
+			<td class="forminp forminp-<?php echo esc_attr( $value['type'] ) ?>">
             <?php 
 				$min_characters_yellow_message = '<div>'. __( 'Number of characters that must be typed before the first search query. Setting 6 will decrease the number of queries  on your database by a factor of ~5 over a setting of 1.' , 'wp-predictive-search' ) .'</div><div>&nbsp;</div>
 				<div style="clear:both"></div>
@@ -770,7 +770,7 @@ $(document).ready(function() {
 	?>
     	<tr valign="top" class="time_delay_yellow_message_tr" style=" ">
 			<th scope="row" class="titledesc">&nbsp;</th>
-			<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
+			<td class="forminp forminp-<?php echo esc_attr( $value['type'] ) ?>">
             <?php 
 				$time_delay_yellow_message = '<div>'. __( 'Time delay after a character is entered and query begins. Example setting 1,000 is 1 second after that last charcter is typed. If speed type a 10 letter word then first query is whole word not 1 query for each character. Reducing queries  to database by a factor of ~10.' , 'wp-predictive-search' ) .'</div><div>&nbsp;</div>
 				<div style="clear:both"></div>
@@ -823,7 +823,7 @@ $(document).ready(function() {
 	?>
     	<tr valign="top" class="cache_timeout_yellow_message_tr" style=" ">
 			<th scope="row" class="titledesc">&nbsp;</th>
-			<td class="forminp forminp-<?php echo sanitize_title( $value['type'] ) ?>">
+			<td class="forminp forminp-<?php echo esc_attr( $value['type'] ) ?>">
             <?php 
 				$cache_timeout_yellow_message = '<div>'. __( 'How long should cached popup result remain fresh? Use low value if your site have add or update many post daily. A good starting point is 24 hours.' , 'wp-predictive-search' ) .'</div><div>&nbsp;</div>
 				<div style="clear:both"></div>

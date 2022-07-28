@@ -14,8 +14,8 @@ $search_results_page = str_replace( array( 'http:', 'https:' ), '', get_permalin
 
 <?php do_action( 'wpps_search_form_before' ); ?>
 
-<div class="wpps_bar wpps_bar-<?php echo $ps_id; ?> <?php echo ( 'yes' == $ps_args['search_icon_mobile'] ? 'search_icon_only' : '' ); ?>"
-	data-ps-id="<?php echo $ps_id; ?>"
+<div class="wpps_bar wpps_bar-<?php echo esc_attr( $ps_id ); ?> <?php echo ( 'yes' == sanitize_key( wp_unslash( $ps_args['search_icon_mobile'] ) ) ? 'search_icon_only' : '' ); ?>"
+	data-ps-id="<?php echo esc_attr( $ps_id ); ?>"
 	data-ps-row="<?php echo esc_attr( $ps_args['row'] ); ?>"
 
 	<?php if ( count( $ps_args['search_list'] ) > 0 ) { ?>
@@ -28,10 +28,10 @@ $search_results_page = str_replace( array( 'http:', 'https:' ), '', get_permalin
 	<?php } ?>
 
 	<?php if ( class_exists('SitePress') ) { ?>
-	data-ps-lang="<?php echo ICL_LANGUAGE_CODE; ?>"
+	data-ps-lang="<?php echo esc_attr( ICL_LANGUAGE_CODE ); ?>"
 	<?php } ?>
 
-	data-ps-widget_template="<?php echo $ps_widget_template; ?>"
+	data-ps-widget_template="<?php echo esc_attr( $ps_widget_template ); ?>"
 >
 
 	<div class="wpps_mobile_icon header_temp" aria-label="<?php _e( 'Open Search', 'wp-predictive-search' ); ?>">
@@ -41,7 +41,7 @@ $search_results_page = str_replace( array( 'http:', 'https:' ), '', get_permalin
 	</div>
 	<div style="clear:both;"></div>
 
-	<div class="wpps_container wpps_container-<?php echo $ps_id; ?> wpps_header_container <?php echo is_rtl() ? 'rtl' : ''; ?>" id="wpps_container-<?php echo $ps_id; ?>">
+	<div class="wpps_container wpps_container-<?php echo esc_attr( $ps_id ); ?> wpps_header_container <?php echo is_rtl() ? 'rtl' : ''; ?>" id="wpps_container-<?php echo esc_attr( $ps_id ); ?>">
 		<form
 			class="wpps_form"
 			autocomplete="off"
@@ -63,15 +63,15 @@ $search_results_page = str_replace( array( 'http:', 'https:' ), '', get_permalin
 					}
 				}
 			?>
-			<div class="wpps_nav_<?php echo $ps_args['cat_align']; ?>">
+			<div class="wpps_nav_<?php echo esc_attr( $ps_args['cat_align'] ); ?>">
 				<div class="wpps_nav_scope">
 					<div class="wpps_nav_facade">
 						<div class="wpps_nav_down_icon">
 							<svg viewBox="0 0 24 24" height="12" width="12" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle;"><polyline points="6 9 12 15 18 9"></polyline></svg>
 						</div>
-						<span class="wpps_nav_facade_label"><?php echo $default_cat_label; ?></span>
+						<span class="wpps_nav_facade_label"><?php echo esc_html( $default_cat_label ); ?></span>
 					</div>
-					<select aria-label="<?php _e( 'Select Category', 'wp-predictive-search' ); ?>" class="wpps_category_selector" name="cat_in" data-ps-cat_max_wide="<?php echo $ps_args['cat_max_wide']; ?>" data-ps-taxonomy="<?php echo esc_attr( $ps_args['in_taxonomy'] ); ?>">
+					<select aria-label="<?php _e( 'Select Category', 'wp-predictive-search' ); ?>" class="wpps_category_selector" name="cat_in" data-ps-cat_max_wide="<?php echo esc_attr( $ps_args['cat_max_wide'] ); ?>" data-ps-taxonomy="<?php echo esc_attr( $ps_args['in_taxonomy'] ); ?>">
 						<option value="" selected="selected"><?php wpps_ict_t_e( 'All', __('All', 'wp-predictive-search' ) ); ?></option>
 					<?php if ( $post_categories !== false ) { ?>
 						<?php foreach ( $post_categories as $category_data ) { ?>
@@ -82,10 +82,10 @@ $search_results_page = str_replace( array( 'http:', 'https:' ), '', get_permalin
 				</div>
 			</div>
 			<?php } else { ?>
-			<input type="hidden" class="wpps_category_selector" name="cat_in" value="" data-ps-cat_max_wide="<?php echo $ps_args['cat_max_wide']; ?>" data-ps-taxonomy="<?php echo esc_attr( $ps_args['in_taxonomy'] ); ?>" />
+			<input type="hidden" class="wpps_category_selector" name="cat_in" value="" data-ps-cat_max_wide="<?php echo esc_attr( $ps_args['cat_max_wide'] ); ?>" data-ps-taxonomy="<?php echo esc_attr( $ps_args['in_taxonomy'] ); ?>" />
 			<?php } ?>
 
-			<div class="wpps_nav_<?php echo ( 'left' === $ps_args['cat_align'] ? 'right' : 'left' ); ?>" aria-label="<?php _e( 'Search Now', 'wp-predictive-search' ); ?>">
+			<div class="wpps_nav_<?php echo ( 'left' === sanitize_key( wp_unslash( $ps_args['cat_align'] ) ) ? 'right' : 'left' ); ?>" aria-label="<?php _e( 'Search Now', 'wp-predictive-search' ); ?>">
 				<div class="wpps_nav_submit">
 					<div class="wpps_nav_submit_icon">
 						<svg viewBox="0 0 24 24" height="16" width="16" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
@@ -96,12 +96,12 @@ $search_results_page = str_replace( array( 'http:', 'https:' ), '', get_permalin
 
 			<div class="wpps_nav_fill">
 				<div class="wpps_nav_field">
-					<input type="text" name="rs" class="wpps_search_keyword" id="wpps_search_keyword_<?php echo $ps_id; ?>"
+					<input type="text" name="rs" class="wpps_search_keyword" id="wpps_search_keyword_<?php echo esc_attr( $ps_id ); ?>"
 						aria-label="<?php _e( 'Keyword Search', 'wp-predictive-search' ); ?>"
 						onblur="if( this.value == '' ){ this.value = '<?php echo esc_js( $ps_args['search_box_text'] ); ?>'; }"
 						onfocus="if( this.value == '<?php echo esc_js( $ps_args['search_box_text'] ); ?>' ){ this.value = ''; }"
 						value="<?php echo esc_attr( $ps_args['search_box_text'] ); ?>"
-						data-ps-id="<?php echo $ps_id; ?>"
+						data-ps-id="<?php echo esc_attr( $ps_id ); ?>"
 						data-ps-default_text="<?php echo esc_attr( $ps_args['search_box_text'] ); ?>"
 					/>
 					<svg aria-hidden="true" viewBox="0 0 512 512" class="wpps_searching_icon" style="display: none;" aria-label="<?php _e( 'Searching', 'wp-predictive-search' ); ?>">
@@ -114,7 +114,7 @@ $search_results_page = str_replace( array( 'http:', 'https:' ), '', get_permalin
 			<input type="hidden" name="page_id" value="<?php echo esc_attr( $wpps_search_page_id ); ?>"  />
 
 			<?php if ( class_exists('SitePress') ) { ?>
-				<input type="hidden" name="lang" value="<?php echo ICL_LANGUAGE_CODE; ?>"  />
+				<input type="hidden" name="lang" value="<?php echo esc_attr( ICL_LANGUAGE_CODE ); ?>"  />
 			<?php } ?>
 
 		<?php } ?>

@@ -24,7 +24,7 @@ class Frontend {
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_inline_css' ), 20 );
 
 		// Hook: Include google fonts on Frontend
-		add_action( 'wp_head', array( $this, 'frontend_google_fonts' ), 100 );
+		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_google_fonts' ), 100 );
 	}
 
 	/**
@@ -223,7 +223,7 @@ class Frontend {
 	public function frontend_google_fonts() {
 		self::$header_google_fonts = apply_filters( 'predictive_search_blocks_frontend_global_google_fonts', self::$header_google_fonts );
 
-		echo $this->include_google_fonts( self::$header_google_fonts );
+		return $this->include_google_fonts( self::$header_google_fonts );
 	}
 
 	public function combine_google_fonts( $google_fonts = array() ) {
@@ -288,7 +288,7 @@ class Frontend {
 		}
 
 		if ( ! empty( $link ) ) {
-			return '<link href="//fonts.googleapis.com/css?family=' . esc_attr( str_replace( '|', '%7C', $link ) ) . '" rel="stylesheet">';
+			wp_enqueue_style( 'wpps-block-gfonts-' . time(), '//fonts.googleapis.com/css?family=' . esc_attr( str_replace( '|', '%7C', $link ) ) );
 		}
 	}
 

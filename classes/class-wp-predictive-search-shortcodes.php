@@ -154,8 +154,8 @@ class Shortcodes
 			function wpps_search_widget_add_shortcode(){
 				var number_items = '';
 				<?php foreach ($items_search_default as $key => $data) {?>
-				var wpps_search_<?php echo $key ?>_items = '<?php echo $key ?>_items="' + jQuery("#wpps_search_<?php echo $key ?>_items").val() + '" ';
-				number_items += wpps_search_<?php echo $key ?>_items;
+				var wpps_search_<?php echo esc_js( $key ); ?>_items = '<?php echo esc_js( $key ); ?>_items="' + jQuery("#wpps_search_<?php echo esc_js( $key ); ?>_items").val() + '" ';
+				number_items += wpps_search_<?php echo esc_js( $key ); ?>_items;
 				<?php } ?>
 				var wpps_search_widget_template = jQuery("#wpps_search_widget_template").val();
 				var wpps_search_set_default_cat = jQuery('#wpps_search_set_default_cat').val();
@@ -253,11 +253,11 @@ class Shortcodes
 		</style>
 		<div id="wpps_search_widget_shortcode" style="display:none;">
 		  <div style="height: 98%; overflow: auto;">
-			<h3><?php _e('Customize the Predictive Search Shortcode', 'wp-predictive-search' ); ?> <a class="add-new-h2 a3-view-docs-button" target="_blank" href="<?php echo WPPS_DOCS_URI; ?>#section-16" ><?php _e('View Docs', 'wp-predictive-search' ); ?></a></h3>
+			<h3><?php _e('Customize the Predictive Search Shortcode', 'wp-predictive-search' ); ?> <a class="add-new-h2 a3-view-docs-button" target="_blank" href="<?php echo esc_url( WPPS_DOCS_URI ); ?>#section-16" ><?php _e('View Docs', 'wp-predictive-search' ); ?></a></h3>
 			<div style="clear:both"></div>
 			<div class="field_content">
                 <?php foreach ($items_search_default as $key => $data) { ?>
-                <p><label for="wpps_search_<?php echo $key ?>_items"><?php echo $data['name']; ?>:</label> <input style="width:100px;" size="10" id="wpps_search_<?php echo $key ?>_items" name="wpps_search_<?php echo $key ?>_items" type="text" value="<?php echo $data['number'] ?>" /> <span class="description"><?php _e('Number of', 'wp-predictive-search' ); echo ' '.$data['name'].' '; _e('results to show in dropdown', 'wp-predictive-search' ); ?></span></p> 
+                <p><label for="wpps_search_<?php echo esc_attr( $key ); ?>_items"><?php echo esc_html( $data['name'] ); ?>:</label> <input style="width:100px;" size="10" id="wpps_search_<?php echo esc_attr( $key ); ?>_items" name="wpps_search_<?php echo esc_attr( $key ); ?>_items" type="text" value="<?php echo esc_attr( $data['number'] ); ?>" /> <span class="description"><?php echo sprintf( __( 'Number of %s results to show in dropdown', 'wp-predictive-search' ), esc_html( $data['name'] ) ); ?></span></p> 
                 <?php } ?>
                 <p><label for="wpps_search_widget_template"><?php _e('Select Template', 'wp-predictive-search' ); ?>:</label> <select style="width:100px" id="wpps_search_widget_template" name="wpps_search_widget_template"><option value="sidebar" selected="selected"><?php _e('Widget', 'wp-predictive-search' ); ?></option><option value="header"><?php _e('Header', 'wp-predictive-search' ); ?></option></select></p>
                 <p>

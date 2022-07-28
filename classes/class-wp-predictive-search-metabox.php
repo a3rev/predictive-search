@@ -139,14 +139,14 @@ class MetaBox
 		global $wpps_keyword_data;
 		global $wpps_exclude_data;
 
-		$predictive_search_focuskw = trim( sanitize_text_field( $_REQUEST['_predictive_search_focuskw'] ) );
+		$predictive_search_focuskw = trim( sanitize_text_field( wp_unslash( $_REQUEST['_predictive_search_focuskw'] ) ) );
 		if ( '' != $predictive_search_focuskw ) {
 			$wpps_keyword_data->update_item( $post_id, $predictive_search_focuskw );
 		} else {
 			$wpps_keyword_data->delete_item( $post_id );
 		}
 
-		if ( isset( $_REQUEST['ps_exclude_item'] ) && $_REQUEST['ps_exclude_item'] == 1 ) {
+		if ( isset( $_REQUEST['ps_exclude_item'] ) && intval( $_REQUEST['ps_exclude_item'] ) == 1 ) {
 			$wpps_exclude_data->insert_item( $post_id , $post_type );
 		} else {
 			$wpps_exclude_data->delete_item( $post_id, $post_type );

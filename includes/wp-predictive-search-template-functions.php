@@ -114,7 +114,7 @@ function wpps_search_form( $ps_id = '', $template = 'sidebar', $args = array(), 
 	}
 
 	if ( '' != trim( $custom_style ) ) {
-		echo '<style>' . $custom_style . '</style>';
+		echo '<style>' . esc_html( $custom_style ) . '</style>';
 	}
 
 	if ( 'header' == $template ) {

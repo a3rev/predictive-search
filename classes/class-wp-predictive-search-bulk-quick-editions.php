@@ -56,7 +56,7 @@ class Bulk_Quick_Editions
 			if ( $wpps_exclude_data->get_item( $post_id, get_post_type( $post_id ) ) > 0 ) {
 				$ps_exclude_item = 'yes';
 			}
-			echo '<div class="hidden" style="display:none" id="wp_predictive_search_inline_'.$post_id.'"><div class="predictive_search_focuskw">'.esc_html( $ps_focuskw ).'</div><div class="ps_exclude_item">'.$ps_exclude_item.'</div></div>';
+			echo wp_kses_post( '<div class="hidden" style="display:none" id="wp_predictive_search_inline_'. esc_attr( $post_id ).'"><div class="predictive_search_focuskw">'.esc_html( $ps_focuskw ).'</div><div class="ps_exclude_item">'.$ps_exclude_item.'</div></div>' );
 		}
 	}
 
@@ -149,7 +149,7 @@ class Bulk_Quick_Editions
 		// Save fields
 		if ( ! empty( $_REQUEST['change_ps_keyword'] ) && isset( $_REQUEST['_predictive_search_focuskw'] ) ) {
 			global $wpps_keyword_data;
-			$predictive_search_focuskw = trim( sanitize_text_field( $_REQUEST['_predictive_search_focuskw'] ) );
+			$predictive_search_focuskw = trim( sanitize_text_field( wp_unslash( $_REQUEST['_predictive_search_focuskw'] ) ) );
 			if ( '' != $predictive_search_focuskw ) {
 				$wpps_keyword_data->update_item( $post_id, $predictive_search_focuskw );
 			} else {
@@ -161,7 +161,7 @@ class Bulk_Quick_Editions
 
 			global $wpps_exclude_data;
 
-			if ( isset( $_REQUEST['ps_exclude_item'] ) && $_REQUEST['ps_exclude_item'] == 1 ) {
+			if ( isset( $_REQUEST['ps_exclude_item'] ) && intval( $_REQUEST['ps_exclude_item'] ) == 1 ) {
 				$wpps_exclude_data->insert_item( $post_id , $post->post_type );
 			} else {
 				$wpps_exclude_data->delete_item( $post_id, $post->post_type );
@@ -245,9 +245,9 @@ class Bulk_Quick_Editions
 		global $wpdb;
 
 		// Save fields
-		if ( isset( $_POST['_predictive_search_focuskw'] ) && trim( $_POST['_predictive_search_focuskw'] ) != '' ) {
+		if ( isset( $_POST['_predictive_search_focuskw'] ) && trim( sanitize_text_field( wp_unslash( $_POST['_predictive_search_focuskw'] ) ) ) != '' ) {
 			global $wpps_keyword_data;
-			$predictive_search_focuskw = trim( sanitize_text_field( $_REQUEST['_predictive_search_focuskw'] ) );
+			$predictive_search_focuskw = trim( sanitize_text_field( wp_unslash( $_POST['_predictive_search_focuskw'] ) ) );
 			if ( '' != $predictive_search_focuskw ) {
 				$wpps_keyword_data->update_item( $post_id, $predictive_search_focuskw );
 			} else {
@@ -257,7 +257,7 @@ class Bulk_Quick_Editions
 
 
 		global $wpps_exclude_data;
-		if ( isset( $_POST['ps_exclude_item'] ) && $_POST['ps_exclude_item'] == 1 ) {
+		if ( isset( $_POST['ps_exclude_item'] ) && intval( $_POST['ps_exclude_item'] ) == 1 ) {
 			$wpps_exclude_data->insert_item( $post_id , $post->post_type );
 		} else {
 			$wpps_exclude_data->delete_item( $post_id, $post->post_type );

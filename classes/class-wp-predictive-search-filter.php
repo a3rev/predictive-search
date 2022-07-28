@@ -58,14 +58,14 @@ class Hook_Filter
 
 	public static function yellow_message_dontshow() {
 		check_ajax_referer( 'wpps_yellow_message_dontshow', 'security' );
-		$option_name   = sanitize_text_field( $_REQUEST['option_name'] );
+		$option_name   = sanitize_text_field( wp_unslash( $_REQUEST['option_name'] ) );
 		update_option( $option_name, 1 );
 		die();
 	}
 
 	public static function yellow_message_dismiss() {
 		check_ajax_referer( 'wpps_yellow_message_dismiss', 'security' );
-		$session_name   = $_REQUEST['session_name'];
+		$session_name   = sanitize_key( wp_unslash( $_REQUEST['session_name'] ) );
 		if ( !isset($_SESSION) ) { @session_start(); }
 		$_SESSION[$session_name] = 1 ;
 		die();

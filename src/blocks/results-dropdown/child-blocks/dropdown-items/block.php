@@ -62,27 +62,6 @@ class Items extends Blocks\Frontend {
         }
 
         if ( isset( $attributes['parentID'] ) ) {
-			$typo_key = array();
-
-			if ( isset( $attributes[ 'enableCustomNameFont' ] ) && $attributes[ 'enableCustomNameFont' ] ) {
-				$typo_key[] = $this->field_name .'nameTypo';
-			}
-
-			if ( ( ! isset( $attributes['showDesc'] ) || $attributes['showDesc'] ) && isset( $attributes[ 'enableCustomDescFont' ] ) && $attributes[ 'enableCustomDescFont' ] ) {
-				$typo_key[] = $this->field_name .'descTypo';
-			}
-
-			if ( ( ! isset( $attributes['showCat'] ) || $attributes['showCat'] ) && isset( $attributes[ 'enableCustomCatFont' ] ) && $attributes[ 'enableCustomCatFont' ] ) {
-				$typo_key[] = $this->field_name .'catTypo';
-			}
-
-            if ( ! empty( $typo_key ) ) {
-                $block_gfonts = $this->get_block_google_fonts( $typo_key, $attributes );
-                if ( $block_gfonts ) {
-                    $content = $this->render_block_google_font( $block_gfonts ) . $content;
-                }
-			}
-
             $content = $this->block_render_inline_css( $this->block_name, $attributes, $content );
         }
 

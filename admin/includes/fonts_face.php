@@ -637,13 +637,12 @@ class Fonts_Face extends Admin_UI
 	/*
 	INSTRUCTIONS: Needs to be loaded for the Google Fonts options to work for font options.
 
-	add_action( 'wp_head', array( $this, 'generate_google_webfonts' ) );
+	add_action( 'wp_enqueue_scripts', array( $this, 'generate_google_webfonts' ) );
 	*/
 	public function generate_google_webfonts( $my_google_fonts = array(), $echo = true ) {
 		$google_fonts = $this->get_google_fonts();
 
 		$fonts = '';
-		$output = '';
 
 		// Go through the options
 		if ( is_array( $my_google_fonts ) ) {
@@ -653,26 +652,12 @@ class Fonts_Face extends Admin_UI
 					$fonts .= $google_fonts[$font_face]['name'].$google_fonts[$font_face]['variant']."|";
 				}
 			} // End Foreach Loop
-
-			// Output google font css in header
-			if ( trim( $fonts ) != '' ) {
-				$fonts = str_replace( " ","+",$fonts);
-
-				if ( $echo ) {
-					echo "\n<!-- Google Webfonts -->\n";
-					echo '<link href="http'. ( is_ssl() ? 's' : '' ) .'://fonts.googleapis.com/css?family=' . esc_attr( $fonts ) .'" rel="stylesheet" type="text/css" />'."\n";
-				} else {
-					$output .= "\n<!-- Google Webfonts -->\n";
-					$output .= '<link href="http'. ( is_ssl() ? 's' : '' ) .'://fonts.googleapis.com/css?family=' . esc_attr( $fonts ) .'" rel="stylesheet" type="text/css" />'."\n";
-					$output = str_replace( '|"','"',$output);
-				}
-			}
 		}
 
-		if ( $echo )
-			echo '';
-		else
-			return $output;
+		if (  ! empty( $fonts ) ) {
+			$fonts = str_replace( " ", "+", $fonts );
+			wp_enqueue_style( $this->plugin_name . '-gfonts', '//fonts.googleapis.com/css?family=' . esc_attr( str_replace( '|"', '"', $fonts ) ) );
+		}
 
 	} // End generate_google_webfonts()
 

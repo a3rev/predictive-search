@@ -128,7 +128,7 @@ class Search_Box extends FrameWork\Admin_UI
 	public function before_save_settings() {
 		$old_enable_cache_value = get_option( 'predictive_search_category_cache', 'yes' );
 		$new_enable_cache_value = 'yes';
-		if ( ! isset( $_POST['predictive_search_category_cache'] ) || 'yes' != $_POST['predictive_search_category_cache'] ) {
+		if ( ! isset( $_POST['predictive_search_category_cache'] ) || 'yes' != sanitize_key( wp_unslash( $_POST['predictive_search_category_cache'] ) ) ) {
 			$new_enable_cache_value = 'no';
 		}
 
@@ -158,7 +158,7 @@ class Search_Box extends FrameWork\Admin_UI
 	public function after_save_settings() {
 
 		if ( isset( $_REQUEST['wpps_search_box_text']) ) {
-			update_option('wpps_search_box_text', is_array( $_REQUEST['wpps_search_box_text'] ) ? array_map( 'sanitize_text_field', $_REQUEST['wpps_search_box_text'] ) : sanitize_text_field( $_REQUEST['wpps_search_box_text'] ) );
+			update_option('wpps_search_box_text', is_array( $_REQUEST['wpps_search_box_text'] ) ? array_map( 'sanitize_text_field', wp_unslash( $_REQUEST['wpps_search_box_text'] ) ) : sanitize_text_field( wp_unslash( $_REQUEST['wpps_search_box_text'] ) ) );
 		}
 	}
 	

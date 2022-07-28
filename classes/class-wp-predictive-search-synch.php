@@ -88,11 +88,11 @@ class Sync
 	?>
 		<div class="message error wpps_sync_data_warning">
     		<p>
-    			<strong><?php echo $heading_text; ?></strong>
-    			- <?php echo $warning_text; ?>
+    			<strong><?php echo esc_html( $heading_text ); ?></strong>
+    			- <?php echo esc_html( $warning_text ); ?>
     		</p>
     		<p>
-    			<a class="button button-primary" href="<?php echo $sync_data_url; ?>" target="_parent"><?php echo __( 'Sync Now' , 'wp-predictive-search' ); ?></a>
+    			<a class="button button-primary" href="<?php echo esc_url( $sync_data_url ); ?>" target="_parent"><?php echo __( 'Sync Now' , 'wp-predictive-search' ); ?></a>
     		</p>
     	</div>
 	<?php
@@ -221,7 +221,7 @@ class Sync
 
 	public function wp_predictive_search_sync_taxonomy_ajax() {
 		if ( isset( $_POST['taxonomy'] ) ) {
-			$taxonomy = is_array( $_POST['taxonomy'] ) ? array_map( 'sanitize_key', $_POST['taxonomy'] ) : array( sanitize_key( $_POST['taxonomy'] ) );
+			$taxonomy = is_array( $_POST['taxonomy'] ) ? array_map( 'sanitize_key', wp_unslash( $_POST['taxonomy'] ) ) : array( sanitize_key( wp_unslash( $_POST['taxonomy'] ) ) );
 		} else {
 			$taxonomy = array( 'category' );
 		}
@@ -243,7 +243,7 @@ class Sync
 
 	public function wp_predictive_search_sync_posts_ajax() {
 		if ( isset( $_POST['posttype'] ) ) {
-			$posttype = sanitize_key( $_POST['posttype'] );
+			$posttype = sanitize_key( wp_unslash( $_POST['posttype'] ) );
 		} else {
 			$posttype = 'post';
 		}
@@ -544,7 +544,7 @@ class Sync
 			$yoast_keyword = get_post_meta( $post_id, '_yoast_wpseo_focuskw', true );
 			// For Yoast SEO need to check if $_POST['yoast_wpseo_focuskw_text_input'] is existed then use it instead of use post meta
 			if ( isset( $_POST['yoast_wpseo_focuskw_text_input'] ) ) {
-				$yoast_keyword = trim( sanitize_text_field( $_POST['yoast_wpseo_focuskw_text_input'] ) );
+				$yoast_keyword = trim( sanitize_text_field( wp_unslash( $_POST['yoast_wpseo_focuskw_text_input'] ) ) );
 			}
 			$wpseo_keyword = get_post_meta( $post_id, '_aioseop_keywords', true );
 

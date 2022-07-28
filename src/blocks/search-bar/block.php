@@ -81,7 +81,7 @@ class Search_Bar extends Blocks\Frontend {
 				<input type="hidden" name="page_id" value="<?php echo esc_attr( $wpps_search_page_id ); ?>"  />
 
 				<?php if ( class_exists('SitePress') ) { ?>
-					<input type="hidden" name="lang" value="<?php echo ICL_LANGUAGE_CODE; ?>"  />
+					<input type="hidden" name="lang" value="<?php echo esc_attr( ICL_LANGUAGE_CODE ); ?>"  />
 				<?php } ?>
 
 			<?php } ?>

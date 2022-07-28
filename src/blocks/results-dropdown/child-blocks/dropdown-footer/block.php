@@ -56,8 +56,8 @@ class Footer extends Blocks\Frontend {
 
 		echo $this->render_inline_css( $attributes, '' );
 		?>
-		<script type="text/template" id="wp_psearch_footerCustomTpl_<?php echo $attributes['rootID']; ?>"><div rel="more_result" class="more_result">
-				<span><?php echo sprintf( wpps_ict_t__( 'More result Text - Custom ' . $attributes['parentID'], $moreText ), '{{= title }}' ); ?></span>
+		<script type="text/template" id="wp_psearch_footerCustomTpl_<?php echo esc_attr( $attributes['rootID'] ); ?>"><div rel="more_result" class="more_result">
+				<span><?php echo sprintf( wpps_ict_t__( 'More result Text - Custom ' . esc_html( $attributes['parentID'] ), $moreText ), '{{= title }}' ); ?></span>
 				{{ if ( description != null && description != '' ) { }}{{= description }}{{ } }}
 		</div></script>
 		<?php echo $content; ?>
@@ -74,23 +74,6 @@ class Footer extends Blocks\Frontend {
         }
 
         if ( isset( $attributes['parentID'] ) ) {
-			$typo_key = array();
-
-			if ( isset( $attributes[ 'enableCustomMoreTextFont' ] ) && $attributes[ 'enableCustomMoreTextFont' ] ) {
-				$typo_key[] = $this->field_name .'moreTextTypo';
-			}
-
-			if ( isset( $attributes[ 'enableCustomMoreLinkFont' ] ) && $attributes[ 'enableCustomMoreLinkFont' ] ) {
-				$typo_key[] = $this->field_name .'moreLinkTypo';
-			}
-
-            if ( ! empty( $typo_key ) ) {
-                $block_gfonts = $this->get_block_google_fonts( $typo_key, $attributes );
-                if ( $block_gfonts ) {
-                    $content = $this->render_block_google_font( $block_gfonts ) . $content;
-                }
-			}
-
             $content = $this->block_render_inline_css( $this->block_name, $attributes, $content );
         }
 

@@ -32,10 +32,10 @@ function wpps_render_block_query_results( $attributes, $content, $block ) {
     <div id="ps_results_container" class="wpps">
         <<?php echo $tag_name; ?> <?php echo $wrapper_attributes; ?>>
             <?php echo $content; ?>
-            <?php echo \A3Rev\WPPredictiveSearch\Results::more_results(); ?>
+            <?php \A3Rev\WPPredictiveSearch\Results::more_results(); ?>
         </<?php echo $tag_name; ?>>
     </div>
-    <?php echo \A3Rev\WPPredictiveSearch\Results::inline_scripts(); ?>
+    <?php \A3Rev\WPPredictiveSearch\Results::inline_scripts(); ?>
     <?php
     $content = ob_get_clean();
 

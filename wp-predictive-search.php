@@ -39,7 +39,7 @@ if(!defined("WPPS_DOCS_URI"))
 define( 'WPPS_KEY', 'wp_predictive_search' );
 define( 'WPPS_PREFIX', 'wp_predictive_search_' );
 define( 'WPPS_VERSION', '1.0.0' );
-define( 'WPPS_G_FONTS', false );
+define( 'WPPS_G_FONTS', true );
 
 use \A3Rev\WPPredictiveSearch\FrameWork;
 

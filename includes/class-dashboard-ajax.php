@@ -43,9 +43,9 @@ class Dashboard_AJAX
 
 		global $wpdb;
 
-		$keyword = isset( $_GET['keyword']) ? sanitize_text_field( $_GET['keyword'] ) : '';
-		$from    = isset( $_GET['from'] ) ? sanitize_key( $_GET['from'] ) : 'post';
-		$type    = isset( $_GET['type'] ) ? sanitize_key( $_GET['type'] ) : 'post';
+		$keyword = isset( $_GET['keyword']) ? sanitize_text_field( wp_unslash( $_GET['keyword'] ) ) : '';
+		$from    = isset( $_GET['from'] ) ? sanitize_key( wp_unslash( $_GET['from'] ) ) : 'post';
+		$type    = isset( $_GET['type'] ) ? sanitize_key( wp_unslash( $_GET['type'] ) ) : 'post';
 
 		if ( empty( $keyword ) ) {
 			wp_send_json( array() );

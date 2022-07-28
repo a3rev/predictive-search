@@ -173,7 +173,7 @@ class Widgets extends \WP_Widget
 		ul.predictive_search_item li.ui-sortable-placeholder{border:1px dotted #111; visibility:visible !important; background:none;}
 		ul.predictive_search_item li.ui-sortable-helper{background-color:#DDD;}
 		</style>
-			<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'wp-predictive-search' ); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
+			<p><label for="<?php echo esc_attr( $this->get_field_id('title') ); ?>"><?php _e('Title:', 'wp-predictive-search' ); ?></label> <input class="widefat" id="<?php echo esc_attr( $this->get_field_id('title') ); ?>" name="<?php echo esc_attr( $this->get_field_name('title') ); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
 		<?php
 		if ( class_exists('SitePress') ) {
 			if ( !is_array($search_box_text) ) $search_box_text = array();
@@ -182,57 +182,57 @@ class Widgets extends \WP_Widget
 			if ( is_array($active_languages)  && count($active_languages) > 0 ) {
 				foreach ( $active_languages as $language ) {
 		?>
-        	<p><label for="<?php echo $this->get_field_id('search_box_text'); ?>_<?php echo $language['code']; ?>"><?php _e('Search box text message', 'wp-predictive-search' ); ?> (<?php echo $language['display_name']; ?>)</label> <input class="widefat" id="<?php echo $this->get_field_id('search_box_text'); ?>_<?php echo $language['code']; ?>" name="<?php echo $this->get_field_name('search_box_text'); ?>[<?php echo $language['code']; ?>]" type="text" value="<?php if ( isset( $search_box_text[$language['code'] ] ) ) esc_attr_e( $search_box_text[$language['code']] ); ?>" /></p>
+        	<p><label for="<?php echo esc_attr( $this->get_field_id('search_box_text') ); ?>_<?php echo esc_attr( $language['code'] ); ?>"><?php _e('Search box text message', 'wp-predictive-search' ); ?> (<?php echo esc_html( $language['display_name'] ); ?>)</label> <input class="widefat" id="<?php echo esc_attr( $this->get_field_id('search_box_text') ); ?>_<?php echo esc_attr( $language['code'] ); ?>" name="<?php echo esc_attr( $this->get_field_name('search_box_text') ); ?>[<?php echo esc_attr( $language['code'] ); ?>]" type="text" value="<?php if ( isset( $search_box_text[$language['code'] ] ) ) esc_attr_e( $search_box_text[$language['code']] ); ?>" /></p>
         <?php
 				}
 			}
 		} else {
 			if ( is_array($search_box_text) ) $search_box_text = '';
 		?>
-            <p><label for="<?php echo $this->get_field_id('search_box_text'); ?>"><?php _e('Search box text message:', 'wp-predictive-search' ); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('search_box_text'); ?>" name="<?php echo $this->get_field_name('search_box_text'); ?>" type="text" value="<?php echo esc_attr($search_box_text); ?>" /></p>
+            <p><label for="<?php echo esc_attr( $this->get_field_id('search_box_text') ); ?>"><?php _e('Search box text message:', 'wp-predictive-search' ); ?></label> <input class="widefat" id="<?php echo esc_attr( $this->get_field_id('search_box_text') ); ?>" name="<?php echo esc_attr( $this->get_field_name('search_box_text') ); ?>" type="text" value="<?php echo esc_attr($search_box_text); ?>" /></p>
 		<?php } ?>
             <p><?php _e("Activate search 'types' for this widget by entering the number of results to show in the widget dropdown. &lt;empty&gt; = not activated. Sort order by drag and drop", 'wp-predictive-search' ); ?></p>
             <ul class="ui-sortable predictive_search_item">
             <?php foreach ($number_items as $key => $value) { ?>
             	<?php if ( isset( $items_search_default[$key] ) ) { ?>
-            	<li><span class="item_heading"><label for="search_<?php echo $key; ?>"><?php echo $items_search_default[$key]['name']; ?></label></span> <input id="search_<?php echo $key; ?>" name="<?php echo $this->get_field_name('number_items'); ?>[<?php echo $key; ?>]" type="text" value="<?php echo esc_attr($value); ?>" style="width:50px;" /></li>
+            	<li><span class="item_heading"><label for="search_<?php echo esc_attr( $key ); ?>"><?php echo esc_attr( $items_search_default[$key]['name'] ); ?></label></span> <input id="search_<?php echo esc_attr( $key ); ?>" name="<?php echo esc_attr( $this->get_field_name('number_items') ); ?>[<?php echo esc_attr( $key ); ?>]" type="text" value="<?php echo esc_attr($value); ?>" style="width:50px;" /></li>
             	<?php } ?>
             <?php } ?>
             </ul>
             <p>
-            	<label for="<?php echo $this->get_field_id('widget_template'); ?>"><?php _e('Select Template:', 'wp-predictive-search' ); ?></label>
-            	<select id="<?php echo $this->get_field_id('widget_template'); ?>" name="<?php echo $this->get_field_name('widget_template'); ?>">
+            	<label for="<?php echo esc_attr( $this->get_field_id('widget_template') ); ?>"><?php _e('Select Template:', 'wp-predictive-search' ); ?></label>
+            	<select id="<?php echo esc_attr( $this->get_field_id('widget_template') ); ?>" name="<?php echo esc_attr( $this->get_field_name('widget_template') ); ?>">
 					<option value="sidebar" selected="selected" ><?php _e('Widget', 'wp-predictive-search' ); ?></option>
 					<option value="header" <?php selected( 'header', $widget_template, true ); ?>><?php _e('Header', 'wp-predictive-search' ); ?></option>
             	</select>
             </p>
             <p>
-            	<label><input <?php echo ( $disabled_cat_dropdown ) ? 'disabled="disabled"' : 'name="' . $this->get_field_name('show_catdropdown').'"'; ?> type="checkbox" value="1" <?php checked( $show_catdropdown, 1 ); ?>  /> <?php _e('Search in Post Category Feature', 'wp-predictive-search' ); ?></label>
+            	<label><input <?php echo ( $disabled_cat_dropdown ) ? 'disabled="disabled"' : 'name="' . esc_attr( $this->get_field_name('show_catdropdown') ).'"'; ?> type="checkbox" value="1" <?php checked( $show_catdropdown, 1 ); ?>  /> <?php _e('Search in Post Category Feature', 'wp-predictive-search' ); ?></label>
             	<?php if ( $disabled_cat_dropdown ) { ?>
             	<br>
             	<span><?php echo sprintf( __( 'Activate and build <a href="%s" target="_blank">Category Cache</a> to activate this feature', 'wp-predictive-search' ), admin_url( 'admin.php?page=wp-predictive-search&tab=search-box-settings&box_open=predictive_search_category_cache_box#predictive_search_category_cache_box', 'relative' ) ); ?></span>
-				<input type="hidden" name="<?php echo $this->get_field_name('show_catdropdown'); ?>" value="<?php echo $show_catdropdown; ?>" />
+				<input type="hidden" name="<?php echo esc_attr( $this->get_field_name('show_catdropdown') ); ?>" value="<?php echo esc_attr( $show_catdropdown ); ?>" />
             	<?php } ?>
             </p>
             <p>
-            	<label for="<?php echo $this->get_field_id('in_taxonomy'); ?>"><?php _e('Select Taxonomy', 'wp-predictive-search' ); ?></label>
-            	<select <?php disabled( $disabled_cat_dropdown, true ); ?> id="<?php echo $this->get_field_id('in_taxonomy'); ?>" name="<?php echo $this->get_field_name('in_taxonomy'); ?>">
+            	<label for="<?php echo esc_attr( $this->get_field_id('in_taxonomy') ); ?>"><?php _e('Select Taxonomy', 'wp-predictive-search' ); ?></label>
+            	<select <?php disabled( $disabled_cat_dropdown, true ); ?> id="<?php echo esc_attr( $this->get_field_id('in_taxonomy') ); ?>" name="<?php echo esc_attr( $this->get_field_name('in_taxonomy') ); ?>">
             		<?php foreach ( wpps_taxonomies_dropdown() as $taxonomy => $label ) { ?>
             			<option value="<?php esc_attr_e( $taxonomy ); ?>" <?php selected( $taxonomy, $in_taxonomy, true ); ?>><?php esc_html_e( $label ); ?></option>
             		<?php } ?>
             	</select>
             </p>
             <p>
-            	<label><input type="checkbox" name="<?php echo $this->get_field_name('show_image'); ?>" value="1" <?php checked( $show_image, 1 ); ?>  /> <?php _e('Show Results Images', 'wp-predictive-search' ); ?></label>
+            	<label><input type="checkbox" name="<?php echo esc_attr( $this->get_field_name('show_image') ); ?>" value="1" <?php checked( $show_image, 1 ); ?>  /> <?php _e('Show Results Images', 'wp-predictive-search' ); ?></label>
             </p>
             <p>
-            	<label><input class="wpps_show_desc" type="checkbox" name="<?php echo $this->get_field_name('show_desc'); ?>" value="1" <?php checked( $show_desc, 1 ); ?>  /> <?php _e('Show Results Description', 'wp-predictive-search' ); ?></label>
+            	<label><input class="wpps_show_desc" type="checkbox" name="<?php echo esc_attr( $this->get_field_name('show_desc') ); ?>" value="1" <?php checked( $show_desc, 1 ); ?>  /> <?php _e('Show Results Description', 'wp-predictive-search' ); ?></label>
             </p>
             <p class="wpps_show_desc_container" style="<?php echo ( 0 == $show_desc ) ? 'display: none' : ''; ?>">
-            	<label for="<?php echo $this->get_field_id('text_lenght'); ?>"><?php _e('Character Count:', 'wp-predictive-search' ); ?></label> <input style="width:50px;" id="<?php echo $this->get_field_id('text_lenght'); ?>" name="<?php echo $this->get_field_name('text_lenght'); ?>" type="text" value="<?php echo esc_attr($text_lenght); ?>" />
+            	<label for="<?php echo esc_attr( $this->get_field_id('text_lenght') ); ?>"><?php _e('Character Count:', 'wp-predictive-search' ); ?></label> <input style="width:50px;" id="<?php echo esc_attr( $this->get_field_id('text_lenght') ); ?>" name="<?php echo esc_attr( $this->get_field_name('text_lenght') ); ?>" type="text" value="<?php echo esc_attr($text_lenght); ?>" />
             </p>
             <p>
-            	<label><input type="checkbox" name="<?php echo $this->get_field_name('show_in_cat'); ?>" value="1" <?php checked( $show_in_cat, 1 ); ?>  /> <?php _e('Results - Show Categories', 'wp-predictive-search' ); ?></label>
+            	<label><input type="checkbox" name="<?php echo esc_attr( $this->get_field_name('show_in_cat') ); ?>" value="1" <?php checked( $show_in_cat, 1 ); ?>  /> <?php _e('Results - Show Categories', 'wp-predictive-search' ); ?></label>
             </p>
 		<script>
 		jQuery(document).ready(function() {

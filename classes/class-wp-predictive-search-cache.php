@@ -94,7 +94,7 @@ class Cache
 	public function handle_events() {
 		if ( ! $this->enable_cat_cache() ) return;
 
-		if ( isset( $_POST['predicitve-search-generate-cat-cache'] ) || ( isset( $_GET['wpps-cat-rebuild-cache'] ) && 'yes' == sanitize_key( $_GET['wpps-cat-rebuild-cache'] ) ) ) {
+		if ( isset( $_POST['predicitve-search-generate-cat-cache'] ) || ( isset( $_GET['wpps-cat-rebuild-cache'] ) && 'yes' == sanitize_key( wp_unslash( $_GET['wpps-cat-rebuild-cache'] ) ) ) ) {
 
 			$this->preload_category_dropdown_cache();
 
@@ -164,10 +164,10 @@ class Cache
 				'wpps-cat-rebuild-cache' => 'yes',
 			) );
 	?>
-		<div class="message error wpps_cache_warning" style="<?php echo $warning_display; ?>">
+		<div class="message error wpps_cache_warning" style="<?php echo esc_attr( $warning_display ); ?>">
     		<p>
-    			<?php echo sprintf( __( 'Refresh Predictive Search in Categories cache <a class="button button-primary wp_predictive_search_refresh_cache_bt" href="%s" target="_parent">Refresh Cache</a>' , 'wp-predictive-search' ), $rebuild_cache_url ); ?>
-    			<img class="wpps_cache_loading" src="<?php echo WPPS_IMAGES_URL; ?>/indicator.gif" style="display: none; width: auto; height: auto;" >
+    			<?php echo sprintf( __( 'Refresh Predictive Search in Categories cache <a class="button button-primary wp_predictive_search_refresh_cache_bt" href="%s" target="_parent">Refresh Cache</a>' , 'wp-predictive-search' ), esc_url( $rebuild_cache_url ) ); ?>
+    			<img class="wpps_cache_loading" src="<?php echo esc_url( WPPS_IMAGES_URL ); ?>/indicator.gif" style="display: none; width: auto; height: auto;" >
     			<span class="wpps_cache_loaded" style="display: none; color: green; font-weight: 600;"><?php echo __( 'Cache Refreshed', 'wp-predictive-search' ); ?></span>
     		</p>
     	</div>
@@ -205,7 +205,7 @@ class Cache
 					$('.wpps_cache_warning').show('slow');
 				});
 
-				$( '#<?php echo $this->taxonomy; ?>-add-submit').on( 'click', function() {
+				$( '#<?php echo esc_js( $this->taxonomy ); ?>-add-submit').on( 'click', function() {
 					$('.wpps_cache_warning').show('slow');
 				});
 
@@ -214,8 +214,8 @@ class Cache
 					refresh_bt.siblings('.wpps_cache_loading').show();
 
 					var data = {
-						action: 'wp_predictive_search_refresh_cache_<?php echo $this->taxonomy; ?>',
-						security: '<?php echo $wpps_cache_security; ?>'
+						action: 'wp_predictive_search_refresh_cache_<?php echo esc_js( $this->taxonomy ); ?>',
+						security: '<?php echo esc_js( $wpps_cache_security ); ?>'
 					};
 
 					$.post(ajaxurl, data, function(response) {

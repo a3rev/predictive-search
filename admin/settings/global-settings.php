@@ -250,7 +250,7 @@ class Global_Panel extends FrameWork\Admin_UI
 				$all_items      = array();
 				$items_excluded = array();
 
-				if ( is_admin() && in_array (basename($_SERVER['PHP_SELF']), array('admin.php') ) && isset( $_GET['page'] ) && sanitize_key( $_GET['page'] ) == 'wp-predictive-search' && ( ! isset( $_GET['tab'] ) || sanitize_key( $_GET['tab'] ) == 'global-settings' ) ) {
+				if ( is_admin() && in_array (basename($_SERVER['PHP_SELF']), array('admin.php') ) && isset( $_GET['page'] ) && sanitize_key( wp_unslash( $_GET['page'] ) ) == 'wp-predictive-search' && ( ! isset( $_GET['tab'] ) || sanitize_key( wp_unslash( $_GET['tab'] ) ) == 'global-settings' ) ) {
 
 					if ( isset( $_POST['bt_save_settings'] ) )  {
 						if ( isset( $_POST['wpps_search_exclude_'.$posttype['name']] ) && is_array( $_POST['wpps_search_exclude_'.$posttype['name']] ) ) {
@@ -292,7 +292,7 @@ class Global_Panel extends FrameWork\Admin_UI
 				$all_items      = array();
 				$items_excluded = array();
 
-				if ( is_admin() && in_array (basename($_SERVER['PHP_SELF']), array('admin.php') ) && isset( $_GET['page'] ) && sanitize_key( $_GET['page'] ) == 'wp-predictive-search' && ( ! isset( $_GET['tab'] ) || sanitize_key( $_GET['tab'] ) == 'global-settings' ) ) {
+				if ( is_admin() && in_array (basename($_SERVER['PHP_SELF']), array('admin.php') ) && isset( $_GET['page'] ) && sanitize_key( wp_unslash( $_GET['page'] ) ) == 'wp-predictive-search' && ( ! isset( $_GET['tab'] ) || sanitize_key( wp_unslash( $_GET['tab'] ) ) == 'global-settings' ) ) {
 
 					if ( isset( $_POST['bt_save_settings'] ) )  {
 						if ( isset( $_POST['wpps_search_exclude_'.$taxonomy['name']] ) && is_array( $_POST['wpps_search_exclude_'.$taxonomy['name']] ) ) {

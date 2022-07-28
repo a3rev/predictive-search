@@ -159,7 +159,7 @@ class Search_Form extends Frontend {
 				<?php } ?>
 
 				<?php if ( class_exists('SitePress') ) { ?>
-				data-ps-lang="<?php echo ICL_LANGUAGE_CODE; ?>"
+				data-ps-lang="<?php echo esc_attr( ICL_LANGUAGE_CODE ); ?>"
 				<?php } ?>
 
 				data-ps-widget_template="custom"
