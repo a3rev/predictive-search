@@ -65,8 +65,9 @@ class Search_Bar extends Blocks\Frontend {
 		global $wpps_search_page_id;
 		$search_results_page = str_replace( array( 'http:', 'https:' ), '', get_permalink( $wpps_search_page_id ) );
 
+		$inline_css = $this->render_inline_css( $attributes, '' );
+
 		ob_start();
-			echo $this->render_inline_css( $attributes, '' );
 		?>
 		<div id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $classname ); ?>">
 			<form
@@ -75,7 +76,7 @@ class Search_Bar extends Blocks\Frontend {
 				action="<?php echo esc_url( $search_results_page ); ?>"
 				method="get"
 			>
-				<?php echo $content; ?>
+				%1$s
 
 				<?php if ( '' == get_option('permalink_structure') ) { ?>
 				<input type="hidden" name="page_id" value="<?php echo esc_attr( $wpps_search_page_id ); ?>"  />
@@ -94,9 +95,9 @@ class Search_Bar extends Blocks\Frontend {
 		</div>
 		<?php
 
-		$content = ob_get_clean();
+		$output = ob_get_clean();
 
-		return $content;
+		return $inline_css . sprintf( $output, $content );
 	}
 
 	public function render_inline_css( $attributes, $content ) {

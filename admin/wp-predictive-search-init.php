@@ -136,7 +136,7 @@ if (in_array (basename($_SERVER['PHP_SELF']), array('post.php', 'page.php', 'pag
 	add_action('admin_footer', array('\A3Rev\WPPredictiveSearch\Shortcodes', 'add_search_widget_mce_popup'));
 }
 
-function wp_predictive_search_widget( $ps_echo = true ) {
+function wp_predictive_search_widget() {
 	global $wp_predictive_search;
 	$posttypes_support = $wp_predictive_search->posttypes_support();
 	$taxonomies_support = $wp_predictive_search->taxonomies_support();
@@ -224,13 +224,9 @@ function wp_predictive_search_widget( $ps_echo = true ) {
 		'search_in'        => $search_in,
 		'search_list'      => $search_list,
 	);
-	$search_form = wpps_search_form( $ps_id, $widget_template, $ps_args, false );
+	$search_form = wpps_search_form( $ps_id, $widget_template, $ps_args );
 
-	if ( $ps_echo ) {
-		echo $search_form;
-	} else {
-		return $search_form;
-	}
+	return $search_form;
 }
 
 // Check upgrade functions
@@ -308,7 +304,7 @@ function wpps_ict_t_e( $name, $string ) {
 	global $wpps_wpml;
 	$string = ( function_exists('icl_t') ? icl_t( $wpps_wpml->plugin_wpml_name, $name, $string ) : $string );
 	
-	echo $string;
+	echo wp_kses_post( $string );
 }
 
 function wpps_ict_t__( $name, $string ) {

@@ -52,20 +52,25 @@ class Footer extends Blocks\Frontend {
 			$moreText = $attributes['moreText'];
 		}
 
-		ob_start();
+		$inline_css = $this->render_inline_css( $attributes, '' );
 
-		echo $this->render_inline_css( $attributes, '' );
+		ob_start();
 		?>
 		<script type="text/template" id="wp_psearch_footerCustomTpl_<?php echo esc_attr( $attributes['rootID'] ); ?>"><div rel="more_result" class="more_result">
 				<span><?php echo sprintf( wpps_ict_t__( 'More result Text - Custom ' . esc_html( $attributes['parentID'] ), $moreText ), '{{= title }}' ); ?></span>
 				{{ if ( description != null && description != '' ) { }}{{= description }}{{ } }}
 		</div></script>
-		<?php echo $content; ?>
-
 		<?php
-		$content = ob_get_clean();
+		$template_script = ob_get_clean();
 
-		return $content;
+		return sprintf(
+	        '%1$s
+	        %2$s
+	        %3$s',
+	        $inline_css,
+	        $template_script,
+	        $content
+	    );
 	}
 
 	public function render_inline_css( $attributes, $content ) {

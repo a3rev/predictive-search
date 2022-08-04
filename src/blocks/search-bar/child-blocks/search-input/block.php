@@ -62,8 +62,9 @@ class Search_Input extends Blocks\Frontend  {
 			$attributes['placeholder'] = '';
 		}
 
+		$inline_css = $this->render_inline_css( $attributes, '' );
+
 		ob_start();
-			echo $this->render_inline_css( $attributes, '' );
 		?>
 		<div id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $classname ); ?>">
 			<div class="wpps_nav_field">
@@ -75,14 +76,14 @@ class Search_Input extends Blocks\Frontend  {
 					data-ps-id="<?php echo isset( $attributes['rootID'] ) ? esc_attr( $attributes['rootID'] ) : ''; ?>"
 					data-ps-default_text="<?php echo esc_attr( $attributes['placeholder'] ); ?>"
 				/>
-				<?php echo $content; ?>
+				%1$s
 			</div>
 		</div>
 		<?php
 
-		$content = ob_get_clean();
+		$output = ob_get_clean();
 
-		return $content;
+		return $inline_css . sprintf( $output, $content );
 	}
 
 	public function render_inline_css( $attributes, $content ) {

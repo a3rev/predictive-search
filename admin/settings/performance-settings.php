@@ -622,11 +622,11 @@ class Performance extends FrameWork\Admin_UI
 		$manual_synced_error_log = trim( $wpps_errors_log->get_error( 'manual_sync' ) );
 
 		if ( '' != $auto_synced_error_log ) {
-			echo $wpps_errors_log->error_modal( 'auto_sync', $auto_synced_error_log );
+			$wpps_errors_log->error_modal( 'auto_sync', $auto_synced_error_log );
 		}
 
 		echo '<div class="manual_sync_error_container">';
-		echo $wpps_errors_log->error_modal( 'manual_sync', $manual_synced_error_log );
+		$wpps_errors_log->error_modal( 'manual_sync', $manual_synced_error_log );
 		echo '</div>';
 ?>
 <style type="text/css">
@@ -724,7 +724,7 @@ class Performance extends FrameWork\Admin_UI
                 <a class="min_characters_yellow_message_dontshow" style="float:left;" href="javascript:void(0);">'.__( "Don't show again", 'wp-predictive-search' ).'</a>
                 <a class="min_characters_yellow_message_dismiss" style="float:right;" href="javascript:void(0);">'.__( "Dismiss", 'wp-predictive-search' ).'</a>
                 <div style="clear:both"></div>';
-            	echo $this->blue_message_box( $min_characters_yellow_message, '600px' ); 
+            	echo wp_kses_post( $this->blue_message_box( $min_characters_yellow_message, '600px' ) ); 
 			?>
 <style>
 .a3rev_panel_container .min_characters_yellow_message_container {
@@ -777,7 +777,7 @@ $(document).ready(function() {
                 <a class="time_delay_yellow_message_dontshow" style="float:left;" href="javascript:void(0);">'.__( "Don't show again", 'wp-predictive-search' ).'</a>
                 <a class="time_delay_yellow_message_dismiss" style="float:right;" href="javascript:void(0);">'.__( "Dismiss", 'wp-predictive-search' ).'</a>
                 <div style="clear:both"></div>';
-            	echo $this->blue_message_box( $time_delay_yellow_message, '600px' ); 
+            	echo wp_kses_post( $this->blue_message_box( $time_delay_yellow_message, '600px' ) ); 
 			?>
 <style>
 .a3rev_panel_container .time_delay_yellow_message_container {
@@ -830,7 +830,7 @@ $(document).ready(function() {
                 <a class="cache_timeout_yellow_message_dontshow" style="float:left;" href="javascript:void(0);">'.__( "Don't show again", 'wp-predictive-search' ).'</a>
                 <a class="cache_timeout_yellow_message_dismiss" style="float:right;" href="javascript:void(0);">'.__( "Dismiss", 'wp-predictive-search' ).'</a>
                 <div style="clear:both"></div>';
-            	echo $this->blue_message_box( $cache_timeout_yellow_message, '600px' ); 
+            	echo wp_kses_post( $this->blue_message_box( $cache_timeout_yellow_message, '600px' ) ); 
 			?>
 <style>
 .a3rev_panel_container .cache_timeout_yellow_message_container {

@@ -107,13 +107,14 @@ class Category_Dropdown extends Blocks\Frontend {
 			}
 		}
 
+		$inline_css = $this->render_inline_css( $attributes, '' );
+
 		ob_start();
-			echo $this->render_inline_css( $attributes, '' );
 		?>
 		<div id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $classname ); ?>">
 			<div class="wpps_nav_scope">
 				<div class="wpps_nav_facade">
-					<?php echo $this->format_svg_icon( $content ); ?>
+					%1$s
 					<span class="wpps_nav_facade_label"><?php echo esc_html( $default_cat_label ); ?></span>
 				</div>
 				<select aria-label="<?php _e( 'Select Category', 'wp-predictive-search' ); ?>" class="wpps_category_selector" name="cat_in" data-ps-cat_max_wide="<?php echo isset( $attributes['maxWidth'] ) ? esc_attr( $attributes['maxWidth'] ) : 30; ?>" data-ps-taxonomy="<?php echo esc_attr( $in_taxonomy ); ?>">
@@ -126,9 +127,9 @@ class Category_Dropdown extends Blocks\Frontend {
 		</div>
 		<?php
 
-		$content = ob_get_clean();
+		$output = ob_get_clean();
 
-		return $content;
+		return $inline_css . sprintf( $output, $this->format_svg_icon( $content ) );
 	}
 
 	public function render_inline_css( $attributes, $content ) {

@@ -6,6 +6,10 @@
 		margin: 0 10px;
 	}
 
+	.rs_result_other_item {
+		display: inline-block;
+	}
+
 	.wp-block-wpps-result-filter-by {
 		&:not([style*="text-decoration"]) {
 			text-decoration: none;

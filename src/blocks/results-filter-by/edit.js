@@ -77,7 +77,7 @@ export default function ResultsFilterEdit( props ) {
 					[ `wpps-result-filter-by-container-${ blockID }` ]: blockID
 				} ) }
 			>
-				<span { ...useBlockProps( { className: classnames( 'rs_result_other_item_activated', className ) } ) }>
+				<span { ...	( { className: classnames( 'rs_result_other_item_activated', className ) } ) }>
 					<a className="ps_navigation ps_navigationpost" href="#">{ __( 'Post' ) }</a>
 				</span>
 				<span className="ps_navigation_divider"></span>

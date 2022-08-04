@@ -113,7 +113,7 @@ class Shortcodes
 			'search_in'        => $search_in,
 			'search_list'      => $search_list,
 		);
-		$search_form = wpps_search_form( $ps_id, $widget_template, $ps_args, false );
+		$search_form = wpps_search_form( $ps_id, $widget_template, $ps_args );
 
 		$search_form_html = '<div class="wpps_shortcode_container" style="max-width: 100%; '.$style.'">' . $search_form . '</div>' . $break_div;
 

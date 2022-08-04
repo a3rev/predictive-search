@@ -381,7 +381,6 @@ class Main
 			} elseif ( $in_results_page && 'theme' === $template_type ) {
 
 				foreach ( $search_posts as $item ) {
-					ob_start();
 					$post_object = get_post( $item->post_id );
 
 					setup_postdata( $GLOBALS['post'] =& $post_object );
@@ -389,12 +388,10 @@ class Main
 					$card_html = apply_filters( 'wpps_post_item_card_html', '', $item->post_id, $post_type, $show_categories, $show_tags );
 
 					if ( empty( $card_html ) ) {
+						ob_start();
 						get_template_part( 'content' );
-					} else {
-						echo $card_html;
+						$card_html = ob_get_clean();
 					}
-
-					$card_html = ob_get_clean();
 
 					$item_list['items'][] = array( 'card' => $card_html );
 

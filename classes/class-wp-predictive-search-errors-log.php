@@ -57,13 +57,6 @@ class Errors_Log
 	}
 
 	public function error_modal( $error_id, $error_message = '' ) {
-
-		ob_start();
-
 		wpps_error_modal_tpl( array( 'error_id' => $error_id, 'error_message' => $error_message ) );
-
-		$error_modal_output = ob_get_clean();
-
-		return $error_modal_output;
 	}
 }

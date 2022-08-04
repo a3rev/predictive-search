@@ -110,7 +110,7 @@ class Widgets extends \WP_Widget
 			'search_list'      => $search_list,
 		);
 
-		$search_form = wpps_search_form( $ps_id, $widget_template, $ps_args, false );
+		$search_form = wpps_search_form( $ps_id, $widget_template, $ps_args );
 
 		return $search_form . '<div style="clear:both;"></div>';
 	}

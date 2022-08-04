@@ -26,20 +26,27 @@ function wpps_render_block_query_results( $attributes, $content, $block ) {
 
     $wrapper_attributes = get_block_wrapper_attributes();
 
-    // do_blocks( '<!-- wp:template-part {"slug":"ps-all-results-item","theme":"'. wp_get_theme()->get_stylesheet() .'"} /-->' );
     ob_start();
-    ?>
-    <div id="ps_results_container" class="wpps">
-        <<?php echo $tag_name; ?> <?php echo $wrapper_attributes; ?>>
-            <?php echo $content; ?>
-            <?php \A3Rev\WPPredictiveSearch\Results::more_results(); ?>
-        </<?php echo $tag_name; ?>>
-    </div>
-    <?php \A3Rev\WPPredictiveSearch\Results::inline_scripts(); ?>
-    <?php
-    $content = ob_get_clean();
+    \A3Rev\WPPredictiveSearch\Results::more_results();
+    $more_results = ob_get_clean();
 
-	return $content;
+    ob_start();
+    \A3Rev\WPPredictiveSearch\Results::inline_scripts();
+    $inline_scripts = ob_get_clean();
+
+    return sprintf(
+        '<div id="ps_results_container" class="wpps">
+            <%1$s %2$s>
+                %3$s
+                %4$s
+            </%1$s>
+        </div>%5$s',
+        $tag_name,
+        $wrapper_attributes,
+        $content,
+        $more_results,
+        $inline_scripts
+    );
 }
 
 /**

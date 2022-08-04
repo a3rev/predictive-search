@@ -81,7 +81,7 @@ function wpps_get_template_file_path( $file = '' ) {
  *
  * @return void
  */
-function wpps_search_form( $ps_id = '', $template = 'sidebar', $args = array(), $echo = false ) {
+function wpps_search_form( $ps_id = '', $template = 'sidebar', $args = array() ) {
 
 	$ps_id = str_replace( 'wp_predictive_search-', '', $ps_id );
 	if ( empty( $ps_id ) ) {
@@ -125,11 +125,7 @@ function wpps_search_form( $ps_id = '', $template = 'sidebar', $args = array(), 
 
 	$search_form = ob_get_clean();
 
-	if ( $echo ) {
-		echo $search_form;
-	} else {
-		return $search_form;
-	}
+	return $search_form;
 }
 
 /**

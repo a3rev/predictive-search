@@ -140,9 +140,9 @@ class Search_Form extends Frontend {
 
 		$search_in = json_encode($number_items);
 
-		ob_start();
+		$inline_css = $this->render_inline_css( $attributes, '' );
 
-		echo $this->render_inline_css( $attributes, '' );
+		ob_start();
 		?>
 		<div id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $classname ); ?>">
 			<div class="<?php echo esc_attr( $bar_classname ); ?>"
@@ -164,15 +164,15 @@ class Search_Form extends Frontend {
 
 				data-ps-widget_template="custom"
 			>
-				<?php echo $content; ?>
+				%1$s
 			</div>
 			<div style="clear: both;"></div>
 		</div>
 
 		<?php
-		$content = ob_get_clean();
+		$output = ob_get_clean();
 
-		return $content;
+		return $inline_css . sprintf( $output, $content );
 	}
 
 	public function render_inline_css( $attributes, $content ) {

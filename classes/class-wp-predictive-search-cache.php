@@ -126,7 +126,7 @@ class Cache
 
 		$build_category_cache_error_log = trim( $wpps_errors_log->get_error( $this->error_id ) );
 
-		echo $wpps_errors_log->error_modal( $this->error_id, $build_category_cache_error_log );
+		$wpps_errors_log->error_modal( $this->error_id, $build_category_cache_error_log );
 	}
 
 	public function rebuild_cache_notice() {

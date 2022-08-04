@@ -9,13 +9,21 @@
 	"attributes":{
 		"blockID": {
 			"type": "string"
+		},
+		"rowGap": {
+			"type": "number",
+			"default": 20
+		},
+		"columnGap": {
+			"type": "number",
+			"default": 20
 		}
 	},
 	"usesContext": [ "perPage", "columns" ],
 	"supports": {
 		"reusable": false,
 		"html": false,
-		"align": true,
+		"align": false,
 		"__experimentalLayout": {
 			"allowEditing": false
 		}

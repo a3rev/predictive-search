@@ -260,7 +260,7 @@ class Sync
 
 		$manual_synced_error_log = trim( $wpps_errors_log->get_error( 'manual_sync' ) );
 
-		echo $wpps_errors_log->error_modal( 'manual_sync', $manual_synced_error_log );
+		$wpps_errors_log->error_modal( 'manual_sync', $manual_synced_error_log );
 	}
 
 	public function wp_predictive_search_sync_end_ajax() {

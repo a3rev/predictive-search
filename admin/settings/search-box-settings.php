@@ -390,9 +390,9 @@ class Search_Box extends FrameWork\Admin_UI
 				foreach ( $active_languages as $language ) {
 	?>
     		<tr valign="top" class="">
-				<th class="titledesc" scope="row"><label for="wpps_search_box_text_<?php echo $language['code']; ?>"><?php _e('Text to Show', 'wp-predictive-search' );?> (<?php echo $language['display_name']; ?>)</label></th>
+				<th class="titledesc" scope="row"><label for="wpps_search_box_text_<?php echo esc_attr( $language['code'] ); ?>"><?php _e('Text to Show', 'wp-predictive-search' );?> (<?php echo esc_html( $language['display_name'] ); ?>)</label></th>
 				<td class="forminp">
-                	<input type="text" class="" value="<?php if (isset($wpps_search_box_text[$language['code']]) ) esc_attr_e( stripslashes( $wpps_search_box_text[$language['code']] ) ); ?>" style="min-width:300px;" id="wpps_search_box_text_<?php echo $language['code']; ?>" name="wpps_search_box_text[<?php echo $language['code']; ?>]" /> <span class="description"><?php _e('&lt;empty&gt; shows nothing', 'wp-predictive-search' ); ?></span>
+                	<input type="text" class="" value="<?php if (isset($wpps_search_box_text[$language['code']]) ) esc_attr_e( stripslashes( $wpps_search_box_text[$language['code']] ) ); ?>" style="min-width:300px;" id="wpps_search_box_text_<?php echo esc_attr( $language['code'] ); ?>" name="wpps_search_box_text[<?php echo esc_attr( $language['code'] ); ?>]" /> <span class="description"><?php _e('&lt;empty&gt; shows nothing', 'wp-predictive-search' ); ?></span>
 				</td>
 			</tr>
     <?php
@@ -435,7 +435,7 @@ class Search_Box extends FrameWork\Admin_UI
 		$build_category_cache_error_log = trim( $wpps_errors_log->get_error( 'build_category_cache' ) );
 
 		echo '<div class="build_category_cache_error_container">';
-		echo $wpps_errors_log->error_modal( 'build_category_cache', $build_category_cache_error_log );
+		$wpps_errors_log->error_modal( 'build_category_cache', $build_category_cache_error_log );
 		echo '</div>';
 ?>
 <style type="text/css">

@@ -10,6 +10,10 @@
         background: none;
     }
 
+    * + * {
+        margin-block-start: 0 !important;
+    }
+
     &.is-flex-container {
         flex-direction: row;
         display: flex;

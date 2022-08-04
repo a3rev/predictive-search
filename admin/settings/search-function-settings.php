@@ -330,8 +330,7 @@ class Search_Function extends FrameWork\Admin_UI
 		?>
         <?php _e('Copy and paste this global function into your themes header.php file to replace any existing search function. (Be sure to delete the existing WordPress or Theme search function)', 'wp-predictive-search' );?>
             <br /><code>&lt;?php<br />
-            $ps_echo = true ; <br /> 
-            if ( function_exists( 'wp_predictive_search_widget' ) ) wp_predictive_search_widget( $ps_echo ); <br /> 
+            if ( function_exists( 'wp_predictive_search_widget' ) ) echo wp_predictive_search_widget(); <br /> 
             ?&gt;</code>
 		<?php echo '</td></tr>';
 	}
