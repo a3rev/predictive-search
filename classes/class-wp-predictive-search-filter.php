@@ -90,7 +90,7 @@ class Hook_Filter
 	}
 
 	public static function plugin_extension_box( $boxes = array() ) {
-		$support_box = '<a href="https://wordpress.org/support/plugin/wp-predictive-search" target="_blank" alt="'.__('Go to Support Forum', 'wp-predictive-search' ).'"><img src="'.WPPS_IMAGES_URL.'/go-to-support-forum.png" /></a>';
+		$support_box = '<a href="https://wordpress.org/support/plugin/predictive-search" target="_blank" alt="'.__('Go to Support Forum', 'wp-predictive-search' ).'"><img src="'.WPPS_IMAGES_URL.'/go-to-support-forum.png" /></a>';
 		$boxes[] = array(
 			'content' => $support_box,
 			'css' => 'border: none; padding: 0; background: none;'

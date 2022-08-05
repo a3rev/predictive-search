@@ -86,7 +86,7 @@ class Admin_UI
 			$this->is_load_google_fonts = (boolean) WPPS_G_FONTS;
 		}
 
-		$this->support_url = 'https://wordpress.org/support/plugin/wp-predictive-search/';
+		$this->support_url = 'https://wordpress.org/support/plugin/predictive-search/';
 	}
 	
 	
