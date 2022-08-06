@@ -27,6 +27,10 @@ WP Predictive Search engine delivers users instant and changing results as they 
 * Click through to see all search results on a designated page (features endless scroll)
 * Pretty URL for the All Search Results pages.
 
+= DOCUMENTATION =
+
+We have published complete and comprehensive Predictive Search documentation. [Visit the docs site.](https://docs.a3rev.com/wordpress/predictive-search/)
+
 
 = PREDICTIVE SEARCH BOX =
 
@@ -85,8 +89,8 @@ WP Predictive Search is fully functioned and provided completely free.
 
 = CONTRIBUTE =
 
-When you download WP Predictive Search, you join our the a3rev Software community. Regardless of if you are a WordPress beginner or experienced developer if you are interested in contributing to the future development of Predictive Search or any of our other plugins on Github head over to the WP Predictive Search  [GitHub Repository](https://github.com/a3rev/) to find out how you can contribute.
-Want to add a new language? You can contribute via [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/wp-predictive-search)
+When you download WP Predictive Search, you join our the a3rev Software community. Regardless of if you are a WordPress beginner or experienced developer if you are interested in contributing to the future development of Predictive Search or any of our other plugins on Github head over to the WP Predictive Search  [GitHub Repository](https://github.com/a3rev/predictive-search) to find out how you can contribute.
+Want to add a new language? You can contribute via [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/predictive-search)
 
 == SCREENSHOTS ==
 

@@ -96,6 +96,13 @@ class Hook_Filter
 			'css' => 'border: none; padding: 0; background: none;'
 		);
 
+		$docs_box = '<a href="http://docs.a3rev.com/user-guides/wordpress/predictive-search/" target="_blank" alt="'.__('View Plugin Docs', 'wp-predictive-search' ).'"><img src="'.WPPS_IMAGES_URL.'/view-plugin-docs.png" /></a>';
+
+		$boxes[] = array(
+			'content' => $docs_box,
+			'css' => 'border: none; padding: 0; background: none;'
+		);
+
 		$first_box = '<a href="https://profiles.wordpress.org/a3rev/#content-plugins" target="_blank" alt="'.__('Free WordPress Plugins', 'wp-predictive-search' ).'"><img src="'.WPPS_IMAGES_URL.'/free-wordpress-plugins.png" /></a>';
 
 		$boxes[] = array(
