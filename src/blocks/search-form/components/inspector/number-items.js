@@ -56,7 +56,7 @@ export default class InspectorNumberItems extends Component {
 				title={ __( 'Number of Items' ) }
 				initialOpen={ false }
 			>
-				<p>{ __( 'Number of items and Order Display to show in dropdonw' ) }</p>
+				<p>{ __( 'Number of items and Order Display to show in dropdown' ) }</p>
 				{ map( postTypes, ( { name, key } ) => (
 					<BaseControl label={ name }>
 						<div className="ps-number-items-container">

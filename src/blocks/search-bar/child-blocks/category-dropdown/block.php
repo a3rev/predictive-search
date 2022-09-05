@@ -39,6 +39,7 @@ class Category_Dropdown extends Blocks\Frontend {
 		register_block_type(
 			$this->block_name,
 			array(
+				'uses_context' => array( 'wpps/layout' ),
 				'render_callback' => array( $this, 'render' ),
 			)
 		);
@@ -68,7 +69,7 @@ class Category_Dropdown extends Blocks\Frontend {
 		return $hide_category_dropdown;
 	}
 
-	public function render( $attributes, $content ) {
+	public function render( $attributes, $content, $block ) {
 		if ( is_admin() ) {
             return $content;
         }
@@ -89,7 +90,7 @@ class Category_Dropdown extends Blocks\Frontend {
 		$classname = array(
 			'wpps_cat_dropdown',
 			'wpps_cat_dropdown-' . $blockID,
-			'wpps_nav_' . ( isset( $attributes['position'] ) ? $attributes['position'] : 'left' ),
+			'wpps_nav_' . ( isset( $block->context['wpps/layout'] ) && 'submit-cat' === $block->context['wpps/layout'] ? 'right' : 'left' ),
 		);
 		if ( isset( $attributes['className'] ) ) $classname[] = $attributes['className'];
 		if ( isset( $attributes['enable'] ) && ! $attributes['enable'] ) $classname[] = 'disabled'; // default is true

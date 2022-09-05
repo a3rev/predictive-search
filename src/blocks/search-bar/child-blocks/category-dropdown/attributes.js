@@ -6,10 +6,6 @@ const CategoryDropdownAttributes = {
 		type: 'boolean',
 		default: true,
 	},
-	position: {
-		type: 'string',
-		default: 'left',
-	},
 	taxonomy: {
 		type: 'string',
 		default: 'category',

@@ -61,6 +61,8 @@ registerBlockType( 'wp-predictive-search/search-icon', {
 		...borderRadiusAttributes,
 	},
 
+	usesContext: [ 'wpps/layout' ],
+
 	parent: [ 'wp-predictive-search/search-form' ],
 
 	supports: {

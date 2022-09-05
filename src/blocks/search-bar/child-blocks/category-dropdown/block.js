@@ -60,6 +60,8 @@ registerBlockType( 'wp-predictive-search/category-dropdown', {
 		...typographyAttributes,
 	},
 
+	usesContext: [ 'wpps/layout' ],
+
 	parent: [ 'wp-predictive-search/search-form' ],
 
 	supports: {

@@ -28,8 +28,15 @@ function wp_predictive_search_install(){
 
 	// registered event for auto preload data cache
 	$enable_cache_value = get_option( 'predictive_search_category_cache', 'yes' );
-	if ( 'yes' == $enable_cache_value && ! wp_next_scheduled( 'wp_predictive_search_auto_preload_cache_event' ) ) {
-		wp_schedule_event( time() + 120, 'hourly', 'wp_predictive_search_auto_preload_cache_event' );
+	if ( 'yes' == $enable_cache_value ) {
+
+		// Automatic preload category cache
+		global $wpps_cache;
+		$wpps_cache->preload_category_dropdown_cache();
+
+		if ( ! wp_next_scheduled( 'wp_predictive_search_auto_preload_cache_event' ) ) {
+			wp_schedule_event( time() + 120, 'hourly', 'wp_predictive_search_auto_preload_cache_event' );
+		}
 	}
 }
 

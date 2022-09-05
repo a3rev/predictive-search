@@ -97,7 +97,7 @@ class Sync
     	</div>
 	<?php
 	}
-
+ 
 	public function get_sync_posts_statistic( $post_type = 'post' ) {
 		$status = 'completed';
 

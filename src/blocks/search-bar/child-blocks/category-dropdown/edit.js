@@ -24,9 +24,11 @@ const { useBlockProps } = wp.blockEditor;
 const listUniqueIDs = [];
 
 function CatDropdownEdit( props ) {
-	const { attributes, position, defaultCategoryName } = props;
+	const { attributes, defaultCategoryName, context } = props;
 
 	const { blockID, enable, enableCustomFont, icon, iconSize } = attributes;
+
+	const position = 'submit-cat' === context['wpps/layout'] ? 'right' : 'left';
 
 	let { className = '' } = props;
 
@@ -149,15 +151,4 @@ class BlockEdit extends Component {
 	}
 }
 
-export default compose( [
-	withSelect( ( select, ownProps ) => {
-		const { clientId } = ownProps;
-		const rootClientId = select( 'core/block-editor' ).getBlockRootClientId( clientId );
-		const parentAttributes = select( 'core/block-editor' ).getBlockAttributes( rootClientId );
-		const position = 'submit-cat' === parentAttributes.layout ? 'right' : 'left';
-
-		return {
-			position,
-		};
-	} ),
-] )( BlockEdit );
+export default BlockEdit;

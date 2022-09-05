@@ -76,8 +76,8 @@ class Functions
 		if ( isset( $wp_query->query_vars['keyword'] ) ) $search_keyword = sanitize_text_field( wp_unslash( urldecode( $wp_query->query_vars['keyword'] ) ) );
 		elseif ( isset( $_REQUEST['rs'] ) && trim( sanitize_text_field( wp_unslash( $_REQUEST['rs'] ) ) ) != '' ) $search_keyword = sanitize_text_field( wp_unslash( $_REQUEST['rs'] ) );
 
-		if ( isset( $wp_query->query_vars['search-in'] ) ) $search_in = sanitize_key( wp_unslash( urldecode( $wp_query->query_vars['search-in'] ) ) );
-		elseif ( isset( $_REQUEST['search_in'] ) && trim( sanitize_key( wp_unslash( $_REQUEST['search_in'] ) ) ) != '' ) $search_in = sanitize_key( wp_unslash( $_REQUEST['search_in'] ) );
+		if ( isset( $wp_query->query_vars['search-in'] ) ) $search_in = sanitize_text_field( wp_unslash( urldecode( $wp_query->query_vars['search-in'] ) ) );
+		elseif ( isset( $_REQUEST['search_in'] ) && trim( sanitize_text_field( wp_unslash( $_REQUEST['search_in'] ) ) ) != '' ) $search_in = sanitize_text_field( wp_unslash( $_REQUEST['search_in'] ) );
 
 		if ( isset( $wp_query->query_vars['search-other'] ) ) $search_other = sanitize_text_field( wp_unslash( urldecode( $wp_query->query_vars['search-other'] ) ) );
 		elseif ( isset( $_REQUEST['search_other'] ) && trim( sanitize_text_field( wp_unslash( $_REQUEST['search_other'] ) ) ) != '' ) $search_other = sanitize_text_field( wp_unslash( $_REQUEST['search_other'] ) );

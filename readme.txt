@@ -4,7 +4,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: WordPress search, Predictive Search, Live Search, Elementor Search
 Requires at least: 5.6
 Tested up to: 6.0
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -104,4 +104,16 @@ Predictive Search WordPress
 * PHP version 7.4 or greater is recommended
 * MySQL version 5.6 or greater is recommended
 
+== Changelog ==
+
+= 1.0.1 - 2022/09/05 =
+* This the first maintenance release contains 3 bug fixes. 
+* Fix - Use sanitize_text_field instead of sanitize_key for search_in parameter so the number of items and order Display work correct in the dropdown of Search
+* Fix - Show correct position of Category dropdown on frontend like set from block
+* Fix - Show correct of search mobile icon block on frontend
+
+== Upgrade Notice ==
+
+= 1.0.1 =
+This the first maintenance release contains 3 bug fixes.
 

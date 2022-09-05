@@ -36,12 +36,13 @@ class Search_Icon extends Blocks\Frontend {
 		register_block_type(
 			$this->block_name,
 			array(
+				'uses_context' => array( 'wpps/layout' ),
 				'render_callback' => array( $this, 'render' ),
 			)
 		);
 	}
 
-	public function render( $attributes, $content ) {
+	public function render( $attributes, $content, $block ) {
 		if ( is_admin() ) {
             return $content;
         }
@@ -53,7 +54,7 @@ class Search_Icon extends Blocks\Frontend {
 		$classname = array(
 			'wpps_search_submit',
 			'wpps_search_submit-' . $blockID,
-			'wpps_nav_' . ( isset( $attributes['position'] ) ? $attributes['position'] : 'right' ),
+			'wpps_nav_' . ( isset( $block->context['wpps/layout'] ) && 'submit-cat' === $block->context['wpps/layout'] ? 'left' : 'right' ),
 		);
 		if ( isset( $attributes['className'] ) ) $classname[] = $attributes['className'];
 		$classname = implode( ' ', $classname );

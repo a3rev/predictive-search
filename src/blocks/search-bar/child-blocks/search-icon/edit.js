@@ -22,9 +22,11 @@ const { useBlockProps } = wp.blockEditor;
 const listUniqueIDs = [];
 
 function SearchIconEdit( props ) {
-	const { attributes, setAttributes, isSelected, position } = props;
+	const { attributes, setAttributes, isSelected, context } = props;
 
 	const { blockID, icon, iconSize } = attributes;
+
+	const position = 'submit-cat' === context['wpps/layout'] ? 'left' : 'right';
 
 	let { className = '' } = props;
 
@@ -107,15 +109,4 @@ class BlockEdit extends Component {
 	}
 }
 
-export default compose( [
-	withSelect( ( select, ownProps ) => {
-		const { clientId } = ownProps;
-		const rootClientId = select( 'core/block-editor' ).getBlockParentsByBlockName( clientId, 'wp-predictive-search/search-bar' );
-		const parentAttributes = select( 'core/block-editor' ).getBlockAttributes( rootClientId );
-		const position = 'submit-cat' === parentAttributes.layout ? 'left' : 'right';
-
-		return {
-			position,
-		};
-	} ),
-] )( BlockEdit );
+export default BlockEdit;

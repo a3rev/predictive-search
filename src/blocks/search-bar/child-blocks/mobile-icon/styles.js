@@ -38,7 +38,7 @@ const customStyles = attributes => {
 
 	if ( activeIconColor ) {
 		styleCSS += `
-.wpps_mobile_icon-${ blockID } svg.active {
+.wpps_mobile_icon-${ blockID }.active svg {
 	color: ${ activeIconColor }!important;
 }
 `;

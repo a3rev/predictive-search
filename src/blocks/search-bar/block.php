@@ -36,6 +36,7 @@ class Search_Bar extends Blocks\Frontend {
 		register_block_type(
 			$this->block_name,
 			array(
+				'provides_context' => array( 'wpps/layout' => 'layout' ),
 				'editor_style' => 'predictive-search-block-editor',
 				'style' => 'predictive-search-block-frontend',
 				'render_callback' => array( $this, 'render' ),

@@ -65,6 +65,10 @@ registerBlockType( 'wp-predictive-search/search-bar', {
 		...shadowAttributes,
 	},
 
+	providesContext: {
+		'wpps/layout': 'layout',
+	},
+
 	parent: [ 'wp-predictive-search/search-form' ],
 
 	supports: {

@@ -2,10 +2,6 @@ const SearchIconAttributes = {
 	blockID: {
 		type: 'string',
 	},
-	position: {
-		type: 'string',
-		default: 'right',
-	},
 	icon: {
 		type: 'string',
 		default: 'fe_search',

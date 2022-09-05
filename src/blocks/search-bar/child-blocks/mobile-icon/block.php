@@ -102,7 +102,7 @@ class Mobile_Icon extends Blocks\Frontend {
 
 		if ( isset( $attributes['activeIconColor'] ) ) {
 			$stylecss .= '
-#wpps_mobile_icon-'.$blockID.' svg.active {
+#wpps_mobile_icon-'.$blockID.'.active svg {
 		color: '.$attributes['activeIconColor'].'!important;
 	}
 ';

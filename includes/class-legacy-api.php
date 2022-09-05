@@ -82,7 +82,7 @@ class Legacy_API {
 		if ( isset($_REQUEST['q']) && trim( sanitize_text_field( wp_unslash( $_REQUEST['q'] ) ) ) != '') $search_keyword = sanitize_text_field( wp_unslash( $_REQUEST['q'] ) );
 		if ( isset($_REQUEST['cat_in']) && trim( sanitize_text_field( wp_unslash( $_REQUEST['cat_in'] ) ) ) != '') $cat_in = sanitize_text_field( wp_unslash( $_REQUEST['cat_in'] ) );
 		if ( isset($_REQUEST['in_taxonomy']) && trim( sanitize_key( wp_unslash( $_REQUEST['in_taxonomy'] ) ) ) != '') $in_taxonomy = sanitize_key( wp_unslash( $_REQUEST['in_taxonomy'] ) );
-		if ( isset($_REQUEST['search_in']) && trim( sanitize_key( wp_unslash( $_REQUEST['search_in'] ) ) ) != '') $search_in = json_decode( sanitize_key( wp_unslash( $_REQUEST['search_in'] ) ), true );
+		if ( isset($_REQUEST['search_in']) && trim( sanitize_text_field( wp_unslash( $_REQUEST['search_in'] ) ) ) != '') $search_in = json_decode( sanitize_text_field( wp_unslash( $_REQUEST['search_in'] ) ), true );
 		if ( ! is_array($search_in) || count($search_in) < 1 || array_sum($search_in) < 1) $search_in = $search_in_default;
 		if ( isset($_REQUEST['widget_template']) && trim( sanitize_key( wp_unslash( $_REQUEST['widget_template'] ) ) ) != '' ) $widget_template = sanitize_key( wp_unslash( $_REQUEST['widget_template'] ) );
 
@@ -269,7 +269,7 @@ class Legacy_API {
 		if ( isset( $_REQUEST['q'] ) && trim( sanitize_text_field( wp_unslash( $_REQUEST['q'] ) ) ) != '' ) $search_keyword = sanitize_text_field( wp_unslash( $_REQUEST['q'] ) );
 		if ( isset( $_REQUEST['cat_in'] ) && trim( sanitize_text_field( wp_unslash( $_REQUEST['cat_in'] ) ) ) != '' ) $cat_in = sanitize_text_field( wp_unslash( $_REQUEST['cat_in'] ) );
 		if ( isset($_REQUEST['in_taxonomy']) && trim( sanitize_key( wp_unslash( $_REQUEST['in_taxonomy'] ) ) ) != '') $in_taxonomy = sanitize_key( wp_unslash( $_REQUEST['in_taxonomy'] ) );
-		if ( isset( $_REQUEST['search_in'] ) && trim( sanitize_key( wp_unslash( $_REQUEST['search_in'] ) ) ) != '' ) $search_in = sanitize_key( wp_unslash( $_REQUEST['search_in'] ) );
+		if ( isset( $_REQUEST['search_in'] ) && trim( sanitize_text_field( wp_unslash( $_REQUEST['search_in'] ) ) ) != '' ) $search_in = sanitize_text_field( wp_unslash( $_REQUEST['search_in'] ) );
 
 		$item_list = array( 'total' => 0, 'items' => array() );
 
