@@ -5,9 +5,29 @@ $(function(){
 	
 	var wp_psearch_results = { apps:{}, models:{}, collections:{}, views:{} };
 
+	function validatePSThemeContainer( elem, className ) {
+		var already_container = false;
+		if ( elem.children().length === 0 ) {
+			if ( elem.hasClass( className ) ) {
+				already_container = true;
+			}
+	    } else {
+	        elem.children().each( function() {
+				already_container = validatePSThemeContainer( $(this), className );
+				if ( already_container ) {
+					return false;
+				}
+	        });
+	    }
+
+	    return already_container;
+	};
+
 	function addClassToEndChildren( elem, className ) {
 		if ( elem.children().length === 0 ) {
-	       	elem.addClass( className );
+			if ( ! elem.hasClass( 'no-add' ) ) {
+	       		elem.addClass( className );
+			}
 	    } else {
 	        elem.children().each( function() {
 				addClassToEndChildren( $(this), className );
@@ -133,6 +153,8 @@ $(function(){
 		
 		clearAll: function() {
 			_.invoke( this.collection.where({status: true}), 'destroy');
+			this.items_container = this.$( '#ps_items_container' );
+			this.items_container.html('');
 			return false;	
 		},
 
@@ -142,25 +164,24 @@ $(function(){
 				return;
 			}
 
-			// Apply child container to object want to show correct for Theme template
-			if ( 'theme' == wpps_results_vars.template_type && ! $.isEmptyObject( wpps_results_vars.child_container ) ) {
-				if ( this.search_in in wpps_results_vars.child_container ) {
-					var child_container = $( wpps_results_vars.child_container[this.search_in] );
-					addClassToEndChildren( child_container, 'ps_theme_items_container' );
-					this.items_container.html('').append( child_container );
-					this.items_container = this.$('.ps_theme_items_container');
-				} else {
-					this.items_container = this.$('#ps_items_container');
-					this.items_container.html('');
-				}
-			}
-
 			// Apply Grid for Taxonomy when Template Type is set to Theme
 			if ( 'theme' == wpps_results_vars.template_type ) {
 				if ( $.inArray( this.search_in, wpps_results_vars.taxonomies_support ) !== -1 ) {
 					this.items_container.addClass( 'ps_grid_container' );
 				} else {
 					this.items_container.removeClass( 'ps_grid_container' );
+				}
+			}
+
+			// Apply child container to object want to show correct for Theme template
+			if ( 'theme' == wpps_results_vars.template_type && ! $.isEmptyObject( wpps_results_vars.child_container ) ) {
+				if ( this.search_in in wpps_results_vars.child_container ) {
+					var child_container = $( wpps_results_vars.child_container[this.search_in] );
+					if ( ! validatePSThemeContainer( child_container, 'ps_theme_items_container' ) ) {
+						addClassToEndChildren( child_container, 'ps_theme_items_container' );
+					}
+					this.items_container.html('').append( child_container );
+					this.items_container = this.$('.ps_theme_items_container');
 				}
 			}
 

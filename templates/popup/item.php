@@ -15,7 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<span class="rs_name">{{= title }}</span>
 				<?php do_action( 'wpps_popup_tpl_item_meta' ); ?>
 				{{ if ( description != null && description != '' ) { }}<span class="rs_description">{{= description }}</span>{{ } }}
+				<?php do_action( 'wpps_popup_tpl_item_desc_after' ); ?>
 			</a>
+			<?php do_action( 'wpps_popup_tpl_item_category_before' ); ?>
 			{{ if ( categories.length > 0 ) { }}
 				<span class="rs_cat posted_in">
 					<?php wpps_ict_t_e( 'Category', __('Category', 'wp-predictive-search' ) ); ?>:

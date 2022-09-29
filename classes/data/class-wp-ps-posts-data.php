@@ -201,6 +201,7 @@ class Posts
 	 */
 	public function is_newest_id( $post_types = array() ) {
 		global $wpdb;
+		global $wp_predictive_search;
 
 		if ( ! is_array( $post_types ) ) {
 			$post_types = array( $post_types );
@@ -215,11 +216,12 @@ class Posts
 			$latest_id = 0;
 		}
 
+		$post_status = $wp_predictive_search->post_status_support();
+
 		$is_not_newest = $wpdb->get_var(
 			$wpdb->prepare(
-				"SELECT EXISTS( SELECT 1 FROM {$wpdb->posts} WHERE ID > %d AND post_type IN ('". implode("','", $post_types ) ."') AND post_status = %s LIMIT 0,1 )",
-				$latest_id,
-				'publish'
+				"SELECT EXISTS( SELECT 1 FROM {$wpdb->posts} WHERE ID > %d AND post_type IN ('". implode("','", $post_types ) ."') AND post_status IN ('". implode( "','", $post_status ) ."') LIMIT 0,1 )",
+				$latest_id
 			)
 		);
 
@@ -247,8 +249,11 @@ class Posts
 	 */
 	public function get_total_items_need_sync( $post_type = 'post' ) {
 		global $wpdb;
+		global $wp_predictive_search;
 
-		$total_items = $wpdb->get_var( $wpdb->prepare( 'SELECT count(id) FROM '.$wpdb->posts.' WHERE post_type=%s AND post_status=%s', $post_type, 'publish' ) );
+		$post_status = $wp_predictive_search->post_status_support();
+
+		$total_items = $wpdb->get_var( $wpdb->prepare( "SELECT count(id) FROM {$wpdb->posts} WHERE post_type=%s AND post_status IN ('". implode( "','", $post_status ) ."') ", $post_type ) );
 		$total_items = ! empty( $total_items ) ? $total_items : 0;
 
 		return $total_items;

@@ -304,6 +304,7 @@ class Sync
 		global $wpdb;
 		global $wpps_posts_data;
 		global $wpps_postmeta_data;
+		global $wp_predictive_search;
 
 		$this->update_sync_status();
 
@@ -312,9 +313,10 @@ class Sync
 		}
 
 		if ( empty( $post_types ) ) {
-			global $wp_predictive_search;
 			$post_types = $wp_predictive_search->posttypes_slug_support();
 		}
+
+		$post_status = $wp_predictive_search->post_status_support();
 
 		// Check if synch data is stopped at latest run then continue synch without empty all the tables
 		$synced_data = get_option( 'wp_predictive_search_synced_posts_data', 0 );
@@ -334,8 +336,9 @@ class Sync
 		if ( $wpps_posts_data->is_newest_id( $post_types ) ) {
 			$all_posts = $wpdb->get_results(
 				$wpdb->prepare(
-					"SELECT p.ID, p.post_title, p.post_type FROM {$wpdb->posts} AS p WHERE p.post_status = %s AND p.post_type IN ('". implode("','", $post_types ) ."') AND NOT EXISTS ( SELECT 1 FROM {$wpdb->ps_posts} AS pp WHERE p.ID = pp.post_id ) ORDER BY p.ID ASC LIMIT 0, 500" ,
-					'publish'
+					"SELECT p.ID, p.post_title, p.post_type FROM {$wpdb->posts} AS p WHERE p.post_status IN ('". implode( "','", $post_status ) ."') AND p.post_type IN ('". implode("','", $post_types ) ."') AND NOT EXISTS ( SELECT 1 FROM {$wpdb->ps_posts} AS pp WHERE p.ID = pp.post_id ) ORDER BY p.ID ASC LIMIT %d, %d" ,
+					0,
+					500
 				)
 			);
 
@@ -343,9 +346,8 @@ class Sync
 		} else {
 			$all_posts = $wpdb->get_results(
 				$wpdb->prepare(
-					"SELECT p.ID, p.post_title, p.post_type FROM {$wpdb->posts} AS p WHERE p.ID > %d AND p.post_status = %s AND p.post_type IN ('". implode("','", $post_types ) ."') ORDER BY p.ID ASC LIMIT 0, 500" ,
-					$stopped_ID,
-					'publish'
+					"SELECT p.ID, p.post_title, p.post_type FROM {$wpdb->posts} AS p WHERE p.ID > %d AND p.post_status IN ('". implode( "','", $post_status ) ."') AND p.post_type IN ('". implode("','", $post_types ) ."') ORDER BY p.ID ASC LIMIT 0, 500" ,
+					$stopped_ID
 				)
 			);
 		}
@@ -538,9 +540,10 @@ class Sync
 		$this->delete_post_data( $post_id );
 
 		global $wp_predictive_search;
-		$post_types = $wp_predictive_search->posttypes_slug_support();
+		$post_types  = $wp_predictive_search->posttypes_slug_support();
+		$post_status = $wp_predictive_search->post_status_support();
 
-		if ( 'publish' == $post->post_status && in_array( $post->post_type, $post_types ) ) {
+		if ( in_array( $post->post_status, $post_status ) && in_array( $post->post_type, $post_types ) ) {
 			$yoast_keyword = get_post_meta( $post_id, '_yoast_wpseo_focuskw', true );
 			// For Yoast SEO need to check if $_POST['yoast_wpseo_focuskw_text_input'] is existed then use it instead of use post meta
 			if ( isset( $_POST['yoast_wpseo_focuskw_text_input'] ) ) {
@@ -627,13 +630,13 @@ class Sync
 
 		global $wpdb;
 		global $wp_predictive_search;
-		$post_types = $wp_predictive_search->posttypes_slug_support();
+		$post_types  = $wp_predictive_search->posttypes_slug_support();
+		$post_status = $wp_predictive_search->post_status_support();
 
 		$item = $wpdb->get_row(
 			$wpdb->prepare(
-				"SELECT ID, post_title, post_type, post_parent FROM {$wpdb->posts} WHERE ID = %d AND post_status = %s AND post_type IN ('". implode("','", $post_types ) ."')" ,
-				$post_id,
-				'publish'
+				"SELECT ID, post_title, post_type, post_parent FROM {$wpdb->posts} WHERE ID = %d AND post_status IN ('". implode( "','", $post_status ) ."') AND post_type IN ('". implode("','", $post_types ) ."')" ,
+				$post_id
 			)
 		);
 

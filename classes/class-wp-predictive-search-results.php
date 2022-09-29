@@ -88,6 +88,7 @@ class Results
 		$results_display_type = isset( $wpps_all_results_pages_settings['display_type'] ) ? $wpps_all_results_pages_settings['display_type'] : 'grid';
 		
 		if ( 'theme' === $template_type ) {
+			do_action( 'wpps_shortcode_theme_display' );
 			$theme_container_class = isset( $wpps_all_results_pages_settings['theme_container_class'] ) ? $wpps_all_results_pages_settings['theme_container_class'] : '';
 			$theme_container_class = apply_filters( 'wpps_search_result_theme_container_class', $theme_container_class, $search_in );
 		} elseif ( 'grid' === $results_display_type ) {

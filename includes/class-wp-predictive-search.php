@@ -107,6 +107,12 @@ class Main
 		return $posttypes_slug;
 	}
 
+	public function post_status_support() {
+		$post_status = array( 'publish' );
+
+		return apply_filters( 'wpps_post_status_support', $post_status );
+	}
+
 	public function custom_types_support() {
 		$custom_types_support = apply_filters( 'wpps_custom_types_support', array() );
 

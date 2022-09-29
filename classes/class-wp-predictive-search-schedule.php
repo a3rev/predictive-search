@@ -355,6 +355,7 @@ class Schedule
 	public function stop_child_schedule_events_auto_sync() {
 		global $wp_predictive_search;
 		$taxonomies = $wp_predictive_search->taxonomies_slug_support();
+		$posttypes  = $wp_predictive_search->posttypes_slug_support();
  
 		set_transient( 'wp_predictive_search_starting_manual_sync', time() + 60, 60 * 5 );
 
@@ -364,8 +365,12 @@ class Schedule
 		wp_clear_scheduled_hook( 'wp_predictive_search_auto_sync_relationships' );
 		wp_clear_scheduled_hook( 'wp_predictive_search_auto_end_sync' );
 
-		wp_clear_scheduled_hook( 'wp_predictive_search_auto_sync_detect_error', array( 'posts' ) );
-		wp_clear_scheduled_hook( 'wp_predictive_search_auto_sync_detect_error', array( 'pages' ) );
+		if ( ! empty ( $posttypes ) ) {
+			foreach ( $posttypes as $posttype ) {
+				wp_clear_scheduled_hook( 'wp_predictive_search_auto_sync_detect_error', array( $posttype ) );
+			}
+		}
+
 		wp_clear_scheduled_hook( 'wp_predictive_search_auto_sync_detect_error', array( 'custom_types' ) );
 		wp_clear_scheduled_hook( 'wp_predictive_search_auto_sync_detect_error', array( 'relationships' ) );
 
