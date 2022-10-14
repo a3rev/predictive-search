@@ -108,9 +108,9 @@ class Main
 	}
 
 	public function post_status_support() {
-		$post_status = array( 'publish' );
+		$post_status = apply_filters( 'wpps_post_status_support', array( 'publish' ) );
 
-		return apply_filters( 'wpps_post_status_support', $post_status );
+		return array_unique( $post_status );
 	}
 
 	public function custom_types_support() {

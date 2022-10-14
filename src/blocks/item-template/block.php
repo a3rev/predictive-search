@@ -50,7 +50,7 @@ function wpps_render_block_item_template( $attributes, $content, $block ) {
 	return sprintf(
 		'<div id="ps_items_container" %1$s data-perpage="%2$s"></div>',
 		$wrapper_attributes,
-		$perpage,
+		$perpage
 	);
 }
 

@@ -483,8 +483,8 @@ class Performance extends FrameWork\Admin_UI
 							'show_statistic'       => false,
 							'statistic_customizer' => array(
 								'current_color' => '#96587d',
-							),
-						),
+							)
+						)
 					),
 					$posttypes_settings,
 					$custom_types_settings,
@@ -507,9 +507,9 @@ class Performance extends FrameWork\Admin_UI
 							'show_statistic'       => false,
 							'statistic_customizer' => array(
 								'current_color' => '#96587d',
-							),
-						),
-					),
+							)
+						)
+					)
 				),
 				'separate_option'  => true,
 				'button_name'      => $sync_button_text,

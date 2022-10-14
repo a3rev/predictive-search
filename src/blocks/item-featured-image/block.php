@@ -55,7 +55,7 @@ function wpps_render_block_item_featured_image( $attributes, $content, $block ) 
 			'<a href="%1s" target="%2s">%3s</a>',
 			$item_link,
 			esc_attr( $attributes['linkTarget'] ),
-			$featured_image,
+			$featured_image
 		);
 	}
 

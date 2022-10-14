@@ -4,7 +4,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: WordPress search, Predictive Search, Live Search, Elementor Search
 Requires at least: 5.6
 Tested up to: 6.0
-Stable tag: 1.0.1
+Stable tag: 1.1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -106,6 +106,15 @@ Predictive Search WordPress
 
 == Changelog ==
 
+= 1.1.0 - 2022/10/14 =
+* This release adds new developer action hooks, plus support for post status filters, a theme template Get fix and a security patch.  
+* Dev - Add wpps_shortcode_theme_display action hook
+* Dev - Add wpps_popup_tpl_item_desc_after action hook
+* Dev - Add wpps_popup_tpl_item_category_before action hook
+* Dev - Update to support post status instead of only support the Publish post status
+* Fix - Update search results script to get and show the correct Theme template
+* Security - This release has a patch for a security vulnerability
+
 = 1.0.1 - 2022/09/05 =
 * This the first maintenance release contains 3 bug fixes. 
 * Fix - Use sanitize_text_field instead of sanitize_key for search_in parameter so the number of items and order Display work correct in the dropdown of Search
@@ -113,6 +122,9 @@ Predictive Search WordPress
 * Fix - Show correct of search mobile icon block on frontend
 
 == Upgrade Notice ==
+
+= 1.1.0 =
+This release adds new developer action hooks, plus support for post status filters, a theme template Get fix and a security patch.
 
 = 1.0.1 =
 This the first maintenance release contains 3 bug fixes.

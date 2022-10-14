@@ -102,10 +102,21 @@ class Sync
 		$status = 'completed';
 
 		global $wpps_posts_data;
-		$current_items = $wpps_posts_data->get_total_items_synched( $post_type );
+		global $wp_predictive_search;
 
-		$all_items      = wp_count_posts( $post_type );
-		$total_items    = isset( $all_items->publish ) ? $all_items->publish : 0;
+		$current_items = $wpps_posts_data->get_total_items_synched( $post_type );
+		$post_status   = $wp_predictive_search->post_status_support();
+
+		$all_items   = wp_count_posts( $post_type );
+		$total_items = 0;
+		
+		if ( ! empty( $post_status ) ) {
+			foreach ( $post_status as $p_status ) {
+				$total_items += isset( $all_items->{$p_status} ) ? $all_items->{$p_status} : 0;
+			}
+		} else {
+			$total_items = isset( $all_items->publish ) ? $all_items->publish : 0;
+		}
 
 		if ( $total_items > $current_items ) {
 			$status = 'continue';

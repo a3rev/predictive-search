@@ -2,7 +2,7 @@
 /*
 Plugin Name: Predictive Search
 Description: Predictive Search - featuring "Smart Search" technology. Give your store customers the most awesome search experience on the web via widgets, shortcodes, Search results pages and the Predictive Search function.
-Version: 1.0.1
+Version: 1.1.0
 Author: a3rev Software
 Author URI: https://a3rev.com/
 Requires at least: 5.6
@@ -38,7 +38,7 @@ if(!defined("WPPS_DOCS_URI"))
 
 define( 'WPPS_KEY', 'wp_predictive_search' );
 define( 'WPPS_PREFIX', 'wp_predictive_search_' );
-define( 'WPPS_VERSION', '1.0.1' );
+define( 'WPPS_VERSION', '1.1.0' );
 define( 'WPPS_G_FONTS', true );
 
 use \A3Rev\WPPredictiveSearch\FrameWork;
