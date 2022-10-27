@@ -126,7 +126,11 @@ class All_Results_Pages extends FrameWork\Admin_UI
 	/* get_settings()
 	/* Get settings with function called from Admin Interface */
 	/*-----------------------------------------------------------------------------------*/
-	public function get_settings() {		
+	public function get_settings() {
+		if ( ! wpps_current_theme_is_fse_theme() ) {
+			update_option( 'wpps_search_page_content_type', 'shortcode' );
+		}
+
 		$GLOBALS[$this->plugin_prefix.'admin_interface']->get_settings( $this->form_fields, $this->option_name );
 	}
 	
@@ -198,6 +202,10 @@ class All_Results_Pages extends FrameWork\Admin_UI
 				'type' 		=> 'single_select_page',
 				'separate_option'  => true,
 			),
+			array(
+                'type' 		=> 'heading',
+                'css'		=> ! wpps_current_theme_is_fse_theme() ? 'display: none;' : '',
+           	),
 			array(
 				'name' 		=> __( 'Search Page Content', 'wp-predictive-search' ),
 				'desc'		=> __( "Create the Search Page content with the PS Shortcode or PS Gutenberg Blocks." ),

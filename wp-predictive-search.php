@@ -2,11 +2,11 @@
 /*
 Plugin Name: Predictive Search
 Description: Predictive Search - featuring "Smart Search" technology. Give your store customers the most awesome search experience on the web via widgets, shortcodes, Search results pages and the Predictive Search function.
-Version: 1.1.0
+Version: 1.1.1
 Author: a3rev Software
 Author URI: https://a3rev.com/
 Requires at least: 5.6
-Tested up to: 6.0
+Tested up to: 6.1
 Text Domain: wp-predictive-search
 Domain Path: /languages
 License: GPLv2 or later
@@ -38,8 +38,19 @@ if(!defined("WPPS_DOCS_URI"))
 
 define( 'WPPS_KEY', 'wp_predictive_search' );
 define( 'WPPS_PREFIX', 'wp_predictive_search_' );
-define( 'WPPS_VERSION', '1.1.0' );
+define( 'WPPS_VERSION', '1.1.1' );
 define( 'WPPS_G_FONTS', true );
+
+function wpps_current_theme_is_fse_theme() {
+	if ( function_exists( 'wp_is_block_theme' ) ) {
+		return (bool) wp_is_block_theme();
+	}
+	if ( function_exists( 'gutenberg_is_fse_theme' ) ) {
+		return (bool) gutenberg_is_fse_theme();
+	}
+
+	return false;
+}
 
 use \A3Rev\WPPredictiveSearch\FrameWork;
 
@@ -143,18 +154,20 @@ if ( version_compare( PHP_VERSION, '5.6.0', '>=' ) ) {
 		new \A3Rev\WPPredictiveSearch\Blocks\Search_Form\Results_Dropdown\Footer();
 		new \A3Rev\WPPredictiveSearch\Blocks\Search_Form\Results_Dropdown\Items();
 
-		require 'src/blocks/query-results/block.php';
-		require 'src/blocks/results-heading/block.php';
-		require 'src/blocks/results-filter-by/block.php';
-		require 'src/blocks/item-title/block.php';
-		require 'src/blocks/item-excerpt/block.php';
-		require 'src/blocks/read-more/block.php';
-		require 'src/blocks/item-featured-image/block.php';
-		require 'src/blocks/item-terms/block.php';
-		require 'src/blocks/item-template/block.php';
+		if ( wpps_current_theme_is_fse_theme() ) {
+			require 'src/blocks/query-results/block.php';
+			require 'src/blocks/results-heading/block.php';
+			require 'src/blocks/results-filter-by/block.php';
+			require 'src/blocks/item-title/block.php';
+			require 'src/blocks/item-excerpt/block.php';
+			require 'src/blocks/read-more/block.php';
+			require 'src/blocks/item-featured-image/block.php';
+			require 'src/blocks/item-terms/block.php';
+			require 'src/blocks/item-template/block.php';
 
-		// reigster templates and template parts
-		new \A3Rev\WPPredictiveSearch\Blocks\BlockTemplatesController();
+			// reigster templates and template parts
+			new \A3Rev\WPPredictiveSearch\Blocks\BlockTemplatesController();
+		}
 
 		// register patterns
 		new \A3Rev\WPPredictiveSearch\Blocks\Patterns();

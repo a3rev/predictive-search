@@ -3,7 +3,7 @@
 Contributors: a3rev, nguyencongtuan
 Tags: WordPress search, Predictive Search, Live Search, Elementor Search
 Requires at least: 5.6
-Tested up to: 6.0
+Tested up to: 6.1
 Stable tag: 1.1.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
@@ -106,6 +106,15 @@ Predictive Search WordPress
 
 == Changelog ==
 
+= 1.1.1 - 2022/10/27 =
+* Tweak - this maintenance release has compatibility for WordPress 6.1.0 plus including tweaks for Classic and Blocks theme all results page content creation methods.
+* Tweak - Tested for compatibility with WordPress major version 6.1.0
+* Tweak - Run Check to establish if the activate theme is Classic or Blocks theme. 
+* Tweak - If Classic Theme detected remove option to create All Results Page content from PS Blocks
+* Tweak - If Classic Theme detected only show shortcode option for creating All Results page content.
+* Tweak - If Blocks Theme detected add PS Search Results Part Template in FSE
+* Tweak - If Blocks Theme detected add All Results Blocks
+
 = 1.1.0 - 2022/10/14 =
 * This release adds new developer action hooks, plus support for post status filters, a theme template Get fix and a security patch.  
 * Dev - Add wpps_shortcode_theme_display action hook
@@ -122,6 +131,9 @@ Predictive Search WordPress
 * Fix - Show correct of search mobile icon block on frontend
 
 == Upgrade Notice ==
+
+= 1.1.1 =
+this maintenance release has compatibility for WordPress 6.1.0 plus including tweaks for Classic and Blocks theme all results page content creation methods.
 
 = 1.1.0 =
 This release adds new developer action hooks, plus support for post status filters, a theme template Get fix and a security patch.

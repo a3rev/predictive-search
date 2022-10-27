@@ -46,6 +46,11 @@ class Blocks {
 
 		// Add support align.
 	    add_theme_support('align-wide');
+
+	    if ( wpps_current_theme_is_fse_theme() ) {
+	    	// Add support for Template Parts.
+			add_theme_support( 'block-template-parts' );
+		}
 	}
 
 	public function excerpt_allowed_blocks( $allowed_blocks ) {
@@ -78,7 +83,9 @@ class Blocks {
 			return;
 		}
 
-		add_filter( 'block_categories_all', array( $this, 'create_blocks_section' ), 10, 2 );
+		if ( wpps_current_theme_is_fse_theme() ) {
+			add_filter( 'block_categories_all', array( $this, 'create_blocks_section' ), 10, 2 );
+		}
 
 		wp_register_style( 'wp-predictive-search-style', WPPS_CSS_URL . '/wp_predictive_search.css', array( 'dashicons' ), WPPS_VERSION, 'all' );
 
@@ -103,9 +110,11 @@ class Blocks {
 
 		$js_deps = apply_filters( 'wpps_block_js_deps', array( 'wp-block-editor', 'wp-blocks', 'wp-i18n', 'wp-element', 'wp-data', 'wp-compose', 'wp-components' ) );
 
+		$script_file_name = wpps_current_theme_is_fse_theme() ? 'blocks.build.js' : 'blocks.build.nofse.js';
+
 		wp_enqueue_script(
 			'predictive-search-block-js', // Handle.
-			plugins_url( '/dist/blocks.build.js', dirname( __FILE__ ) ), // Block.build.js: We register the block here. Built with Webpack.
+			plugins_url( '/dist/' . $script_file_name, dirname( __FILE__ ) ), // Block.build.js: We register the block here. Built with Webpack.
 			$js_deps, // Dependencies, defined above.
 			// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.build.js' ), // Version: File modification time.
 			true // Enqueue the script in the footer.

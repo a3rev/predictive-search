@@ -217,7 +217,7 @@ jQuery( document ).ready( function( $ ) {
 			$(document).on( 'click', '.wpps_mobile_icon', function() {
 				var wpps_bar = $(this).parents('.wpps_bar');
 				var ps_id = wpps_bar.data('ps-id');
-				var x = 20;
+				var x = 5;
 				var y = $(this).offset().top + $(this).find('svg').outerHeight();
 				var width = false;
 
