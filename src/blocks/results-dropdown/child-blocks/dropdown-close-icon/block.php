@@ -78,8 +78,8 @@ class Close_Icon extends Blocks\Frontend {
 		$stylecss = '
 #predictive_results-'.$attributes['parentID'].' .ps_close {
 	' . $wpps_blocks_styles->spacing_styles( $this->field_name, $attributes ) . '
-	'. ( isset( $attributes['iconSize'] ) ? 'font-size: '.$attributes['iconSize'].'px!important;' : '' ) .'
-	'. ( isset( $attributes['iconColor'] ) ? 'color: '.$attributes['iconColor'].'!important;' : '' ) .'
+	'. ( isset( $attributes['iconSize'] ) ? 'width: '.$attributes['iconSize'].'px!important;' : '' ) .'
+	'. ( isset( $attributes['iconColor'] ) ? 'fill: '.$attributes['iconColor'].'!important;' : '' ) .'
 }';
 
 		return $stylecss; /* phpcs:ignore WordPress.XSS.EscapeOutput.OutputNotEscaped */

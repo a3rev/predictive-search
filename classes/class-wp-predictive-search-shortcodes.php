@@ -79,11 +79,13 @@ class Shortcodes
 
 		foreach ($items_search_default as $key => $data) {
 			$item_key = $key.'_items';
-			if ( isset($attr[$item_key]) && $attr[$item_key] > 0 ) {
-				$number_items[$key] = $attr[$item_key];
-				$row += $attr[$item_key];
-				$row++;
-				$search_list[] = $key;
+			if ( isset($attr[$item_key]) ) {
+				if ( $attr[$item_key] > 0 ) {
+					$number_items[$key] = $attr[$item_key];
+					$row += $attr[$item_key];
+					$row++;
+					$search_list[] = $key;
+				}
 			} elseif ( $data['number'] > 0 ) {
 				$number_items[$key] = $data['number'];
 				$row += $attr[$item_key];

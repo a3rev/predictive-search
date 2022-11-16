@@ -24,8 +24,8 @@ const customStyles = attributes => {
 	const styleCSS = `
 .predictive_results .ps_close.ps_close-${ blockID } {
 	${ spacingStyles( fieldName, attributes ) }
-	${ iconSize ? `font-size: ${ iconSize }px!important;` : '' }
-	${ iconColor ? `color: ${ iconColor }!important;` : '' }
+	${ iconSize ? `width: ${ iconSize }px!important;` : '' }
+	${ iconColor ? `fill: ${ iconColor }!important;` : '' }
 }
 `;
 

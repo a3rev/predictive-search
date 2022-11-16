@@ -203,11 +203,13 @@ function wp_predictive_search_widget() {
 	$items_search_default = $wp_predictive_search->get_items_search();
 
 	foreach ($items_search_default as $key => $data) {
-		if ( isset(${$key.'_items'}) && ${$key.'_items'} > 0 ) {
-			$number_items[$key] = ${$key.'_items'};
-			$row += ${$key.'_items'};
-			$row++;
-			$search_list[] = $key;
+		if ( isset(${$key.'_items'}) ) {
+			if ( ${$key.'_items'} > 0 ) {
+				$number_items[$key] = ${$key.'_items'};
+				$row += ${$key.'_items'};
+				$row++;
+				$search_list[] = $key;
+			}
 		} elseif ( $number = apply_filters( 'wpps_customize_search_number', $data['number'], $key, $data ) > 0 ) {
 			$number_items[$key] = $number;
 			$row += $number;

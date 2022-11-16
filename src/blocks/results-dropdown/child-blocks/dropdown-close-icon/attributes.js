@@ -8,7 +8,7 @@ const DropDownCloseIconAttributes = {
 	// Close Icon
 	iconSize: {
 		type: 'number',
-		default: 20,
+		default: 18,
 	},
 	iconColor: {
 		type: 'string',

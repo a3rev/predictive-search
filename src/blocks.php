@@ -87,7 +87,7 @@ class Blocks {
 			add_filter( 'block_categories_all', array( $this, 'create_blocks_section' ), 10, 2 );
 		}
 
-		wp_register_style( 'wp-predictive-search-style', WPPS_CSS_URL . '/wp_predictive_search.css', array( 'dashicons' ), WPPS_VERSION, 'all' );
+		wp_register_style( 'wp-predictive-search-style', WPPS_CSS_URL . '/wp_predictive_search.css', array(), WPPS_VERSION, 'all' );
 
 		// Blocks Frontend Style
 		wp_register_style(

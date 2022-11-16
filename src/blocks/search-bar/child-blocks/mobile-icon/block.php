@@ -59,7 +59,7 @@ class Mobile_Icon extends Blocks\Frontend {
 
 		$content = $this->format_svg_icon( $content );
 		$content .= $this->render_inline_css( $attributes, '' );
-		$content = '<div id="'. esc_attr( $id ) .'" class="'. esc_attr( $classname ) .'" aria-label="'.__( 'Open Search', 'wp-predictive-search' ).'">' . $content . '</div>';
+		$content = '<div id="'. esc_attr( $id ) .'" class="'. esc_attr( $classname ) .'">' . $content . '</div>';
 
 		return $content;
 	}

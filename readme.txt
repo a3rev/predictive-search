@@ -4,7 +4,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: WordPress search, Predictive Search, Live Search, Elementor Search
 Requires at least: 5.6
 Tested up to: 6.1
-Stable tag: 1.1.1
+Stable tag: 1.1.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -106,6 +106,12 @@ Predictive Search WordPress
 
 == Changelog ==
 
+= 1.1.2 - 2022/11/16 =
+* This maintenance release fixes Post Types (Post, Page, Product) number showing as 6 results, when set to 0, in search boxes added by Shortcode and PHP tag.
+* Tweak - Remove use dashicons on frontend and replace with svg icon for faster script load
+* Fix - Shortcode, when set Post Types (Post, Page, Product) number of items to show as 0, it shows 0 products, not 6.
+* Fix - PHP Tag, when set Post Types (Post, Page, Product) number of items to show as 0, it shows 0 products, not 6.
+
 = 1.1.1 - 2022/10/27 =
 * Tweak - this maintenance release has compatibility for WordPress 6.1.0 plus including tweaks for Classic and Blocks theme all results page content creation methods.
 * Tweak - Tested for compatibility with WordPress major version 6.1.0
@@ -131,6 +137,9 @@ Predictive Search WordPress
 * Fix - Show correct of search mobile icon block on frontend
 
 == Upgrade Notice ==
+
+= 1.1.2 =
+This maintenance release fixes Post Types (Post, Page, Product) number showing as 6 results, when set to 0, in search boxes added by Shortcode and PHP tag.
 
 = 1.1.1 =
 this maintenance release has compatibility for WordPress 6.1.0 plus including tweaks for Classic and Blocks theme all results page content creation methods.

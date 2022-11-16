@@ -4,6 +4,8 @@
 import classnames from 'classnames';
 import shorthash from 'shorthash';
 
+import Icon from './close.svg';
+
 import Inspector from './inspector';
 
 const { __ } = wp.i18n;
@@ -24,8 +26,6 @@ function DropdownCloseIconEdit( props ) {
 
 	className = classnames(
 		'ps_close',
-		'dashicons',
-		'dashicons-dismiss',
 		`ps_close-${ blockID }`,
 		className
 	);
@@ -34,7 +34,7 @@ function DropdownCloseIconEdit( props ) {
 
 	return (
 		<div { ...blockProps }>
-			<span className={ className }></span>
+			<span className={ className }><Icon /></span>
 		</div>
 	);
 }
