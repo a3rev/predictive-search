@@ -90,10 +90,14 @@ class Global_Panel extends FrameWork\Admin_UI
 
 		add_action( $this->plugin_name . '-' . $this->form_key . '_settings_end', array( $this, 'include_script' ) );
 
+		add_action( $this->plugin_name . '-' . $this->form_key . '_settings_end', array( $this, 'include_modal_script' ) );
+
 		add_action( $this->plugin_name . '_set_default_settings' , array( $this, 'set_default_settings' ) );
 
 		add_action( $this->plugin_name . '-' . $this->form_key . '_settings_init' , array( $this, 'after_save_settings' ) );
 		//add_action( $this->plugin_name . '_get_all_settings' , array( $this, 'get_settings' ) );
+
+		add_action( $this->plugin_name . '_settings_' . 'predictive_search_shortcode_box' . '_start', array( $this, 'predictive_search_shortcode_box' ) );
 	}
 
 	/*-----------------------------------------------------------------------------------*/
@@ -564,9 +568,214 @@ class Global_Panel extends FrameWork\Admin_UI
 				'type' 		=> 'text',
 				'default'	=> 'ps'
 			),
+
+			array(
+            	'name' 		=> __( 'Shortcode', 'wp-predictive-search' ),
+                'type' 		=> 'heading',
+                'id'		=> 'predictive_search_shortcode_box',
+                'is_box'	=> true,
+           	),
 		)
 
         ));
+	}
+
+	public function predictive_search_shortcode_box() {
+	?>
+		<tr valign="top" class="">
+			<td class="forminp" colspan="2">
+            	<?php _e( 'You can add the Predictive Search Box by shortcode anywhere in a theme or page builder that accepts shortcodes.', 'wp-predictive-search' ); ?>
+            	<br />
+            	<div style="text-align: center; margin-top: 20px;"><a data-toggle="modal" href="#ps_generate_shortcode-modal" class="button button-primary"><?php _e( 'Create Shortcode', 'wp-predictive-search' ); ?></a></div>
+			</td>
+		</tr>
+	<?php
+	}
+
+	public function include_modal_script() {
+		global $wpps_cache;
+		$disabled_cat_dropdown = false;
+		$post_categories = wpps_get_categories();
+		if ( ! $wpps_cache->enable_cat_cache() || ! $wpps_cache->cat_cache_is_built() ) {
+			$disabled_cat_dropdown = true;
+			$post_categories = false;
+		}
+
+		global $wp_predictive_search;
+
+		$items_search_default = $wp_predictive_search->get_items_search();
+	?>
+		<script type="text/javascript">
+			jQuery(document).ready(function(){
+				jQuery('#wpps_search_show_catdropdown').on('click', function(){
+					if ( jQuery(this).is(':checked') ) {
+						jQuery('.wpps_search_set_default_cat_container').show();
+					} else {
+						jQuery('.wpps_search_set_default_cat_container').hide();
+					}
+				});
+			});
+
+			function wpps_search_widget_add_shortcode(){
+				var number_items = '';
+				<?php foreach ($items_search_default as $key => $data) {?>
+				var wpps_search_<?php echo esc_js( $key ); ?>_items = '<?php echo esc_js( $key ); ?>_items="' + jQuery("#wpps_search_<?php echo esc_js( $key ); ?>_items").val() + '" ';
+				number_items += wpps_search_<?php echo esc_js( $key ); ?>_items;
+				<?php } ?>
+				var wpps_search_widget_template = jQuery("#wpps_search_widget_template").val();
+				var wpps_search_set_default_cat = jQuery('#wpps_search_set_default_cat').val();
+				var wpps_search_show_catdropdown = 0;
+				if ( jQuery('#wpps_search_show_catdropdown').is(":checked") ) {
+					wpps_search_show_catdropdown = 1;
+				} else {
+					wpps_search_set_default_cat = '';
+				}
+				var wpps_search_show_image = 0;
+				if ( jQuery('#wpps_search_show_image').is(":checked") ) {
+					wpps_search_show_image = 1;
+				}
+				var wpps_search_show_desc = 0;
+				if ( jQuery('#wpps_search_show_desc').is(":checked") ) {
+					wpps_search_show_desc = 1;
+				}
+				var wpps_search_show_in_cat = 0;
+				if ( jQuery('#wpps_search_show_in_cat').is(":checked") ) {
+					wpps_search_show_in_cat = 1;
+				}
+				var wpps_search_text_lenght = jQuery("#wpps_search_text_lenght").val();
+				var wpps_search_align = jQuery("#wpps_search_align").val();
+				var wpps_search_width = jQuery("#wpps_search_width").val();
+				var wpps_search_padding_top = jQuery("#wpps_search_padding_top").val();
+				var wpps_search_padding_bottom = jQuery("#wpps_search_padding_bottom").val();
+				var wpps_search_padding_left = jQuery("#wpps_search_padding_left").val();
+				var wpps_search_padding_right = jQuery("#wpps_search_padding_right").val();
+				var wpps_search_box_text = jQuery("#wpps_search_box_text").val();
+				var wpps_search_style = '';
+				var wrap = '';
+				if (wpps_search_align == 'center') wpps_search_style += 'float:none;margin:auto;display:table;';
+				else if (wpps_search_align == 'left-wrap') wpps_search_style += 'float:left;';
+				else if (wpps_search_align == 'right-wrap') wpps_search_style += 'float:right;';
+				else wpps_search_style += 'float:'+wpps_search_align+';';
+				
+				if(wpps_search_align == 'left-wrap' || wpps_search_align == 'right-wrap') wrap = 'wrap="true"';
+				
+				if (parseInt(wpps_search_width) > 0) wpps_search_style += 'width:'+parseInt(wpps_search_width)+'px;';
+				if (parseInt(wpps_search_padding_top) >= 0) wpps_search_style += 'padding-top:'+parseInt(wpps_search_padding_top)+'px;';
+				if (parseInt(wpps_search_padding_bottom) >= 0) wpps_search_style += 'padding-bottom:'+parseInt(wpps_search_padding_bottom)+'px;';
+				if (parseInt(wpps_search_padding_left) >= 0) wpps_search_style += 'padding-left:'+parseInt(wpps_search_padding_left)+'px;';
+				if (parseInt(wpps_search_padding_right) >= 0) wpps_search_style += 'padding-right:'+parseInt(wpps_search_padding_right)+'px;';
+				var win = window.dialogArguments || opener || parent || top;
+				var shortcode_output = '[wpps_search_widget ' + number_items + ' widget_template="'+wpps_search_widget_template+'" show_catdropdown="'+wpps_search_show_catdropdown+'" in_taxonomy="category" default_cat="'+wpps_search_set_default_cat+'" show_image="'+wpps_search_show_image+'" show_desc="'+wpps_search_show_desc+'" show_in_cat="'+wpps_search_show_in_cat+'" character_max="'+wpps_search_text_lenght+'" style="'+wpps_search_style+'" '+wrap+' search_box_text="'+wpps_search_box_text+'" ]';
+
+				jQuery(".shortcode_container").html( shortcode_output );
+			}
+		</script>
+		<style type="text/css">
+			.field_content {
+				padding:0 40px;
+			}
+			.field_content label{
+				width:150px;
+				float:left;
+				text-align:left;
+			}
+			.field_content p {
+				clear: both;
+			}
+			.shortcode_container {
+				background: rgba(0, 0, 0, 0.07);
+			    color: #fc2323;
+			    padding: 30px 20px;
+			    margin-top: 20px;
+			}
+			body.mobile.modal-open #wpwrap {
+				position:  inherit;
+			}
+			label[for="woo_search_padding"] {
+					width: 100%;
+				}
+			@media screen and ( max-width: 782px ) {
+				#woo_search_box_text {
+					width:100% !important;	
+				}
+			}
+		</style>
+
+    	<div class="modal fade wc-ps-modal" id="ps_generate_shortcode-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+			<div class="modal-dialog modal-lg" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title"><?php echo __( 'Generate Shortcode', 'wp-predictive-search' ); ?></h5>
+					</div>
+					<div class="modal-body m-3">
+						<div class="field_content">
+			                <?php foreach ($items_search_default as $key => $data) { ?>
+			                <p><label for="wpps_search_<?php echo esc_attr( $key ); ?>_items"><?php echo esc_html( $data['name'] ); ?>:</label> <input style="width:100px;" size="10" id="wpps_search_<?php echo esc_attr( $key ); ?>_items" name="wpps_search_<?php echo esc_attr( $key ); ?>_items" type="text" value="<?php echo esc_attr( $data['number'] ); ?>" /> <span class="description"><?php echo sprintf( __( 'Number of %s results to show in dropdown', 'wp-predictive-search' ), esc_html( $data['name'] ) ); ?></span></p> 
+			                <?php } ?>
+			                <p><label for="wpps_search_widget_template"><?php _e('Select Template', 'wp-predictive-search' ); ?>:</label> <select style="width:100px" id="wpps_search_widget_template" name="wpps_search_widget_template"><option value="sidebar" selected="selected"><?php _e('Widget', 'wp-predictive-search' ); ?></option><option value="header"><?php _e('Header', 'wp-predictive-search' ); ?></option></select></p>
+			                <p>
+			                	<label for="wpps_search_show_catdropdown"><?php _e('Category Dropdown', 'wp-predictive-search' ); ?>:</label> <input <?php echo ( $disabled_cat_dropdown ) ? 'disabled="disabled"' : ''; ?> type="checkbox" checked="checked" id="wpps_search_show_catdropdown" name="wpps_search_show_catdropdown" value="1" /> <span class="description"><?php _e('Search in Category Feature', 'wp-predictive-search' ); ?></span>
+			                	<?php if ( $disabled_cat_dropdown ) { ?>
+			                	<br>
+			            		<label>&nbsp;</label><span><?php echo sprintf( __( 'Activate and build <a href="%s" target="_blank">Category Cache</a> to activate this feature', 'wp-predictive-search' ), admin_url( 'admin.php?page=wp-predictive-search&tab=search-box-settings&box_open=predictive_search_category_cache_box#predictive_search_category_cache_box', 'relative' ) ); ?></span>
+			            		<?php } ?>
+			            	</p>
+
+			            	
+			            	<p class="wpps_search_set_default_cat_container" style="<?php if ( $disabled_cat_dropdown || false === $post_categories ) { ?>display: none;<?php } ?>">
+			            		<label for="wpps_search_set_default_cat"><?php _e('Default Category', 'wp-predictive-search' ); ?>:</label> 
+			            		<select style="width:100px" id="wpps_search_set_default_cat" name="wpps_search_set_default_cat">
+			            			<option value="" selected="selected"><?php _e('All', 'wp-predictive-search' ); ?></option>
+			            		<?php if ( $post_categories ) { ?>
+									<?php foreach ( $post_categories as $category_data ) { ?>
+									<option value="<?php echo esc_attr( $category_data['slug'] ); ?>"><?php echo esc_html( $category_data['name'] ); ?></option>
+									<?php } ?>
+			            		<?php } ?>
+			            		</select> 
+			            		<span class="description"><?php _e('Set category as default selected category for Category Dropdown', 'wp-predictive-search' ); ?></span>
+			            	</p>
+
+			                <p><label for="wpps_search_show_image"><?php _e('Image', 'wp-predictive-search' ); ?>:</label> <input type="checkbox" checked="checked" id="wpps_search_show_image" name="wpps_search_show_image" value="1" /> <span class="description"><?php _e('Show Results Images', 'wp-predictive-search' ); ?></span></p>
+			            	<p><label for="wpps_search_show_desc"><?php _e('Description', 'wp-predictive-search' ); ?>:</label> <input type="checkbox" checked="checked" id="wpps_search_show_desc" name="wpps_search_show_desc" value="1" /> <span class="description"><?php _e('Show Results Description', 'wp-predictive-search' ); ?></span></p>
+			            	<p><label for="wpps_search_text_lenght"><?php _e('Characters Count', 'wp-predictive-search' ); ?>:</label> <input style="width:100px;" size="10" id="wpps_search_text_lenght" name="wpps_search_text_lenght" type="text" value="100" /> <span class="description"><?php _e('Number of results description characters', 'wp-predictive-search' ); ?></span></p>
+			            	<p><label for="wpps_search_show_in_cat"><?php _e('Post Categories', 'wp-predictive-search' ); ?>:</label> <input type="checkbox" checked="checked" id="wpps_search_show_in_cat" name="wpps_search_show_in_cat" value="1" /> <span class="description"><?php _e('Results - Show Categories', 'wp-predictive-search' ); ?></span></p>
+			                <p><label for="wpps_search_align"><?php _e('Alignment', 'wp-predictive-search' ); ?>:</label> <select style="width:100px" id="wpps_search_align" name="wpps_search_align"><option value="none" selected="selected"><?php _e('None', 'wp-predictive-search' ); ?></option><option value="left-wrap"><?php _e('Left - wrap', 'wp-predictive-search' ); ?></option><option value="left"><?php _e('Left - no wrap', 'wp-predictive-search' ); ?></option><option value="center"><?php _e('Center', 'wp-predictive-search' ); ?></option><option value="right-wrap"><?php _e('Right - wrap', 'wp-predictive-search' ); ?></option><option value="right"><?php _e('Right - no wrap', 'wp-predictive-search' ); ?></option></select> <span class="description"><?php _e('Horizontal aliginment of search box', 'wp-predictive-search' ); ?></span></p>
+			                <p><label for="wpps_search_width"><?php _e('Search box width', 'wp-predictive-search' ); ?>:</label> <input style="width:100px;" size="10" id="wpps_search_width" name="wpps_search_width" type="text" value="400" />px</p>
+			                <p><label for="wpps_search_box_text"><?php _e('Search box text message', 'wp-predictive-search' ); ?>:</label> <input style="width:300px;" size="10" id="wpps_search_box_text" name="wpps_search_box_text" type="text" value="" /></p>
+			                <p><label for="wpps_search_padding"><strong><?php _e('Padding', 'wp-predictive-search' ); ?></strong>:</label> 
+							<label for="wpps_search_padding_top" style="width:auto; float:none"><?php _e('Above', 'wp-predictive-search' ); ?>:</label><input style="width:50px;" size="10" id="wpps_search_padding_top" name="wpps_search_padding_top" type="text" value="10" />px &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			                <label for="wpps_search_padding_bottom" style="width:auto; float:none"><?php _e('Below', 'wp-predictive-search' ); ?>:</label> <input style="width:50px;" size="10" id="wpps_search_padding_bottom" name="wpps_search_padding_bottom" type="text" value="10" />px &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			                <label for="wpps_search_padding_left" style="width:auto; float:none"><?php _e('Left', 'wp-predictive-search' ); ?>:</label> <input style="width:50px;" size="10" id="wpps_search_padding_left" name="wpps_search_padding_left" type="text" value="0" />px &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			                <label for="wpps_search_padding_right" style="width:auto; float:none"><?php _e('Right', 'wp-predictive-search' ); ?>:</label> <input style="width:50px;" size="10" id="wpps_search_padding_right" name="wpps_search_padding_right" type="text" value="0" />px
+			                </p>
+						</div>
+						<div class="shortcode_container"></div>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-primary" onclick="wpps_search_widget_add_shortcode();"><?php echo __( 'Get Shortcode', 'wp-predictive-search' ); ?></button>
+						<button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo __( 'Close', 'wp-predictive-search' ); ?></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	<?php
+		if ( ! wp_script_is( 'bootstrap-modal', 'registered' ) 
+			&& ! wp_script_is( 'bootstrap-modal', 'enqueued' ) ) {
+			$GLOBALS[$this->plugin_prefix.'admin_interface']->register_modal_scripts();
+		}
+
+		wp_enqueue_style( 'bootstrap-modal' );
+
+		// Don't include modal script if bootstrap is loaded by theme or plugins
+		if ( wp_script_is( 'bootstrap', 'registered' ) 
+			|| wp_script_is( 'bootstrap', 'enqueued' ) ) {
+			
+			wp_enqueue_script( 'bootstrap' );
+			
+			return;
+		}
+
+		wp_enqueue_script( 'bootstrap-modal' );
 	}
 
 	public function include_script() {

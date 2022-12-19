@@ -169,7 +169,7 @@ class Shortcodes
 				}
 				var wpps_search_show_image = 0;
 				if ( jQuery('#wpps_search_show_image').is(":checked") ) {
-					vwpps_search_show_image = 1;
+					wpps_search_show_image = 1;
 				}
 				var wpps_search_show_desc = 0;
 				if ( jQuery('#wpps_search_show_desc').is(":checked") ) {

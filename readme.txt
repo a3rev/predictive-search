@@ -4,7 +4,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: WordPress search, Predictive Search, Live Search, Elementor Search
 Requires at least: 5.6
 Tested up to: 6.1
-Stable tag: 1.1.2
+Stable tag: 1.2.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -106,6 +106,17 @@ Predictive Search WordPress
 
 == Changelog ==
 
+= 1.2.0 - 2022/12/19 =
+* This feature release Adds a Shortcode option box to the settings tab with a shortcode generator plus a Default Font option to the typography control and removes the fontawsome lib and replaces font icons with SVG.
+* Feature - Add Predictive Search Box Shortcode creation from the Settings tab, Shortcode Option Box
+* Feature - Add Create Shortcode button with Pop up form and shortcode generator
+* Feature - Convert icon from font awesome to SVG
+* Feature - Update styling for new SVG icons
+* Plugin Framework - Remove fontawesome lib
+* Plugin Framework - Update typography control from plugin framework to add support for Default value
+* Plugin Framework - Default value will get fonts set in the theme.
+* Plugin Framework - Change generate typography style for change on typography control
+
 = 1.1.2 - 2022/11/16 =
 * This maintenance release fixes Post Types (Post, Page, Product) number showing as 6 results, when set to 0, in search boxes added by Shortcode and PHP tag.
 * Tweak - Remove use dashicons on frontend and replace with svg icon for faster script load
@@ -137,6 +148,9 @@ Predictive Search WordPress
 * Fix - Show correct of search mobile icon block on frontend
 
 == Upgrade Notice ==
+
+= 1.2.0 =
+This feature release Adds a Shortcode option box to the settings tab with a shortcode generator plus a Default Font option to the typography control and removes the fontawsome lib and replaces font icons with SVG.
 
 = 1.1.2 =
 This maintenance release fixes Post Types (Post, Page, Product) number showing as 6 results, when set to 0, in search boxes added by Shortcode and PHP tag.
