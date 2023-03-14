@@ -4,7 +4,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: WordPress search, Predictive Search, Live Search, Elementor Search
 Requires at least: 5.6
 Tested up to: 6.1
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -106,6 +106,10 @@ Predictive Search WordPress
 
 == Changelog ==
 
+= 1.2.1 - 2023/03/14 =
+* This maintenance release has a fix for the All Results Search page style conflict with the FSE.
+* Fix - Update style of the query block so it applies correct style to number of columns of all result block page
+
 = 1.2.0 - 2022/12/19 =
 * This feature release Adds a Shortcode option box to the settings tab with a shortcode generator plus a Default Font option to the typography control and removes the fontawsome lib and replaces font icons with SVG.
 * Feature - Add Predictive Search Box Shortcode creation from the Settings tab, Shortcode Option Box
@@ -148,6 +152,9 @@ Predictive Search WordPress
 * Fix - Show correct of search mobile icon block on frontend
 
 == Upgrade Notice ==
+
+= 1.2.1 =
+This maintenance release has a fix for the All Results Search page style conflict with the FSE.
 
 = 1.2.0 =
 This feature release Adds a Shortcode option box to the settings tab with a shortcode generator plus a Default Font option to the typography control and removes the fontawsome lib and replaces font icons with SVG.
