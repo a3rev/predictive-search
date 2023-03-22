@@ -58,7 +58,7 @@ export default class InspectorNumberItems extends Component {
 			>
 				<p>{ __( 'Number of items and Order Display to show in dropdown' ) }</p>
 				{ map( postTypes, ( { name, key } ) => (
-					<BaseControl label={ name }>
+					<BaseControl label={ name } key={ `${key}_post` }>
 						<div className="ps-number-items-container">
 							<div className="left-col">
 								<RangeControl
@@ -86,7 +86,7 @@ export default class InspectorNumberItems extends Component {
 				) ) }
 
 				{ map( customTypes, ( { name, key } ) => (
-					<BaseControl label={ name }>
+					<BaseControl label={ name } key={ `${key}_custom` }>
 						<div className="ps-number-items-container">
 							<div className="left-col">
 								<RangeControl
@@ -114,7 +114,7 @@ export default class InspectorNumberItems extends Component {
 				) ) }
 
 				{ map( taxonomies, ( { name, key } ) => (
-					<BaseControl label={ name }>
+					<BaseControl label={ name } key={ `${key}_taxonomy` }>
 						<div className="ps-number-items-container">
 							<div className="left-col">
 								<RangeControl

@@ -48,7 +48,7 @@ export function QueryContent( {
 
 	return (
 		<Fragment>
-			<InspectorControls __experimentalGroup="advanced">
+			<InspectorControls __experimentalGroup="advanced" group="advanced">
 				<SelectControl
 					label={ __( 'HTML element' ) }
 					options={ [

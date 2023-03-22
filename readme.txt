@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: WordPress search, Predictive Search, Live Search, Elementor Search
 Requires at least: 5.6
-Tested up to: 6.1
-Stable tag: 1.2.1
+Tested up to: 6.2
+Stable tag: 1.2.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -106,6 +106,13 @@ Predictive Search WordPress
 
 == Changelog ==
 
+= 1.2.2 - 2023/03/22 =
+* This maintenance release has tweaks and bug fixes for compatibility with WordPress 6.2.0
+* Tweak - Test for compatibility with WordPress 6.2
+* Tweak - Test for compatibility with Gutenberg 15.1
+* Tweak - Change __experimentalGroup to group attribute for InspectorControls for compatibility with WordPress version 6.2 with backward compatibility. 
+* Fix - Add unique key prop for each child in a list from Number Items components
+
 = 1.2.1 - 2023/03/14 =
 * This maintenance release has a fix for the All Results Search page style conflict with the FSE.
 * Fix - Update style of the query block so it applies correct style to number of columns of all result block page
@@ -152,6 +159,9 @@ Predictive Search WordPress
 * Fix - Show correct of search mobile icon block on frontend
 
 == Upgrade Notice ==
+
+= 1.2.2 =
+This maintenance release has tweaks and bug fixes for compatibility with WordPress 6.2.0
 
 = 1.2.1 =
 This maintenance release has a fix for the All Results Search page style conflict with the FSE.
