@@ -4,7 +4,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: WordPress search, Predictive Search, Live Search, Elementor Search
 Requires at least: 5.6
 Tested up to: 6.2
-Stable tag: 1.2.2
+Stable tag: 1.2.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -106,6 +106,12 @@ Predictive Search WordPress
 
 == Changelog ==
 
+= 1.2.3 - 2023/05/15 =
+* This release has a security patch that affects all previous versions. Please update now.
+* Security - check nonce for admin-ajax.php
+* Props to @mika_sec who reported the issue security issue via patchdstack 
+* Framework - Update plugin framework to version 2.7.1
+
 = 1.2.2 - 2023/03/22 =
 * This maintenance release has tweaks and bug fixes for compatibility with WordPress 6.2.0
 * Tweak - Test for compatibility with WordPress 6.2
@@ -159,6 +165,9 @@ Predictive Search WordPress
 * Fix - Show correct of search mobile icon block on frontend
 
 == Upgrade Notice ==
+
+= 1.2.3 =
+This release has a security patch that affects all previous versions. Please update now.
 
 = 1.2.2 =
 This maintenance release has tweaks and bug fixes for compatibility with WordPress 6.2.0

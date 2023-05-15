@@ -33,7 +33,7 @@ class Admin_UI
 	 * You must change to correct plugin name that you are working
 	 */
 
-	public $framework_version      = '2.7.0';
+	public $framework_version      = '2.7.1';
 	public $plugin_name            = WPPS_KEY;
 	public $plugin_path            = WPPS_NAME;
 	public $google_api_key_option  = '';

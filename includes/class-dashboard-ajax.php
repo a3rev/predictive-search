@@ -40,6 +40,7 @@ class Dashboard_AJAX
 	 */
 
 	public function get_exclude_options_ajax() {
+		check_ajax_referer( 'wp_predictive_search_get_exclude_options', 'security' );
 
 		global $wpdb;
 

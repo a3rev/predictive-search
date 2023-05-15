@@ -458,7 +458,10 @@ class Search_Box extends FrameWork\Admin_UI
 			$.ajax({
 				type: 'POST',
 				url: '<?php echo admin_url( 'admin-ajax.php', 'relative' ); ?>',
-				data: { action: 'wp_predictive_search_build_cache_error_category' },
+				data: {
+					action: 'wp_predictive_search_build_cache_error_category',
+					security: '<?php echo wp_create_nonce( 'wp_predictive_search_build_cache_error_category' ); ?>',
+				},
 				success: function ( response ) {
 					$('.build_category_cache_error_container').html( response );
 				}

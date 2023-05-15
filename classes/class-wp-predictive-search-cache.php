@@ -103,6 +103,7 @@ class Cache
 	}
 
 	public function wp_predictive_search_rebuild_cat_cache_ajax() {
+		check_ajax_referer( WPPS_KEY . '_a3_admin_ui_event', 'security' );
 
 		$this->preload_category_dropdown_cache();
 
@@ -122,6 +123,8 @@ class Cache
 	}
 
 	public function wp_predictive_search_build_category_cache_error_ajax() {
+		check_ajax_referer( 'wp_predictive_search_build_cache_error_category', 'security' );
+
 		global $wpps_errors_log;
 
 		$build_category_cache_error_log = trim( $wpps_errors_log->get_error( $this->error_id ) );

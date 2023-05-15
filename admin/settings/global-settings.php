@@ -246,6 +246,8 @@ class Global_Panel extends FrameWork\Admin_UI
 		global $wp_predictive_search;
 		$posttypes_support = $wp_predictive_search->posttypes_support();
 		$taxonomies_support = $wp_predictive_search->taxonomies_support();
+
+		$get_exclude_options_nonce = wp_create_nonce( 'wp_predictive_search_get_exclude_options' );
 	
 		$posttypes_exclude_settings = array();
 		if ( ! empty( $posttypes_support ) ) {
@@ -284,7 +286,7 @@ class Global_Panel extends FrameWork\Admin_UI
 					'css'		=> 'width:600px; min-height:80px;',
 					'options'	=> $all_items,
 					'default'	=> $items_excluded,
-					'options_url' => admin_url( 'admin-ajax.php?action=wpps_get_exclude_options&from=post&type='.$posttype['name'].'&keyword=', 'relative' ),
+					'options_url' => admin_url( 'admin-ajax.php?action=wpps_get_exclude_options&security='.$get_exclude_options_nonce.'&from=post&type='.$posttype['name'].'&keyword=', 'relative' ),
 				);
 			}
 		}
@@ -326,7 +328,7 @@ class Global_Panel extends FrameWork\Admin_UI
 					'css'		=> 'width:600px; min-height:80px;',
 					'options'	=> $all_items,
 					'default'	=> $items_excluded,
-					'options_url' => admin_url( 'admin-ajax.php?action=wpps_get_exclude_options&from=taxonomy&type='.$taxonomy['name'].'&keyword=', 'relative' ),
+					'options_url' => admin_url( 'admin-ajax.php?action=wpps_get_exclude_options&security='.$get_exclude_options_nonce.'&from=taxonomy&type='.$taxonomy['name'].'&keyword=', 'relative' ),
 				);
 			}
 		}
