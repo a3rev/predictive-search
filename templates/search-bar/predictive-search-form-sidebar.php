@@ -34,7 +34,7 @@ $search_results_page = str_replace( array( 'http:', 'https:' ), '', get_permalin
 	data-ps-widget_template="<?php echo esc_attr( $ps_widget_template ); ?>"
 >
 
-	<div class="wpps_mobile_icon sidebar_temp" aria-label="<?php _e( 'Open Search', 'wp-predictive-search' ); ?>">
+	<div class="wpps_mobile_icon sidebar_temp" role="button" aria-label="<?php _e( 'Open Search', 'wp-predictive-search' ); ?>">
 		<div style="display: inline-flex; justify-content: center; align-items: center;">
 			<svg viewBox="0 0 24 24" height="25" width="25" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
 		</div>

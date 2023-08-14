@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: WordPress search, Predictive Search, Live Search, Elementor Search
 Requires at least: 5.6
-Tested up to: 6.2
-Stable tag: 1.2.3
+Tested up to: 6.3
+Stable tag: 1.2.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -106,6 +106,11 @@ Predictive Search WordPress
 
 == Changelog ==
 
+= 1.2.4 - 2023/08/14 =
+* This maintenance release has a tweak for compatibility with WordPress 6.3
+* Tweak - Add role=“button” attribute for Mobile Icon to resolve the SEO issue
+* Tweak - Test for compatibility with WordPress 6.3
+
 = 1.2.3 - 2023/05/15 =
 * This release has a security patch that affects all previous versions. Please update now.
 * Security - check nonce for admin-ajax.php
@@ -165,6 +170,9 @@ Predictive Search WordPress
 * Fix - Show correct of search mobile icon block on frontend
 
 == Upgrade Notice ==
+
+= 1.2.4 =
+This maintenance release has a tweak for compatibility with WordPress 6.3
 
 = 1.2.3 =
 This release has a security patch that affects all previous versions. Please update now.
