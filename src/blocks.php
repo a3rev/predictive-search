@@ -23,6 +23,8 @@ class Blocks {
 		// Hook: Editor assets.
 		add_action( 'enqueue_block_editor_assets', array( $this, 'cgb_editor_assets' ) );
 
+		add_action( 'enqueue_block_assets', array( $this, 'enqueue_block_assets' ) );
+
 		// Add all blocks to excerpt allowed
 		add_filter( 'excerpt_allowed_blocks', array( $this, 'excerpt_allowed_blocks' ) );
 
@@ -62,18 +64,36 @@ class Blocks {
 	}
 
 	public function create_blocks_section( $block_categories, $editor_context ) {
-		$block_categories = array_merge(
+
+		if ( wpps_current_theme_is_fse_theme() ) {
+			$block_categories = array_merge(
+				array(
+					array(
+						'slug' => 'wp-predictive-search-result-blocks',
+						'title' => __( 'WP Predictive Search Result Blocks', 'wp-predictive-search' ),
+						'icon' => '',
+					),
+				),
+				$block_categories
+			);
+		}
+
+		$category_slugs = wp_list_pluck( $block_categories, 'slug' );
+
+		if ( in_array( 'a3rev-blocks', $category_slugs ) ) {
+			return $block_categories;
+		}
+
+		return array_merge(
 			array(
 				array(
-					'slug' => 'wp-predictive-search-result-blocks',
-					'title' => __( 'WP Predictive Search Result Blocks', 'wp-predictive-search' ),
+					'slug' => 'a3rev-blocks',
+					'title' => __( 'a3rev Blocks' ),
 					'icon' => '',
 				),
 			),
 			$block_categories
 		);
-
-		return $block_categories;
 	}
 
 	public function register_block() {
@@ -83,9 +103,7 @@ class Blocks {
 			return;
 		}
 
-		if ( wpps_current_theme_is_fse_theme() ) {
-			add_filter( 'block_categories_all', array( $this, 'create_blocks_section' ), 10, 2 );
-		}
+		add_filter( 'block_categories_all', array( $this, 'create_blocks_section' ), 10, 2 );
 
 		wp_register_style( 'wp-predictive-search-style', WPPS_CSS_URL . '/wp_predictive_search.css', array(), WPPS_VERSION, 'all' );
 
@@ -120,14 +138,6 @@ class Blocks {
 			true // Enqueue the script in the footer.
 		);
 
-		// Styles.
-		wp_register_style(
-			'predictive-search-block-editor', // Handle.
-			plugins_url( 'dist/blocks.editor.build.css', dirname( __FILE__ ) ), // Block editor CSS.
-			array( 'wp-edit-blocks' ) // Dependency to include the CSS after it.
-			// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: File modification time.
-		);
-
 		global $wpps_cache;
 		$disabled_cat_dropdown = 0;
 		if ( ! $wpps_cache->enable_cat_cache() || ! $wpps_cache->cat_cache_is_built() ) {
@@ -155,6 +165,20 @@ class Blocks {
 			'placeholder'			=> WPPS_URL . '/src/blocks/item-featured-image/placeholder.png',
 			'theme'					=> wp_get_theme()->get_stylesheet(),
 		) );
+	}
+
+	public function enqueue_block_assets() {
+		if ( ! is_admin() ) {
+			return;
+		}
+		
+		// Styles.
+		wp_register_style(
+			'predictive-search-block-editor', // Handle.
+			plugins_url( 'dist/blocks.editor.build.css', dirname( __FILE__ ) ), // Block editor CSS.
+			array( 'wp-edit-blocks' ) // Dependency to include the CSS after it.
+			// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.editor.build.css' ) // Version: File modification time.
+		);
 	}
 
 	public function get_block_card_item() {

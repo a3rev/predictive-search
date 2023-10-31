@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: WordPress search, Predictive Search, Live Search, Elementor Search
 Requires at least: 5.6
-Tested up to: 6.3
-Stable tag: 1.2.4
+Tested up to: 6.4
+Stable tag: 1.2.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -106,6 +106,12 @@ Predictive Search WordPress
 
 == Changelog ==
 
+= 1.2.5 - 2023/10/30 =
+* This maintenance release has a tweak and a bug fix for compatibility with WordPress 6.4
+* Tweak - Tested for compatibility with WordPress 6.4
+* Tweak - call add action to 'enqueue_block_assets' to enqueue the 'predictive-search-block-editor' style for iframe load from Gutenberg. This tweak for work compatibility with WP 6.4
+* Fix - Show the Search Result Blocks on Block Themes FSE
+
 = 1.2.4 - 2023/08/14 =
 * This maintenance release has a tweak for compatibility with WordPress 6.3
 * Tweak - Add role=“button” attribute for Mobile Icon to resolve the SEO issue
@@ -170,6 +176,9 @@ Predictive Search WordPress
 * Fix - Show correct of search mobile icon block on frontend
 
 == Upgrade Notice ==
+
+= 1.2.5 =
+This maintenance release has a tweak and a bug fix for compatibility with WordPress 6.4
 
 = 1.2.4 =
 This maintenance release has a tweak for compatibility with WordPress 6.3
