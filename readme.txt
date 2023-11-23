@@ -2,9 +2,9 @@
 
 Contributors: a3rev, nguyencongtuan
 Tags: WordPress search, Predictive Search, Live Search, Elementor Search
-Requires at least: 5.6
-Tested up to: 6.4
-Stable tag: 1.2.5
+Requires at least: 6.0
+Tested up to: 6.4.1
+Stable tag: 1.2.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -106,6 +106,12 @@ Predictive Search WordPress
 
 == Changelog ==
 
+= 1.2.6 - 2023/11/23 =
+* This maintenance release has plugin framework updates for compatibility with PHP 8.1 onwards, plus compatibility with WordPress 6.4.1
+* Tweak - Test for compatibility with WordPress 6.4.1
+* Framework - Set parameter number of preg_match function from null to 0 for compatibility with PHP 8.1 onwards
+* Framework - Validate empty before call trim for option value
+
 = 1.2.5 - 2023/10/30 =
 * This maintenance release has a tweak and a bug fix for compatibility with WordPress 6.4
 * Tweak - Tested for compatibility with WordPress 6.4
@@ -176,6 +182,9 @@ Predictive Search WordPress
 * Fix - Show correct of search mobile icon block on frontend
 
 == Upgrade Notice ==
+
+= 1.2.6 =
+This maintenance release has plugin framework updates for compatibility with PHP 8.1 onwards, plus compatibility with WordPress 6.4.1
 
 = 1.2.5 =
 This maintenance release has a tweak and a bug fix for compatibility with WordPress 6.4

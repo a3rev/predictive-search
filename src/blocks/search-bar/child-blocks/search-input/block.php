@@ -68,7 +68,7 @@ class Search_Input extends Blocks\Frontend  {
 		?>
 		<div id="<?php echo esc_attr( $id ); ?>" class="<?php echo esc_attr( $classname ); ?>">
 			<div class="wpps_nav_field">
-				<input type="text" name="rs" class="wpps_search_keyword" id="wpps_search_keyword_"
+				<input type="text" name="rs" class="wpps_search_keyword" id="wpps_search_keyword_<?php echo isset( $attributes['rootID'] ) ? esc_attr( $attributes['rootID'] ) : ''; ?>"
 					aria-label="<?php _e( 'Keyword Search', 'wp-predictive-search' ); ?>"
 					onblur="if( this.value == '' ){ this.value = '<?php echo esc_js( $attributes['placeholder'] ); ?>'; }"
 					onfocus="if( this.value == '<?php echo esc_js( $attributes['placeholder'] ); ?>' ){ this.value = ''; }"
