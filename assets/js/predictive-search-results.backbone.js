@@ -294,6 +294,9 @@ $(function(){
 					}, 500 );
 				}
 			}
+
+			// For 3rd party plugin call trigger event
+			$(document).trigger('ps-result-items-added');
 		}
 		
 	});

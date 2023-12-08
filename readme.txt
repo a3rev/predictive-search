@@ -4,7 +4,7 @@ Contributors: a3rev, nguyencongtuan
 Tags: WordPress search, Predictive Search, Live Search, Elementor Search
 Requires at least: 6.0
 Tested up to: 6.4.1
-Stable tag: 1.2.6
+Stable tag: 1.3.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -106,6 +106,10 @@ Predictive Search WordPress
 
 == Changelog ==
 
+= 1.3.0 - 2023/12/08 =
+* This release adds a new developer trigger for firing custom scripts on Product Cards on search results pages. 
+* Dev - Define trigger “ps-result-items-added” after items are appended to search results page so 3rd party plugins can catch this event and add their custom script, for example masonry all items again.
+
 = 1.2.6 - 2023/11/23 =
 * This maintenance release has plugin framework updates for compatibility with PHP 8.1 onwards, plus compatibility with WordPress 6.4.1
 * Tweak - Test for compatibility with WordPress 6.4.1
@@ -182,6 +186,9 @@ Predictive Search WordPress
 * Fix - Show correct of search mobile icon block on frontend
 
 == Upgrade Notice ==
+
+= 1.3.0 =
+This release adds a new developer trigger for firing custom scripts on Product Cards on search results pages.
 
 = 1.2.6 =
 This maintenance release has plugin framework updates for compatibility with PHP 8.1 onwards, plus compatibility with WordPress 6.4.1
