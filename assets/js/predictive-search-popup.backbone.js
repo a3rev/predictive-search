@@ -275,7 +275,7 @@ jQuery( document ).ready( function( $ ) {
 					if ( keyword != '' ) {
 						$( this ).val( keyword );
 					}
-					if ( url != '' && url != null && url != '#' ) window.location = url;
+					// if ( url != '' && url != null && url != '#' ) window.location = url;
 				});
 			}).on('focus', function() {
 				$(this).parents('.wpps_container').addClass('wpps_container_active');

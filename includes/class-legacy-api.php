@@ -83,7 +83,7 @@ class Legacy_API {
 		if ( isset($_REQUEST['cat_in']) && trim( sanitize_text_field( wp_unslash( $_REQUEST['cat_in'] ) ) ) != '') $cat_in = sanitize_text_field( wp_unslash( $_REQUEST['cat_in'] ) );
 		if ( isset($_REQUEST['in_taxonomy']) && trim( sanitize_key( wp_unslash( $_REQUEST['in_taxonomy'] ) ) ) != '') $in_taxonomy = sanitize_key( wp_unslash( $_REQUEST['in_taxonomy'] ) );
 		if ( isset($_REQUEST['search_in']) && trim( sanitize_text_field( wp_unslash( $_REQUEST['search_in'] ) ) ) != '') $search_in = json_decode( sanitize_text_field( wp_unslash( $_REQUEST['search_in'] ) ), true );
-		if ( ! is_array($search_in) || count($search_in) < 1 || array_sum($search_in) < 1) $search_in = $search_in_default;
+		if ( empty( $search_in ) || ! is_array($search_in) || count($search_in) < 1 || array_sum($search_in) < 1) $search_in = $search_in_default;
 		if ( isset($_REQUEST['widget_template']) && trim( sanitize_key( wp_unslash( $_REQUEST['widget_template'] ) ) ) != '' ) $widget_template = sanitize_key( wp_unslash( $_REQUEST['widget_template'] ) );
 
 		if ( isset($_REQUEST['last_search_term']) && trim( sanitize_text_field( wp_unslash( $_REQUEST['last_search_term'] ) ) ) != '') $last_found_search_term = sanitize_text_field( wp_unslash( $_REQUEST['last_search_term'] ) );
