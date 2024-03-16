@@ -15,7 +15,9 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 				<span class="rs_name">{{= title }}</span>
 			</a>
 			<?php do_action( 'wpps_popup_tpl_item_meta' ); ?>
-			{{ if ( description != null && description != '' ) { }}<span class="rs_description">{{= description }}</span>{{ } }}
+			<a href="{{= url }}" aria-label="{{= title }}">
+				{{ if ( description != null && description != '' ) { }}<span class="rs_description">{{= description }}</span>{{ } }}
+			</a>
 			<?php do_action( 'wpps_popup_tpl_item_desc_after' ); ?>
 			<?php do_action( 'wpps_popup_tpl_item_category_before' ); ?>
 			{{ if ( categories.length > 0 ) { }}

@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: WordPress search, Predictive Search, Live Search, Elementor Search
 Requires at least: 6.0
-Tested up to: 6.4.2
-Stable tag: 1.3.2
+Tested up to: 6.4.3
+Stable tag: 1.3.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -106,6 +106,11 @@ Predictive Search WordPress
 
 == Changelog ==
 
+= 1.3.3 - 2024/03/16 =
+* This maintenance release has a bug fix on the search box dropdown results not redirecting to the item.
+* Tweak - Test for compatibility with WordPress 6.4.3
+* Fix - Redirect to item link when click on the description item, same for item image and item name
+
 = 1.3.2 - 2024/01/24 =
 * Tweak - Test for compatibility with WordPress 6.4.2
 * Tweak - Change depreciated media_buttons_context hook to media_buttons.
@@ -194,6 +199,9 @@ Predictive Search WordPress
 * Fix - Show correct of search mobile icon block on frontend
 
 == Upgrade Notice ==
+
+= 1.3.3 =
+This maintenance release has a bug fix on the search box dropdown results not redirecting to the item.
 
 = 1.3.1 =
 This release has a search results page bug fix from version 1.3.0
