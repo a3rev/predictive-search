@@ -30,10 +30,7 @@ function wpps_render_block_item_template( $attributes, $content, $block ) {
 
 	$item_card = $block_instance;
 
-	if ( ! isset( $_SESSION ) ) {
-		@session_start();
-	}
-	$_SESSION['ps_results_item_card'] = $item_card;
+	setcookie( 'ps_results_item_card', json_encode( $item_card ), time() + 3600, '/' );
 
 	$classnames = 'wp-block-post-template';
 	if ( isset( $block->context['columns'] ) && $block->context['columns'] > 1 ) {

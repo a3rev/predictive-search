@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: WordPress search, Predictive Search, Live Search, Elementor Search
 Requires at least: 6.0
-Tested up to: 6.4.3
-Stable tag: 1.3.3
+Tested up to: 6.6
+Stable tag: 1.4.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -106,6 +106,14 @@ Predictive Search WordPress
 
 == Changelog ==
 
+= 1.4.0 - 2024/07/12 =
+* This release includes a security vulnerability patch plus compatibility with WordPress 6.6 and WooCommerce 8.9.3 
+* Tweak - Tested for compatibility with WordPress 6.6
+* Tweak - Validate and correct block.json based schema from WordPress Block
+* Tweak - Update block.json with new layout variable name instead of experimentalLayout
+* Fix - Correct number of items on popup results
+* Security - Sanitize all parameters to prevent XSS injections.
+
 = 1.3.3 - 2024/03/16 =
 * This maintenance release has a bug fix on the search box dropdown results not redirecting to the item.
 * Tweak - Test for compatibility with WordPress 6.4.3
@@ -199,6 +207,9 @@ Predictive Search WordPress
 * Fix - Show correct of search mobile icon block on frontend
 
 == Upgrade Notice ==
+
+= 1.4.0 =
+This release includes a security vulnerability patch plus compatibility with WordPress 6.6 and WooCommerce 8.9.3 
 
 = 1.3.3 =
 This maintenance release has a bug fix on the search box dropdown results not redirecting to the item.

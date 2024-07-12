@@ -21,6 +21,7 @@ import './blocks/results-dropdown/child-blocks/dropdown-footer/block';
 import './blocks/results-dropdown/child-blocks/dropdown-items/block';
 import './blocks/results-dropdown/child-blocks/dropdown-title/block';
 
+// For FSE
 import './blocks/query-results/block';
 import './blocks/results-heading/block';
 import './blocks/results-filter-by/block';

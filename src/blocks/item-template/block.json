@@ -24,6 +24,9 @@
 		"reusable": false,
 		"html": false,
 		"align": false,
+		"layout": {
+			"allowEditing": false
+		},
 		"__experimentalLayout": {
 			"allowEditing": false
 		}

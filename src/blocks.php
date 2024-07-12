@@ -182,8 +182,8 @@ class Blocks {
 	}
 
 	public function get_block_card_item() {
-		if ( isset( $_SESSION['ps_results_item_card'] ) ) {
-			$block_instance = $_SESSION['ps_results_item_card'];
+		if ( isset( $_COOKIE['ps_results_item_card'] ) ) {
+			$block_instance = json_decode( stripslashes( $_COOKIE['ps_results_item_card'] ), true );
 			$block_content = ( new \WP_Block( $block_instance ) )->render( array( 'dynamic' => false ) );
 		} else {
 			$block_template = '<!-- wp:template-part {"slug":"ps-all-results-item","theme":"'. wp_get_theme()->get_stylesheet() .'"} /-->';

@@ -42,6 +42,7 @@
 			"margin": true,
 			"padding": true
 		},
+		"layout": true,
 		"__experimentalLayout": true
 	},
 	"editorStyle": ["predictive-search-block-editor", "wp-block-query-editor"],
