@@ -34,7 +34,7 @@ $search_results_page = str_replace( array( 'http:', 'https:' ), '', get_permalin
 	data-ps-widget_template="<?php echo esc_attr( $ps_widget_template ); ?>"
 >
 
-	<div class="wpps_mobile_icon sidebar_temp" role="button" aria-label="<?php _e( 'Open Search', 'wp-predictive-search' ); ?>">
+	<div class="wpps_mobile_icon sidebar_temp" role="button" aria-label="<?php esc_attr_e( 'Open Search', 'wp-predictive-search' ); ?>">
 		<div style="display: inline-flex; justify-content: center; align-items: center;">
 			<svg viewBox="0 0 24 24" height="25" width="25" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
 		</div>
@@ -71,8 +71,8 @@ $search_results_page = str_replace( array( 'http:', 'https:' ), '', get_permalin
 						</div>
 						<span class="wpps_nav_facade_label"><?php echo esc_html( $default_cat_label ); ?></span>
 					</div>
-					<select aria-label="<?php _e( 'Select Category', 'wp-predictive-search' ); ?>" class="wpps_category_selector" name="cat_in" data-ps-cat_max_wide="<?php echo esc_attr( $ps_args['cat_max_wide'] ); ?>" data-ps-taxonomy="<?php echo esc_attr( $ps_args['in_taxonomy'] ); ?>">
-						<option value="" selected="selected"><?php wpps_ict_t_e( 'All', __('All', 'wp-predictive-search' ) ); ?></option>
+					<select aria-label="<?php esc_attr_e( 'Select Category', 'wp-predictive-search' ); ?>" class="wpps_category_selector" name="cat_in" data-ps-cat_max_wide="<?php echo esc_attr( $ps_args['cat_max_wide'] ); ?>" data-ps-taxonomy="<?php echo esc_attr( $ps_args['in_taxonomy'] ); ?>">
+						<option value="" selected="selected"><?php esc_html_e( wpps_ict_t__( 'All', __('All', 'wp-predictive-search' ) ) ); ?></option>
 					<?php if ( $post_categories !== false ) { ?>
 						<?php foreach ( $post_categories as $category_data ) { ?>
 						<option <?php selected( $default_cat, $category_data['slug'], true ); ?> data-href="<?php echo esc_url( $category_data['url'] ); ?>" value="<?php echo esc_attr( $category_data['slug'] ); ?>"><?php echo esc_html( $category_data['name'] ); ?></option>
@@ -85,26 +85,26 @@ $search_results_page = str_replace( array( 'http:', 'https:' ), '', get_permalin
 			<input type="hidden" class="wpps_category_selector" name="cat_in" value="" data-ps-cat_max_wide="<?php echo esc_attr( $ps_args['cat_max_wide'] ); ?>" data-ps-taxonomy="<?php echo esc_attr( $ps_args['in_taxonomy'] ); ?>" />
 			<?php } ?>
 
-			<div class="wpps_nav_<?php echo ( 'left' === sanitize_key( wp_unslash( $ps_args['cat_align'] ) ) ? 'right' : 'left' ); ?>" aria-label="<?php _e( 'Search Now', 'wp-predictive-search' ); ?>">
+			<div class="wpps_nav_<?php echo ( 'left' === sanitize_key( wp_unslash( $ps_args['cat_align'] ) ) ? 'right' : 'left' ); ?>" aria-label="<?php esc_attr_e( 'Search Now', 'wp-predictive-search' ); ?>">
 				<div class="wpps_nav_submit">
 					<div class="wpps_nav_submit_icon">
 						<svg viewBox="0 0 24 24" height="16" width="16" fill="none" stroke="currentColor" xmlns="http://www.w3.org/2000/svg" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: inline-block; vertical-align: middle;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
 					</div>
-					<input class="wpps_nav_submit_bt" type="button" value="<?php echo __( 'Go', 'wp-predictive-search' ); ?>" aria-label="<?php _e( 'Go', 'wp-predictive-search' ); ?>">
+					<input class="wpps_nav_submit_bt" type="button" value="<?php esc_attr_e( 'Go', 'wp-predictive-search' ); ?>" aria-label="<?php esc_attr_e( 'Go', 'wp-predictive-search' ); ?>">
 				</div>
 			</div>
 
 			<div class="wpps_nav_fill">
 				<div class="wpps_nav_field">
 					<input type="text" name="rs" class="wpps_search_keyword" id="wpps_search_keyword_<?php echo esc_attr( $ps_id ); ?>"
-						aria-label="<?php _e( 'Keyword Search', 'wp-predictive-search' ); ?>"
+						aria-label="<?php esc_attr_e( 'Keyword Search', 'wp-predictive-search' ); ?>"
 						onblur="if( this.value == '' ){ this.value = '<?php echo esc_js( $ps_args['search_box_text'] ); ?>'; }"
 						onfocus="if( this.value == '<?php echo esc_js( $ps_args['search_box_text'] ); ?>' ){ this.value = ''; }"
 						value="<?php echo esc_attr( $ps_args['search_box_text'] ); ?>"
 						data-ps-id="<?php echo esc_attr( $ps_id ); ?>"
 						data-ps-default_text="<?php echo esc_attr( $ps_args['search_box_text'] ); ?>"
 					/>
-					<svg aria-hidden="true" viewBox="0 0 512 512" class="wpps_searching_icon" style="display: none;" aria-label="<?php _e( 'Searching', 'wp-predictive-search' ); ?>">
+					<svg aria-hidden="true" viewBox="0 0 512 512" class="wpps_searching_icon" style="display: none;" aria-label="<?php esc_attr_e( 'Searching', 'wp-predictive-search' ); ?>">
 						<path d="M288 39.056v16.659c0 10.804 7.281 20.159 17.686 23.066C383.204 100.434 440 171.518 440 256c0 101.689-82.295 184-184 184-101.689 0-184-82.295-184-184 0-84.47 56.786-155.564 134.312-177.219C216.719 75.874 224 66.517 224 55.712V39.064c0-15.709-14.834-27.153-30.046-23.234C86.603 43.482 7.394 141.206 8.003 257.332c.72 137.052 111.477 246.956 248.531 246.667C393.255 503.711 504 392.788 504 256c0-115.633-79.14-212.779-186.211-240.236C302.678 11.889 288 23.456 288 39.056z"></path>
 					</svg>
 				</div>

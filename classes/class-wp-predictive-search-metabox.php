@@ -70,7 +70,7 @@ class MetaBox
 		<div class="misc-pub-section">
 			<label>
 				<input type="checkbox" <?php checked( true, $is_excluded, true ); ?> value="1" name="ps_exclude_item" class="a3_ps_exclude_item" />
-				<?php echo __( 'Hide from Predictive Search results', 'wp-predictive-search' ); ?>
+				<?php esc_html_e( 'Hide from Predictive Search results', 'wp-predictive-search' ); ?>
 			</label>
 		</div>
 	<?php
@@ -85,14 +85,14 @@ class MetaBox
 		$ps_focuskw = $wpps_keyword_data->get_item( $postid );
 	?>
 		<div class="a3_ps_focus_keyword_container">
-			<p><?php echo __( "To hide from Predictive Search Results, use this post/page quick editor function or do it from the plugins settings.", 'wp-predictive-search' ); ?></p>
+			<p><?php esc_html_e( "To hide from Predictive Search Results, use this post/page quick editor function or do it from the plugins settings.", 'wp-predictive-search' ); ?></p>
 			<div class="wide_div">
-				<label for="_predictive_search_focuskw"><strong><?php _e('Focus Keywords', 'wp-predictive-search' ); ?></strong></label>
+				<label for="_predictive_search_focuskw"><strong><?php esc_html_e('Focus Keywords', 'wp-predictive-search' ); ?></strong></label>
 			</div>
 			<div class="wide_div">
 				<input type="text" value="<?php esc_attr_e( $ps_focuskw );?>" id="_predictive_search_focuskw" name="_predictive_search_focuskw" style="width:98%;" />
 			</div>
-			<span class="description"><?php echo __( 'Enter keywords by "," separating values. Example: iPhone, ios', 'wp-predictive-search' ); ?></span>
+			<span class="description"><?php esc_html_e( 'Enter keywords by "," separating values. Example: iPhone, ios', 'wp-predictive-search' ); ?></span>
         </div>
         <?php
 		// Add an nonce field so we can check for it later.

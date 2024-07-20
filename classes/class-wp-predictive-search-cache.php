@@ -171,7 +171,7 @@ class Cache
     		<p>
     			<?php echo sprintf( __( 'Refresh Predictive Search in Categories cache <a class="button button-primary wp_predictive_search_refresh_cache_bt" href="%s" target="_parent">Refresh Cache</a>' , 'wp-predictive-search' ), esc_url( $rebuild_cache_url ) ); ?>
     			<img class="wpps_cache_loading" src="<?php echo esc_url( WPPS_IMAGES_URL ); ?>/indicator.gif" style="display: none; width: auto; height: auto;" >
-    			<span class="wpps_cache_loaded" style="display: none; color: green; font-weight: 600;"><?php echo __( 'Cache Refreshed', 'wp-predictive-search' ); ?></span>
+    			<span class="wpps_cache_loaded" style="display: none; color: green; font-weight: 600;"><?php esc_html_e( 'Cache Refreshed', 'wp-predictive-search' ); ?></span>
     		</p>
     	</div>
 	<?php

@@ -106,14 +106,14 @@ class Results
         <div style="clear:both"></div>
         <div class="ps_more_result" id="ps_more_result_popup">
             <img src="<?php echo esc_url( WPPS_IMAGES_URL ); ?>/more-results-loader.gif" />
-            <div><em><?php wpps_ict_t_e( 'Loading Text', __('Loading More Results...', 'wp-predictive-search' ) ); ?></em></div>
+            <div><em><?php esc_html_e( wpps_ict_t__( 'Loading Text', __('Loading More Results...', 'wp-predictive-search' ) ) ); ?></em></div>
         </div>
-        <div class="ps_more_result" id="ps_no_more_result_popup"><em><?php wpps_ict_t_e( 'No More Result Text', __('No More Results to Show', 'wp-predictive-search' ) ); ?></em></div>
+        <div class="ps_more_result" id="ps_no_more_result_popup"><em><?php esc_html_e( wpps_ict_t__( 'No More Result Text', __('No More Results to Show', 'wp-predictive-search' ) ) ); ?></em></div>
         <div class="ps_more_result" id="ps_fetching_result_popup">
             <img src="<?php echo esc_url( WPPS_IMAGES_URL ); ?>/more-results-loader.gif" />
-            <div><em><?php wpps_ict_t_e( 'Fetching Text', __('Fetching search results...', 'wp-predictive-search' ) ); ?></em></div>
+            <div><em><?php esc_html_e( wpps_ict_t__( 'Fetching Text', __('Fetching search results...', 'wp-predictive-search' ) ) ); ?></em></div>
         </div>
-        <div class="ps_more_result" id="ps_no_result_popup"><em><?php wpps_ict_t_e( 'No Fetching Result Text', __('No Results to Show', 'wp-predictive-search' ) ); ?></em></div>
+        <div class="ps_more_result" id="ps_no_result_popup"><em><?php esc_html_e( wpps_ict_t__( 'No Fetching Result Text', __('No Results to Show', 'wp-predictive-search' ) ) ); ?></em></div>
         <div id="ps_footer_container"></div>
     	<?php
     }

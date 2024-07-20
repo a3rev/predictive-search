@@ -92,7 +92,7 @@ class Sync
     			- <?php echo esc_html( $warning_text ); ?>
     		</p>
     		<p>
-    			<a class="button button-primary" href="<?php echo esc_url( $sync_data_url ); ?>" target="_parent"><?php echo __( 'Sync Now' , 'wp-predictive-search' ); ?></a>
+    			<a class="button button-primary" href="<?php echo esc_url( $sync_data_url ); ?>" target="_parent"><?php esc_html_e( 'Sync Now' , 'wp-predictive-search' ); ?></a>
     		</p>
     	</div>
 	<?php

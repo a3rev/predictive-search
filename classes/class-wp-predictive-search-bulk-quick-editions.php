@@ -76,10 +76,10 @@ class Bulk_Quick_Editions
 		?>
 		<fieldset class="inline-edit-col-right inline-edit-predictive-search">
 			<div id="wp-predictive-search-fields-bulk" class="inline-edit-col">
-				<h4><?php _e( 'Predictive Search', 'wp-predictive-search' ); ?></h4>
+				<h4><?php esc_html_e( 'Predictive Search', 'wp-predictive-search' ); ?></h4>
                 <div class="">
                     <label class="inline-edit-tags">
-                        <span class="title" style="width:100px;"><?php _e( 'Focus Keywords', 'wp-predictive-search' ); ?></span> &nbsp;&nbsp;&nbsp;
+                        <span class="title" style="width:100px;"><?php esc_html_e( 'Focus Keywords', 'wp-predictive-search' ); ?></span> &nbsp;&nbsp;&nbsp;
                         <span class="">
                             <select class="change_ps_keyword change_to" name="change_ps_keyword">
                             <?php
@@ -95,13 +95,13 @@ class Bulk_Quick_Editions
                         </span>
                     </label>
                     <label class="wp-predictive-search-keyword-value">
-                        <textarea class="predictive_search_focuskw" name="_predictive_search_focuskw" rows="1" cols="22" autocomplete="off" placeholder="<?php _e( 'Enter Focus keywords', 'wp-predictive-search' ); ?>"></textarea>
+                        <textarea class="predictive_search_focuskw" name="_predictive_search_focuskw" rows="1" cols="22" autocomplete="off" placeholder="<?php esc_attr_e( 'Enter Focus keywords', 'wp-predictive-search' ); ?>"></textarea>
                     </label>
                 </div>
                 <div class="inline-edit-group"></div>
                 <div class="">
                     <label class="inline-edit-tags">
-                        <span class="title" style="width:100px;"><?php _e( 'Show / Hide', 'wp-predictive-search' ); ?></span> &nbsp;&nbsp;&nbsp;
+                        <span class="title" style="width:100px;"><?php esc_html_e( 'Show / Hide', 'wp-predictive-search' ); ?></span> &nbsp;&nbsp;&nbsp;
                         <span class="">
                             <select class="ps_exclude_item" name="ps_exclude_item">
                             <?php
