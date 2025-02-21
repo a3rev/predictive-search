@@ -1,6 +1,6 @@
 === Predictive Search ===
 
-Contributors: a3rev, nguyencongtuan
+Contributors: a3rev, nguyencongtuan, rajanand346
 Tags: WordPress search, Predictive Search, Live Search, Elementor Search
 Requires at least: 6.0
 Tested up to: 6.6
