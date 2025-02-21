@@ -17,7 +17,7 @@ WP Predictive Search engine delivers users instant and changing results as they 
 = KEY FEATURES =
 
 * Search objects include Post name, Page name, Post Categories and Post Tags
-* Works with any WordPress Theme, Classic or Blockor Page Builder.
+* Works with any WordPress Theme, Classic or Block or Page Builder.
 * Add Search Box via, Widget, Shortcode, PHP tag or Block.
 * Fully compatible with Full Site Editor.
 * Predictive Search engine delivers 100% accurate results, 100% of the time.
