@@ -3,8 +3,8 @@
 Contributors: a3rev, nguyencongtuan
 Tags: WordPress search, Predictive Search, Live Search, Elementor Search
 Requires at least: 6.0
-Tested up to: 6.6
-Stable tag: 1.4.1
+Tested up to: 6.8
+Stable tag: 1.4.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -105,6 +105,11 @@ Predictive Search WordPress
 * MySQL version 5.6 or greater is recommended
 
 == Changelog ==
+
+= 1.4.2 - 2025/04/24 =
+* This maintenance release has a bug fix plus tested for compatibility with WordPress 6.8
+* Fix - validate key of items_search_default array 
+* Tweak - Test for compatibility with WordPress 6.8
 
 = 1.4.1 - 2024/07/20 =
 * This maintenance release has a security hardening patch. Please update now.
@@ -211,6 +216,9 @@ Predictive Search WordPress
 * Fix - Show correct of search mobile icon block on frontend
 
 == Upgrade Notice ==
+
+= 1.4.2 =
+This maintenance release has a bug fix plus tested for compatibility with WordPress 6.8
 
 = 1.4.1 =
 This maintenance release has a security hardening patch. Please upgrade now.

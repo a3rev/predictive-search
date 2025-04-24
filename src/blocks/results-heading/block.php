@@ -25,7 +25,10 @@ function wpps_render_block_results_heading( $attributes, $content, $block ) {
     global $ps_current_search_in;
     $items_search_default = $wp_predictive_search->get_items_search();
 
-    $search_object = '<span class="ps_heading_search_in_name">' . $items_search_default[$ps_current_search_in]['name']. '</span>';
+	$search_object = '';
+	if ( ! empty( $items_search_default ) && ! empty( $ps_current_search_in ) && isset( $items_search_default[ $ps_current_search_in ] ) ) {
+		$search_object = '<span class="ps_heading_search_in_name">' . $items_search_default[ $ps_current_search_in ]['name'] . '</span>';
+	}
 
     $content = str_replace( '%%object%%', $search_object, $content );
     $content = str_replace( '%%keyword%%', $search_keyword, $content );
