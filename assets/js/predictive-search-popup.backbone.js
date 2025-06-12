@@ -144,8 +144,13 @@ jQuery( document ).ready( function( $ ) {
 				this.collection.add( data );
 			}.bind( this ));
 
+			let wpps_bar = null;
 			var ps_id = $( this.predictive_search_input ).data('ps-id');
-			var wpps_bar = $( '.wpps_bar-' + ps_id );
+			if ( '' != ps_id ) {
+				wpps_bar = $( '.wpps_bar-' + ps_id );
+			} else {
+				wpps_bar = $( this.predictive_search_input ).parents('.wpps_bar');
+			}
 
 			if ( this.original_ps_search_other == '' ) {
 				this.original_ps_search_other = wpps_bar.data('ps-search_other');

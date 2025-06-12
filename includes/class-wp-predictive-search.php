@@ -146,6 +146,9 @@ class Main
 	}
 
 	public function general_sql( $main_sql ) {
+		if ( empty( $main_sql ) ) {
+			return '';
+		}
 
 		$select_sql = '';
 		if ( is_array( $main_sql['select'] ) && count( $main_sql['select'] ) > 0 ) {
@@ -294,10 +297,25 @@ class Main
 			$wpml_sql['where'][] = " AND ic.language_code = '".$current_lang."' AND ic.element_type = 'post_{$post_type}' ";
 		}
 
-		$main_sql = array_merge_recursive( $main_sql, $term_relationships_sql );
-		$main_sql = array_merge_recursive( $main_sql, $wpml_sql );
-		$main_sql = array_merge_recursive( $main_sql, $ps_keyword_sql );
-		$main_sql = array_merge_recursive( $main_sql, $postmeta_sql );
+		if ( ! is_array( $main_sql ) ) {
+			$main_sql = array();
+		}
+
+		if ( is_array( $term_relationships_sql ) ) {
+			$main_sql = array_merge_recursive( $main_sql, $term_relationships_sql );
+		}
+
+		if ( is_array( $wpml_sql ) ) {
+			$main_sql = array_merge_recursive( $main_sql, $wpml_sql );
+		}
+
+		if ( is_array( $ps_keyword_sql ) ) {
+			$main_sql = array_merge_recursive( $main_sql, $ps_keyword_sql );
+		}
+
+		if ( is_array( $postmeta_sql ) ) {
+			$main_sql = array_merge_recursive( $main_sql, $postmeta_sql );
+		}
 
 		$sql = $this->general_sql( $main_sql );
 
@@ -311,6 +329,10 @@ class Main
 		global $wpdb;
 
 		$sql = $this->get_post_search_sql( $search_keyword, 1, 0, $wpps_search_focus_enable, $wpps_search_focus_plugin, $post_type, $term_id, $current_lang, true );
+
+		if ( empty( $sql ) ) {
+			return false;
+		}
 
 		$sql = "SELECT EXISTS( " . $sql . ")";
 
@@ -478,6 +500,9 @@ class Main
 			$wpml_sql['where'][] = " AND ic.language_code = '".$current_lang."' AND ic.element_type = 'tax_{$taxonomy}' ";
 		}
 
+		if ( ! is_array( $main_sql ) ) {
+			$main_sql = array();
+		}
 		$main_sql = array_merge_recursive( $main_sql, $wpml_sql );
 
 		$sql = $this->general_sql( $main_sql );
@@ -492,6 +517,10 @@ class Main
 		global $wpdb;
 
 		$sql = $this->get_taxonomy_search_sql( $search_keyword, 1, 0, $taxonomy, $current_lang, true );
+
+		if ( empty( $sql ) ) {
+			return false;
+		}
 
 		$sql = "SELECT EXISTS( " . $sql . ")";
 
