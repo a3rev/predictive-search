@@ -32,6 +32,17 @@ class Hook_Backbone
 		global $wp_predictive_search_header_template_settings;
 		global $wpps_all_results_pages_settings;
 
+		if ( ! $wp_predictive_search_sidebar_template_settings ) {
+			$wp_predictive_search_sidebar_template_settings = get_option( 'wp_predictive_search_sidebar_template_settings' );
+		}
+		if ( ! $wp_predictive_search_header_template_settings ) {
+			$wp_predictive_search_header_template_settings = get_option( 'wp_predictive_search_header_template_settings' );
+		}
+
+		if ( ! $wpps_all_results_pages_settings ) {
+			$wpps_all_results_pages_settings = get_option( 'wpps_all_results_pages_settings' );
+		}
+
 		$google_fonts[] = $wp_predictive_search_sidebar_template_settings['sidebar_category_dropdown_font']['face'];
 		$google_fonts[] = $wp_predictive_search_sidebar_template_settings['sidebar_input_font']['face'];
 		$google_fonts[] = $wp_predictive_search_sidebar_template_settings['sidebar_popup_heading_font']['face'];
@@ -109,6 +120,9 @@ class Hook_Backbone
 		$cache_timeout  = get_option( 'wpps_search_cache_timeout', 24 );
 
 		global $wp_predictive_search_input_box_settings;
+		if ( ! $wp_predictive_search_input_box_settings ) {
+			$wp_predictive_search_input_box_settings = get_option( 'wp_predictive_search_input_box_settings' );
+		}
 		$allow_result_effect = $wp_predictive_search_input_box_settings['allow_result_effect'];
 		$show_effect         = $wp_predictive_search_input_box_settings['show_effect'];
 

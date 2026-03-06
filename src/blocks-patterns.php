@@ -18,8 +18,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Patterns {
 
 	public function __construct() {
-		$this->register_patterns();
-		$this->register_pattern_categories();
+		add_action( 'init', array( $this, 'register_patterns' ) );
+		add_action( 'init', array( $this, 'register_pattern_categories' ) );
 	}
 
 	public function register_patterns() {

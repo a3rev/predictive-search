@@ -90,13 +90,13 @@ class Performance extends FrameWork\Admin_UI
 			add_action( $this->plugin_name . '_admin_field_' . $custom_type, array( $this, $custom_type ) );
 		}
 		
-		add_action( 'plugins_loaded', array( $this, 'init_form_fields' ), 1 );
+		add_action( 'init', array( $this, 'init_form_fields' ), 1 );
 		$this->subtab_init();
 		
 		$this->form_messages = array(
-				'success_message'	=> __( 'Performance Settings successfully saved.', 'wp-predictive-search' ),
-				'error_message'		=> __( 'Error: Performance Settings can not save.', 'wp-predictive-search' ),
-				'reset_message'		=> __( 'Performance Settings successfully reseted.', 'wp-predictive-search' ),
+				'success_message'	=> __( 'Performance Settings successfully saved.' ),
+				'error_message'		=> __( 'Error: Performance Settings can not save.' ),
+				'reset_message'		=> __( 'Performance Settings successfully reseted.' ),
 			);
 
 		add_action( $this->plugin_name . '-' . $this->form_key . '_settings_end', array( $this, 'include_script' ) );

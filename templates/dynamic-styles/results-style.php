@@ -2,6 +2,10 @@
 
 // Search Bar Sidebar Template
 global $wpps_all_results_pages_settings;
+if ( ! $wpps_all_results_pages_settings ) {
+	$wpps_all_results_pages_settings = get_option( 'wpps_all_results_pages_settings' );
+}
+
 extract( $wpps_all_results_pages_settings );
 if ( 1 == $grid_card_column ) {
 	$grid_card_column_gap = 0;

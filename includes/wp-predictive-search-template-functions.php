@@ -136,6 +136,10 @@ function wpps_search_form( $ps_id = '', $template = 'sidebar', $args = array() )
 function wpps_search_form_sidebar_tpl( $ps_id, $args = array() ) {
 	global $wp_predictive_search_sidebar_template_settings;
 
+	if ( ! $wp_predictive_search_sidebar_template_settings ) {
+		$wp_predictive_search_sidebar_template_settings = get_option( 'wp_predictive_search_sidebar_template_settings' );
+	}
+
 	if ( ! is_array( $args ) ) {
 		$args = array();
 	}
@@ -161,6 +165,10 @@ function wpps_search_form_sidebar_tpl( $ps_id, $args = array() ) {
  */
 function wpps_search_form_header_tpl( $ps_id, $args = array() ) {
 	global $wp_predictive_search_header_template_settings;
+
+	if ( ! $wp_predictive_search_header_template_settings ) {
+		$wp_predictive_search_header_template_settings = get_option( 'wp_predictive_search_header_template_settings' );
+	}
 
 	if ( ! is_array( $args ) ) {
 		$args = array();
@@ -200,6 +208,10 @@ function wpps_get_popup_item_tpl() {
 function wpps_get_popup_footer_sidebar_tpl() {
 	global $wp_predictive_search_sidebar_template_settings;
 
+	if ( ! $wp_predictive_search_sidebar_template_settings ) {
+		$wp_predictive_search_sidebar_template_settings = get_option( 'wp_predictive_search_sidebar_template_settings' );
+	}
+
 	wpps_get_template( 'popup/footer-sidebar.php',
 		apply_filters( 'wpps_popup_footer_sidebar_tpl_args', array(
 			'popup_seemore_text' => $wp_predictive_search_sidebar_template_settings['sidebar_popup_seemore_text']
@@ -214,6 +226,10 @@ function wpps_get_popup_footer_sidebar_tpl() {
  */
 function wpps_get_popup_footer_header_tpl() {
 	global $wp_predictive_search_header_template_settings;
+
+	if ( ! $wp_predictive_search_header_template_settings ) {
+		$wp_predictive_search_header_template_settings = get_option( 'wp_predictive_search_header_template_settings' );
+	}
 
 	wpps_get_template( 'popup/footer-header.php',
 		apply_filters( 'wpps_popup_footer_header_tpl_args', array(

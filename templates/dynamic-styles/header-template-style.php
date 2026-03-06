@@ -2,6 +2,9 @@
 
 // Search Bar Header Template
 global $wp_predictive_search_header_template_settings;
+if ( ! $wp_predictive_search_header_template_settings ) {
+	$wp_predictive_search_header_template_settings = get_option( 'wp_predictive_search_header_template_settings' );
+}
 extract( $wp_predictive_search_header_template_settings );
 
 ?>

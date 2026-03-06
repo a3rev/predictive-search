@@ -79,13 +79,13 @@ class Search_Box extends FrameWork\Admin_UI
 	/*-----------------------------------------------------------------------------------*/
 	public function __construct() {
 		
-		$this->init_form_fields();
+		add_action( 'init', array( $this, 'init_form_fields' ), 1 );
 		$this->subtab_init();
 		
 		$this->form_messages = array(
-				'success_message'	=> __( 'Search Box Settings successfully saved.', 'wp-predictive-search' ),
-				'error_message'		=> __( 'Error: Search Box Settings can not save.', 'wp-predictive-search' ),
-				'reset_message'		=> __( 'Search Box Settings successfully reseted.', 'wp-predictive-search' ),
+				'success_message'	=> __( 'Search Box Settings successfully saved.' ),
+				'error_message'		=> __( 'Error: Search Box Settings can not save.' ),
+				'reset_message'		=> __( 'Search Box Settings successfully reseted.' ),
 			);
 		
 		add_action( $this->plugin_name . '-' . $this->form_key . '_settings_end', array( $this, 'include_script' ) );

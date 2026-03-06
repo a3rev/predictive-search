@@ -79,13 +79,13 @@ class Global_Panel extends FrameWork\Admin_UI
 	/*-----------------------------------------------------------------------------------*/
 	public function __construct() {
 
-		add_action( 'plugins_loaded', array( $this, 'init_form_fields' ), 1 );
+		add_action( 'init', array( $this, 'init_form_fields' ), 1 );
 		$this->subtab_init();
 
 		$this->form_messages = array(
-				'success_message'	=> __( 'Global Settings successfully saved.', 'wp-predictive-search' ),
-				'error_message'		=> __( 'Error: Global Settings can not save.', 'wp-predictive-search' ),
-				'reset_message'		=> __( 'Global Settings successfully reseted.', 'wp-predictive-search' ),
+				'success_message'	=> __( 'Global Settings successfully saved.' ),
+				'error_message'		=> __( 'Error: Global Settings can not save.' ),
+				'reset_message'		=> __( 'Global Settings successfully reseted.' ),
 			);
 
 		add_action( $this->plugin_name . '-' . $this->form_key . '_settings_end', array( $this, 'include_script' ) );

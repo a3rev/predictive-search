@@ -1214,7 +1214,7 @@ class a3_lessc {
 					$name = $name . ": ";
 				}
 
-				$this->throwError("${name}expecting $expectedArgs arguments, got $numValues");
+				$this->throwError("{$name}expecting $expectedArgs arguments, got $numValues");
 			}
 
 			return $values;
@@ -1559,7 +1559,7 @@ class a3_lessc {
 		}
 
 		// type based operators
-		$fname = "op_${ltype}_${rtype}";
+		$fname = "op_{$ltype}_{$rtype}";
 		if (is_callable(array($this, $fname))) {
 			$out = $this->$fname($op, $left, $right);
 			if (!is_null($out)) return $out;

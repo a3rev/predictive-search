@@ -6,6 +6,8 @@
  *
  */
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
+
+$line_vertical = '';
 ?>
 
 <?php if ( ! empty( $ps_search_list ) && count( $ps_search_list ) > 0 ) { ?>

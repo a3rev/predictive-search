@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+	"nvm-correct": "nvm use 14",
     "start": "cgb-scripts start",
     "build": "cgb-scripts build",
     "eject": "cgb-scripts eject"
