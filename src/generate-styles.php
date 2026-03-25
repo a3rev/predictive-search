@@ -152,7 +152,6 @@ class Styles {
 
         $important = $isImportant ? '!important' : '';
 
-        $borderStyleValue = isset( $attributes[ $borderStyle ] ) ? $attributes[ $borderStyle ] : 'solid';
 	    $borderOpacityValue = ! isset( $attributes[ $borderOpacity ] ) ? 1 : $attributes[ $borderOpacity ] / 100;
 
         $styleCSS = '';
@@ -165,7 +164,7 @@ class Styles {
 
         $styleCSS .= isset( $attributes[ $borderBottom ] ) ? 'border-bottom-width:'.$attributes[ $borderBottom ].'px'.$important.';' : '';
 
-        $styleCSS .= 'border-style:'.$borderStyleValue.$important.';';
+        $styleCSS .= isset( $attributes[ $borderStyle ] ) ? 'border-style:'.$attributes[ $borderStyle ].$important.';' : '';
 
         $styleCSS .= isset( $attributes[ $borderColor ] ) ? 'border-color:'. $this->hex2rgba( $attributes[ $borderColor ], $borderOpacityValue ).$important.';' : '';
 

@@ -249,6 +249,7 @@ export default class Inspector extends Component {
 					/>
 					{ showImg && (
 						<RangeControl
+							__next40pxDefaultSize
 							label={ __( 'Image Size' ) }
 							value={ itemImgSize }
 							onChange={ value => setAttributes( { itemImgSize: value ? value : 64 } ) }
@@ -277,6 +278,7 @@ export default class Inspector extends Component {
 					{ showDesc && (
 						<Fragment>
 							<RangeControl
+								__next40pxDefaultSize
 								label={ __( 'Characters Count' ) }
 								help={ __( 'Number of results description characters' ) }
 								value={ charactersDescCount }

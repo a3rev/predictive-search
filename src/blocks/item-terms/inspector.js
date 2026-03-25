@@ -32,6 +32,7 @@ export default class Inspector extends Component {
 			<InspectorControls>
 				<PanelBody title={ __( 'Settings' ) }>
 					<TextControl
+						__next40pxDefaultSize
 						autoComplete="off"
 						label={ __( 'Separator' ) }
 						value={ separator || '' }

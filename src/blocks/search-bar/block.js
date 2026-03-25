@@ -45,7 +45,7 @@ const shadowAttributes = ShadowAttributes( 'shadow' );
 registerBlockType( 'wp-predictive-search/search-bar', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
 	title: __( 'Predictive Bar' ), // Block title.
-	apiVersion: 2,
+	apiVersion: 3,
 	icon: {
 		src: IconChild,
 		foreground: '#24b6f1',

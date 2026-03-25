@@ -9,7 +9,14 @@ import { MarginControl, IconBox } from '@bit/a3revsoftware.blockpress.spacing';
 
 const { __ } = wp.i18n;
 const { Component, Fragment } = wp.element;
-const { PanelBody, BaseControl, ButtonGroup, Button, RangeControl, ToggleControl } = wp.components;
+const {
+	PanelBody,
+	BaseControl,
+	RangeControl,
+	ToggleControl,
+	__experimentalToggleGroupControl: ToggleGroupControl,
+	__experimentalToggleGroupControlOption: ToggleGroupControlOption,
+} = wp.components;
 
 /**
  * Inspector controls
@@ -40,24 +47,24 @@ export default class InspectorSearchBoxContainer extends Component {
 								/>
 								{ 'mobile' !== tab.name && (
 									<Fragment>
-										<ButtonGroup
-											className="a3-blockpress-size-type-options"
-											aria-label={ __( 'Search Box Width Type' ) }
+										<ToggleGroupControl
+											__next40pxDefaultSize
+											__nextHasNoMarginBottom
+											label={ __( 'Search Box Width Type' ) }
+											value={ widthUnit }
+											onChange={ ( value ) => setAttributes( { [ `${ tab.name }widthUnit` ]: value } ) }
+											isBlock
 										>
 											{ map( widthUnitList, ( { name, key } ) => (
-												<Button
+												<ToggleGroupControlOption
 													key={ key }
-													className="size-type-btn"
-													isSmall
-													isPrimary={ widthUnit === key }
-													aria-pressed={ widthUnit === key }
-													onClick={ () => setAttributes( { [ `${ tab.name }widthUnit` ]: key } ) }
-												>
-													{ name }
-												</Button>
+													value={ key }
+													label={ name }
+												/>
 											) ) }
-										</ButtonGroup>
+										</ToggleGroupControl>
 										<RangeControl
+											__next40pxDefaultSize
 											label={ __( 'Search Box Width' ) }
 											value={ width }
 											onChange={ value => setAttributes( { [ `${ tab.name }width` ]: value ? value : 100 } ) }

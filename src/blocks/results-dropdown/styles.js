@@ -36,18 +36,23 @@ const customStyles = ( attributes, clientId ) => {
 
 	let inputWide, inputOffsetLeft, inputOffsetRight;
 	if ( 'input' === containerWide ) {
-		const rootFormClientId = select( 'core/block-editor' ).getBlockParentsByBlockName( clientId, 'wp-predictive-search/form' );
-		const rootFormAttributes = select( 'core/block-editor' ).getBlockAttributes( rootFormClientId );
-		const { align } = rootFormAttributes;
+		const rootFormClientIds = select( 'core/block-editor' ).getBlockParentsByBlockName( clientId, 'wp-predictive-search/form' );
+		const rootFormClientId = rootFormClientIds && rootFormClientIds.length > 0 ? rootFormClientIds[ 0 ] : null;
+		const rootFormAttributes = rootFormClientId ? select( 'core/block-editor' ).getBlockAttributes( rootFormClientId ) : null;
+		const align = rootFormAttributes ? rootFormAttributes.align : undefined;
 
 		const currentElement = document.getElementById( 'block-' + clientId );
 		if ( currentElement ) {
 			const searchBarElement = currentElement.parentElement.querySelector( '.wpps_container' );
-			const inputElement = searchBarElement.querySelector( '.wpps_nav_fill' );
-			const searchBarWide = searchBarElement.offsetWidth;
-			inputWide = inputElement.offsetWidth;
-			inputOffsetLeft = inputElement.offsetLeft;
-			inputOffsetRight = searchBarWide - inputWide - inputOffsetLeft;
+			if ( searchBarElement ) {
+				const inputElement = searchBarElement.querySelector( '.wpps_nav_fill' );
+				if ( inputElement ) {
+					const searchBarWide = searchBarElement.offsetWidth;
+					inputWide = inputElement.offsetWidth;
+					inputOffsetLeft = inputElement.offsetLeft;
+					inputOffsetRight = searchBarWide - inputWide - inputOffsetLeft;
+				}
+			}
 		}
 
 		styleCSS += `

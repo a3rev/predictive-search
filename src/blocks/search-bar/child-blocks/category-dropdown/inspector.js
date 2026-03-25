@@ -136,6 +136,7 @@ export default class Inspector extends Component {
 					{ 1 != predictive_search_vars.disabled_cat_dropdown && enable && (
 						<Fragment>
 							<SelectControl
+								__next40pxDefaultSize
 								label={ __( 'Select Taxonomy' ) }
 								help={ __( 'Select a taxonomy for Category Dropdown' ) }
 								value={ taxonomy }
@@ -143,6 +144,7 @@ export default class Inspector extends Component {
 								options={ taxonomies }
 							/>
 							<SelectControl
+								__next40pxDefaultSize
 								label={ __( 'Default Category' ) }
 								help={ __( 'Set category as default selected category for Category Dropdown' ) }
 								value={ defaultCategory }
@@ -150,6 +152,7 @@ export default class Inspector extends Component {
 								options={ categoryList }
 							/>
 							<RangeControl
+								__next40pxDefaultSize
 								label={ __( 'Maximum Width' ) }
 								help={ __( '% width of Search Box' ) }
 								value={ maxWidth }
@@ -273,6 +276,7 @@ export default class Inspector extends Component {
 								/>
 							</BaseControl>
 							<RangeControl
+								__next40pxDefaultSize
 								label={ __( 'Size' ) }
 								value={ iconSize }
 								onChange={ value => setAttributes( { iconSize: value ? value : 12 } ) }

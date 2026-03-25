@@ -1,5 +1,5 @@
 {
-	"apiVersion": 2,
+	"apiVersion": 3,
 	"name": "wpps-result/item-title",
 	"title": "Item Title",
 	"category": "wp-predictive-search-result-blocks",

@@ -1,5 +1,5 @@
 {
-	"apiVersion": 2,
+	"apiVersion": 3,
 	"name": "wpps-result/item-excerpt",
 	"title": "Item Excerpt",
 	"category": "wp-predictive-search-result-blocks",

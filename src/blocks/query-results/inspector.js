@@ -31,6 +31,7 @@ export default class Inspector extends Component {
 			<InspectorControls>
 				<PanelBody title={ __( 'Settings' ) }>
 					<RangeControl
+						__next40pxDefaultSize
 						label={ __( 'Items per Page' ) }
 						value={ perPage }
 						onChange={ ( value ) =>
@@ -40,6 +41,7 @@ export default class Inspector extends Component {
 						max={ 100 }
 					/>
 					<RangeControl
+						__next40pxDefaultSize
 						label={ __( 'Columns' ) }
 						value={ columns }
 						onChange={ ( value ) =>

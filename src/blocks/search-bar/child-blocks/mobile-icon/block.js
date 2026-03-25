@@ -36,7 +36,7 @@ const { Fragment } = wp.element;
 registerBlockType( 'wp-predictive-search/mobile-icon', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
 	title: __( 'Mobile Icon' ), // Block title.
-	apiVersion: 2,
+	apiVersion: 3,
 	description: __( 'Show mobile icon on tablet or mobile devices.' ),
 	icon: {
 		src: IconChild,

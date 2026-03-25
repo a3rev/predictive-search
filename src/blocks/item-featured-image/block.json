@@ -1,5 +1,5 @@
 {
-	"apiVersion": 2,
+	"apiVersion": 3,
 	"name": "wpps-result/item-featured-image",
 	"title": "Item Featured Image",
 	"category": "wp-predictive-search-result-blocks",

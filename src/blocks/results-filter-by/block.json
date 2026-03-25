@@ -1,6 +1,6 @@
 {
 	"$schema": "https://schemas.wp.org/trunk/block.json",
-	"apiVersion": 2,
+	"apiVersion": 3,
 	"name": "wpps-result/filter-by",
 	"title": "Results Filter By",
 	"category": "wp-predictive-search-result-blocks",

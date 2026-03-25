@@ -37,6 +37,7 @@ export default class Inspector extends Component {
 			<InspectorControls>
 				<PanelBody title={ __( 'Settings' ) }>
 					<RangeControl
+						__next40pxDefaultSize
 						label={ __( 'Character Count' ) }
 						value={ charactersCount }
 						onChange={ ( value ) =>
@@ -62,6 +63,7 @@ export default class Inspector extends Component {
 								checked={ linkTarget === '_blank' }
 							/>
 							<TextControl
+								__next40pxDefaultSize
 								label={ __( 'Link rel' ) }
 								value={ rel }
 								onChange={ ( newRel ) =>

@@ -44,7 +44,7 @@ const borderRadiusAttributes = BorderRadiusAttributes( '' );
 registerBlockType( 'wp-predictive-search/search-icon', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
 	title: __( 'Search Icon Button' ), // Block title.
-	apiVersion: 2,
+	apiVersion: 3,
 	icon: {
 		src: IconChild,
 		foreground: '#24b6f1',
