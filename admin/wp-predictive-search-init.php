@@ -62,7 +62,7 @@ function wp_predictive_search_packages_init() {
 
 
 }
-wp_predictive_search_packages_init();
+add_action( 'init', 'wp_predictive_search_packages_init' );
 
 function woops_init() {
 	if ( get_option('wp_predictive_search_just_installed') ) {
@@ -77,11 +77,10 @@ function woops_init() {
 		update_option( 'wp_predictive_search_just_confirm', 1 );
 	}
 
-	wp_predictive_search_plugin_textdomain();
 }
 
-// Add language
-add_action('init', 'woops_init');
+add_action( 'after_setup_theme', 'wp_predictive_search_plugin_textdomain' );
+add_action( 'init', 'woops_init' );
 
 // Add custom style to dashboard
 add_action( 'admin_enqueue_scripts', array( '\A3Rev\WPPredictiveSearch\Hook_Filter', 'a3_wp_admin' ) );
