@@ -78,6 +78,7 @@ class ComposerStaticInit9c7fe15482ff91473a3ac9bafd4261e0
         'A3Rev\\WPPredictiveSearch\\Hook_Filter' => __DIR__ . '/../..' . '/classes/class-wp-predictive-search-filter.php',
         'A3Rev\\WPPredictiveSearch\\Legacy_API' => __DIR__ . '/../..' . '/includes/class-legacy-api.php',
         'A3Rev\\WPPredictiveSearch\\Main' => __DIR__ . '/../..' . '/includes/class-wp-predictive-search.php',
+        'A3Rev\\WPPredictiveSearch\\EditorSidebar' => __DIR__ . '/../..' . '/classes/class-wp-predictive-search-editor-sidebar.php',
         'A3Rev\\WPPredictiveSearch\\MetaBox' => __DIR__ . '/../..' . '/classes/class-wp-predictive-search-metabox.php',
         'A3Rev\\WPPredictiveSearch\\Results' => __DIR__ . '/../..' . '/classes/class-wp-predictive-search-results.php',
         'A3Rev\\WPPredictiveSearch\\Schedule' => __DIR__ . '/../..' . '/classes/class-wp-predictive-search-schedule.php',

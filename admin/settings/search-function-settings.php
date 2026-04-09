@@ -176,8 +176,8 @@ class Search_Function extends FrameWork\Admin_UI
 	/*-----------------------------------------------------------------------------------*/
 	public function init_form_fields() {
 		global $wp_predictive_search;
-		$posttypes_support = $wp_predictive_search->posttypes_support();
-		$taxonomies_support = $wp_predictive_search->taxonomies_support();
+		$posttypes_support = isset( $wp_predictive_search ) ? $wp_predictive_search->posttypes_support() : array();
+		$taxonomies_support = isset( $wp_predictive_search ) ? $wp_predictive_search->taxonomies_support() : array();
 
 		$disabled_cat_dropdown = false;
 		if ( is_admin() ) {

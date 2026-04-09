@@ -432,10 +432,12 @@ class Search_Box extends FrameWork\Admin_UI
 		wp_enqueue_script( 'bootstrap-modal' );
 
 		global $wpps_errors_log;
-		$build_category_cache_error_log = trim( $wpps_errors_log->get_error( 'build_category_cache' ) );
+		$build_category_cache_error_log = isset( $wpps_errors_log ) ? trim( $wpps_errors_log->get_error( 'build_category_cache' ) ) : '';
 
 		echo '<div class="build_category_cache_error_container">';
-		$wpps_errors_log->error_modal( 'build_category_cache', $build_category_cache_error_log );
+		if ( isset( $wpps_errors_log ) ) {
+			$wpps_errors_log->error_modal( 'build_category_cache', $build_category_cache_error_log );
+		}
 		echo '</div>';
 ?>
 <style type="text/css">

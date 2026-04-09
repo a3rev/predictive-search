@@ -20,12 +20,17 @@ class MetaBox
 		global $wp_predictive_search;
 		$posttypes_slug = $wp_predictive_search->posttypes_slug_support();
 
-		add_action( 'post_submitbox_misc_actions', array( __CLASS__, 'hide_from_results_box' ) );
+		$current_screen = get_current_screen();
+		$is_block_editor = ( $current_screen && method_exists( $current_screen, 'is_block_editor' ) && $current_screen->is_block_editor() );
+
+		if ( ! $is_block_editor ) {
+			add_action( 'post_submitbox_misc_actions', array( __CLASS__, 'hide_from_results_box' ) );
+		}
 
 		add_meta_box( 'wp_predictive_search_metabox', __('Predictive Search Meta', 'wp-predictive-search' ) , array( __CLASS__, 'data_metabox' ), $posttypes_slug, 'side', 'high'
-			, array( 
-				'__block_editor_compatible_meta_box' => true,
-				'__back_compat_meta_box' => false,
+			, array(
+				'__block_editor_compatible_meta_box' => false,
+				'__back_compat_meta_box' => true,
 			) );
 	}
 

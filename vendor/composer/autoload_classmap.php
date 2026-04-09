@@ -59,6 +59,7 @@ return array(
     'A3Rev\\WPPredictiveSearch\\Hook_Filter' => $baseDir . '/classes/class-wp-predictive-search-filter.php',
     'A3Rev\\WPPredictiveSearch\\Legacy_API' => $baseDir . '/includes/class-legacy-api.php',
     'A3Rev\\WPPredictiveSearch\\Main' => $baseDir . '/includes/class-wp-predictive-search.php',
+    'A3Rev\\WPPredictiveSearch\\EditorSidebar' => $baseDir . '/classes/class-wp-predictive-search-editor-sidebar.php',
     'A3Rev\\WPPredictiveSearch\\MetaBox' => $baseDir . '/classes/class-wp-predictive-search-metabox.php',
     'A3Rev\\WPPredictiveSearch\\Results' => $baseDir . '/classes/class-wp-predictive-search-results.php',
     'A3Rev\\WPPredictiveSearch\\Schedule' => $baseDir . '/classes/class-wp-predictive-search-schedule.php',
