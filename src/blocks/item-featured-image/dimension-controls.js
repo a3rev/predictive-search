@@ -13,7 +13,7 @@ const {
 } = wp.components;
 const {
     InspectorControls,
-    useSetting,
+    useSettings,
 } = wp.blockEditor || wp.editor;
 
 const { Fragment } = wp.element;
@@ -60,8 +60,9 @@ const DimensionControls = ( {
     imageSizeOptions = [],
 } ) => {
     const defaultUnits = [ 'px', '%', 'vw', 'em', 'rem' ];
+    const [ spacingUnits ] = useSettings( 'spacing.units' );
     const units = useCustomUnits( {
-        availableUnits: useSetting( 'spacing.units' ) || defaultUnits,
+        availableUnits: spacingUnits || defaultUnits,
     } );
     const onDimensionChange = ( dimension, nextValue ) => {
         const parsedValue = parseFloat( nextValue );
@@ -77,7 +78,7 @@ const DimensionControls = ( {
     };
     const scaleLabel = _x( 'Scale', 'Image scaling options' );
     return (
-        <InspectorControls __experimentalGroup="dimensions" group="dimensions">
+        <InspectorControls group="dimensions">
             <ToolsPanelItem
                 className="single-column"
                 hasValue={ () => !! height }
@@ -90,6 +91,7 @@ const DimensionControls = ( {
                 panelId={ clientId }
             >
                 <UnitControl
+                    __next40pxDefaultSize
                     label={ __( 'Height' ) }
                     labelPosition="top"
                     value={ height || '' }
@@ -112,6 +114,7 @@ const DimensionControls = ( {
                 panelId={ clientId }
             >
                 <UnitControl
+                    __next40pxDefaultSize
                     label={ __( 'Width' ) }
                     labelPosition="top"
                     value={ width || '' }
@@ -138,6 +141,8 @@ const DimensionControls = ( {
                     panelId={ clientId }
                 >
                     <ToggleGroupControl
+                        __next40pxDefaultSize
+                        __nextHasNoMarginBottom
                         label={ scaleLabel }
                         value={ scale }
                         help={ scaleHelp[ scale ] }
@@ -166,6 +171,7 @@ const DimensionControls = ( {
                     panelId={ clientId }
                 >
                     <SelectControl
+                        __next40pxDefaultSize
                         label={ __( 'Image size' ) }
                         value={ sizeSlug || DEFAULT_SIZE }
                         options={ imageSizeOptions }

@@ -51,6 +51,7 @@ export default class Inspector extends Component {
 						onChange={ value => setAttributes( { layout: value } ) }
 					/>
 					<RangeControl
+						__next40pxDefaultSize
 						label={ __( 'Search Bar Height' ) }
 						value={ height }
 						onChange={ value => setAttributes( { height: value ? value : 35 } ) }

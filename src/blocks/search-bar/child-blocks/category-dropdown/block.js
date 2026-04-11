@@ -42,7 +42,7 @@ const typographyAttributes = TypographyAttributes( 'typo' );
 registerBlockType( 'wp-predictive-search/category-dropdown', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
 	title: __( 'Category Dropdown' ), // Block title.
-	apiVersion: 2,
+	apiVersion: 3,
 	icon: {
 		src: IconChild,
 		foreground: '#24b6f1',

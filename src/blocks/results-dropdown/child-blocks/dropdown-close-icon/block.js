@@ -40,7 +40,7 @@ const spacingAttributes = SpacingAttributes( '' );
 registerBlockType( 'wp-predictive-search/dropdown-close-icon', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
 	title: __( 'Result Dropdown Close Icon' ), // Block title.
-	apiVersion: 2,
+	apiVersion: 3,
 	description: __( 'This icon show on mobile only' ),
 	icon: {
 		src: IconChild,

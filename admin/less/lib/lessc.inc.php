@@ -62,6 +62,13 @@ class a3_lessc {
 
 	protected $allParsedFiles = array();
 
+	protected $parser = null;
+	protected $env = null;
+	protected $scope = null;
+	protected $formatter = null;
+	protected $_parseFile = null;
+	protected $formatterName = null;
+
 	// set to the parser that generated the current line when compiling
 	// so we know how to create error messages
 	protected $sourceParser = null;
@@ -2186,6 +2193,19 @@ class a3_lessc {
 class a3_lessc_parser {
 	static protected $nextBlockId = 0; // used to uniquely identify blocks
 
+	protected $eatWhiteDefault = true;
+	protected $lessc = null;
+	protected $sourceName = null;
+	public $writeComments = false;
+	public $count = 0;
+	protected $line = 1;
+	protected $env = null;
+	public $buffer = '';
+	protected $inExp = false;
+	protected $seenComments = array();
+	protected $commentsSeen = array();
+	protected $currentProperty = null;
+
 	static protected $precedence = array(
 		'=<' => 0,
 		'>=' => 0,
@@ -3579,6 +3599,8 @@ class a3_lessc_formatter_classic {
 	public $breakSelectors = false;
 
 	public $compressColors = false;
+
+	public $indentLevel = 0;
 
 	public function __construct() {
 		$this->indentLevel = 0;

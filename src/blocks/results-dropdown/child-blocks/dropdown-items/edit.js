@@ -76,17 +76,19 @@ function DropdownItemsEdit( props ) {
 		/>
 	);
 
+	const preventDefault = ( e ) => e.preventDefault();
+
 	const myItem = ( avatar, name, cat ) => {
 		return (
 			<div className={ 'ajax_search_content' } >
 				<div className={ 'result_row' }>
-					{ showImg && ( <span className={ 'rs_avatar' }><a href="#">{ avatar }</a></span> ) }
+					{ showImg && ( <span className={ 'rs_avatar' }><a href="#" onClick={ preventDefault }>{ avatar }</a></span> ) }
 					<div className={ 'rs_content_popup' }>
-						<a href="#">
+						<a href="#" onClick={ preventDefault }>
 							<span className="rs_name">{ name }</span>
 							{ showDesc && ( <span className="rs_description">{ shortDescText }...</span> ) }
 						</a>
-						{ showCat && ( <span className="rs_cat posted_in">{ __( 'Category' ) }: <a className="rs_cat_link" href="#">{ cat }</a></span> ) }
+						{ showCat && ( <span className="rs_cat posted_in">{ __( 'Category' ) }: <a className="rs_cat_link" href="#" onClick={ preventDefault }>{ cat }</a></span> ) }
 					</div>
 				</div>
 			</div>

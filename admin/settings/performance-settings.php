@@ -241,9 +241,9 @@ class Performance extends FrameWork\Admin_UI
 	public function init_form_fields() {
 
 		global $wp_predictive_search;
-		$posttypes_support = $wp_predictive_search->posttypes_support();
-		$taxonomies_support = $wp_predictive_search->taxonomies_support();
-		$taxonomies_slug_support = $wp_predictive_search->taxonomies_slug_support();
+		$posttypes_support = isset( $wp_predictive_search ) ? $wp_predictive_search->posttypes_support() : array();
+		$taxonomies_support = isset( $wp_predictive_search ) ? $wp_predictive_search->taxonomies_support() : array();
+		$taxonomies_slug_support = isset( $wp_predictive_search ) ? $wp_predictive_search->taxonomies_slug_support() : array();
 
 		$sync_button_text = __( 'Start Sync', 'wp-predictive-search' );
 		$synced_full_data = false;
@@ -399,7 +399,7 @@ class Performance extends FrameWork\Admin_UI
 
 		// If have Error log on Sync
 		global $wpps_errors_log;
-		$auto_synced_error_log   = trim( $wpps_errors_log->get_error( 'auto_sync' ) );
+		$auto_synced_error_log   = isset( $wpps_errors_log ) ? trim( $wpps_errors_log->get_error( 'auto_sync' ) ) : '';
 
   		// Define settings
      	$this->form_fields = apply_filters( $this->option_name . '_settings_fields', array(
@@ -618,15 +618,17 @@ class Performance extends FrameWork\Admin_UI
 		wp_enqueue_script( 'bootstrap-modal' );
 
 		global $wpps_errors_log;
-		$auto_synced_error_log   = trim( $wpps_errors_log->get_error( 'auto_sync' ) );
-		$manual_synced_error_log = trim( $wpps_errors_log->get_error( 'manual_sync' ) );
+		$auto_synced_error_log   = isset( $wpps_errors_log ) ? trim( $wpps_errors_log->get_error( 'auto_sync' ) ) : '';
+		$manual_synced_error_log = isset( $wpps_errors_log ) ? trim( $wpps_errors_log->get_error( 'manual_sync' ) ) : '';
 
-		if ( '' != $auto_synced_error_log ) {
+		if ( '' != $auto_synced_error_log && isset( $wpps_errors_log ) ) {
 			$wpps_errors_log->error_modal( 'auto_sync', $auto_synced_error_log );
 		}
 
 		echo '<div class="manual_sync_error_container">';
-		$wpps_errors_log->error_modal( 'manual_sync', $manual_synced_error_log );
+		if ( isset( $wpps_errors_log ) ) {
+			$wpps_errors_log->error_modal( 'manual_sync', $manual_synced_error_log );
+		}
 		echo '</div>';
 ?>
 <style type="text/css">

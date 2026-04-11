@@ -70,7 +70,7 @@ function DropdownFooterEdit( props ) {
 					value={ moreText }
 					allowedFormats={ [ 'core/bold', 'core/italic' ] }
 				/>
-				<a href="#">
+				<a href="#" onClick={ ( e ) => e.preventDefault() }>
 					{ __( 'Item Name' ) }
 					{ myIcon }
 				</a>

@@ -43,7 +43,7 @@ const spacingAttributes = SpacingAttributes( '' );
 registerBlockType( 'wp-predictive-search/dropdown-footer', {
 	// Block name. Block names must be string that contains a namespace prefix. Example: my-plugin/my-custom-block.
 	title: __( 'Results Dropdown Footer' ), // Block title.
-	apiVersion: 2,
+	apiVersion: 3,
 	icon: {
 		src: IconChild,
 		foreground: '#24b6f1',

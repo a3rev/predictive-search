@@ -124,8 +124,8 @@ class Global_Panel extends FrameWork\Admin_UI
 	/*-----------------------------------------------------------------------------------*/
 	public function after_save_settings() {
 		global $wp_predictive_search;
-		$posttypes_support = $wp_predictive_search->posttypes_support();
-		$taxonomies_support = $wp_predictive_search->taxonomies_support();
+		$posttypes_support = isset( $wp_predictive_search ) ? $wp_predictive_search->posttypes_support() : array();
+		$taxonomies_support = isset( $wp_predictive_search ) ? $wp_predictive_search->taxonomies_support() : array();
 
 		if ( ( isset( $_POST['bt_save_settings'] ) || isset( $_POST['bt_reset_settings'] ) ) && get_option( $this->plugin_name . '_clean_on_deletion' ) == 'no' )  {
 			$uninstallable_plugins = (array) get_option('uninstall_plugins');
@@ -244,8 +244,8 @@ class Global_Panel extends FrameWork\Admin_UI
 
 		global $wpdb;
 		global $wp_predictive_search;
-		$posttypes_support = $wp_predictive_search->posttypes_support();
-		$taxonomies_support = $wp_predictive_search->taxonomies_support();
+		$posttypes_support = isset( $wp_predictive_search ) ? $wp_predictive_search->posttypes_support() : array();
+		$taxonomies_support = isset( $wp_predictive_search ) ? $wp_predictive_search->taxonomies_support() : array();
 
 		$get_exclude_options_nonce = wp_create_nonce( 'wp_predictive_search_get_exclude_options' );
 	

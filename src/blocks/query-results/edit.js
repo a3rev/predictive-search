@@ -48,8 +48,9 @@ export function QueryContent( {
 
 	return (
 		<Fragment>
-			<InspectorControls __experimentalGroup="advanced" group="advanced">
+			<InspectorControls group="advanced">
 				<SelectControl
+					__next40pxDefaultSize
 					label={ __( 'HTML element' ) }
 					options={ [
 						{ label: __( 'Default (<div>)' ), value: 'div' },

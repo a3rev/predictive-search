@@ -78,19 +78,19 @@ export default function ResultsFilterEdit( props ) {
 				} ) }
 			>
 				<span { ...	( { className: classnames( 'rs_result_other_item_activated', className ) } ) }>
-					<a className="ps_navigation ps_navigationpost" href="#">{ __( 'Post' ) }</a>
+					<a className="ps_navigation ps_navigationpost" href="#" onClick={ ( e ) => e.preventDefault() }>{ __( 'Post' ) }</a>
 				</span>
 				<span className="ps_navigation_divider"></span>
 				<span { ...useBlockProps( { className } ) }>
-					<a className="ps_navigation ps_navigationpage" href="#">{ __( 'Page' ) }</a>
+					<a className="ps_navigation ps_navigationpage" href="#" onClick={ ( e ) => e.preventDefault() }>{ __( 'Page' ) }</a>
 				</span>
 				<span className="ps_navigation_divider"></span>
 				<span { ...useBlockProps( { className } ) }>
-					<a className="ps_navigation ps_navigationpost_categories" href="#">{ __( 'Post Categories' ) }</a>
+					<a className="ps_navigation ps_navigationpost_categories" href="#" onClick={ ( e ) => e.preventDefault() }>{ __( 'Post Categories' ) }</a>
 				</span>
 				<span className="ps_navigation_divider"></span>
 				<span { ...useBlockProps( { className } ) }>
-					<a className="ps_navigation ps_navigationpost_tags" href="#">{ __( 'Post Tags' ) }</a>
+					<a className="ps_navigation ps_navigationpost_tags" href="#" onClick={ ( e ) => e.preventDefault() }>{ __( 'Post Tags' ) }</a>
 				</span>
 			</div>
 		</Fragment>

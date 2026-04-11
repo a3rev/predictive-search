@@ -62,6 +62,7 @@ export default class InspectorNumberItems extends Component {
 						<div className="ps-number-items-container">
 							<div className="left-col">
 								<RangeControl
+									__next40pxDefaultSize
 									key={ key }
 									label={ __( 'Number of Items' ) }
 									value={ numberPostTypes[ key ] ? numberPostTypes[ key ] : 0 }
@@ -75,6 +76,7 @@ export default class InspectorNumberItems extends Component {
 							</div>
 							<div className="right-col">
 						        <TextControl
+						        	__next40pxDefaultSize
 						        	label={ __( 'Order Display' ) }
 									value={ orderItems[ key ] ? orderItems[ key ] : 0 }
 									type={ 'number' }
@@ -90,6 +92,7 @@ export default class InspectorNumberItems extends Component {
 						<div className="ps-number-items-container">
 							<div className="left-col">
 								<RangeControl
+									__next40pxDefaultSize
 									key={ key }
 									label={ __( 'Number of Items' ) }
 									value={ numberCustomTypes[ key ] ? numberCustomTypes[ key ] : 0 }
@@ -103,6 +106,7 @@ export default class InspectorNumberItems extends Component {
 							</div>
 							<div className="right-col">
 						        <TextControl
+						        	__next40pxDefaultSize
 						        	label={ __( 'Order Display' ) }
 									value={ orderItems[ key ] ? orderItems[ key ] : 0 }
 									type={ 'number' }
@@ -118,6 +122,7 @@ export default class InspectorNumberItems extends Component {
 						<div className="ps-number-items-container">
 							<div className="left-col">
 								<RangeControl
+									__next40pxDefaultSize
 									key={ key }
 									label={ __( 'Number of Items' ) }
 									value={ numberTaxonomies[ key ] ? numberTaxonomies[ key ] : 0 }
@@ -131,6 +136,7 @@ export default class InspectorNumberItems extends Component {
 							</div>
 							<div className="right-col">
 						        <TextControl
+						        	__next40pxDefaultSize
 						        	label={ __( 'Order Display' ) }
 									value={ orderItems[ key ] ? orderItems[ key ] : 0 }
 									type={ 'number' }

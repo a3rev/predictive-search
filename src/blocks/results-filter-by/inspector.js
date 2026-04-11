@@ -47,6 +47,7 @@ export default class Inspector extends Component {
 					{ enableDivider && (
 						<Fragment>
 							<RangeControl
+								__next40pxDefaultSize
 								label={ __( 'Size' ) }
 								value={ dividerSize }
 								onChange={ ( value ) =>
@@ -56,6 +57,7 @@ export default class Inspector extends Component {
 								max={ 20 }
 							/>
 							<RangeControl
+								__next40pxDefaultSize
 								label={ __( 'Space' ) }
 								value={ dividerSpace }
 								onChange={ ( value ) =>

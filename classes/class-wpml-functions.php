@@ -16,7 +16,7 @@ class WPML_Functions
 	
 	public function __construct() {
 		
-		add_action( 'plugins_loaded', array( $this, 'plugins_loaded' ) );
+		add_action( 'after_setup_theme', array( $this, 'plugins_loaded' ), 20 );
 		
 		$this->wpml_ict_t();
 		

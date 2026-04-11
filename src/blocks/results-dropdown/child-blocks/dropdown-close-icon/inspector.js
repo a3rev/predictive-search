@@ -46,6 +46,7 @@ export default class Inspector extends Component {
 					initialOpen={ false }
 				>
 					<RangeControl
+						__next40pxDefaultSize
 						label={ __( 'Size' ) }
 						value={ iconSize }
 						onChange={ value => setAttributes( { iconSize: value ? value : 20 } ) }

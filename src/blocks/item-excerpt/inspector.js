@@ -35,6 +35,7 @@ export default class Inspector extends Component {
 			<InspectorControls>
 				<PanelBody title={ __( 'Settings' ) }>
 					<RangeControl
+						__next40pxDefaultSize
 						label={ __( 'Character Count' ) }
 						value={ charactersCount }
 						onChange={ ( value ) =>
