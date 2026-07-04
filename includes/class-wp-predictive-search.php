@@ -294,7 +294,7 @@ class Main
 
 		if ( class_exists('SitePress') && '' != $current_lang ) {
 			$wpml_sql['join']    = " INNER JOIN ".$wpdb->prefix."icl_translations AS ic ON (ic.element_id = pp.post_id) ";
-			$wpml_sql['where'][] = " AND ic.language_code = '".$current_lang."' AND ic.element_type = 'post_{$post_type}' ";
+			$wpml_sql['where'][] = $wpdb->prepare( " AND ic.language_code = %s AND ic.element_type = %s ", $current_lang, 'post_' . $post_type );
 		}
 
 		if ( ! is_array( $main_sql ) ) {
@@ -497,7 +497,7 @@ class Main
 
 		if ( class_exists('SitePress') && '' != $current_lang ) {
 			$wpml_sql['join']    = " INNER JOIN ".$wpdb->prefix."icl_translations AS ic ON (ic.element_id = {$table_alias}.term_taxonomy_id) ";
-			$wpml_sql['where'][] = " AND ic.language_code = '".$current_lang."' AND ic.element_type = 'tax_{$taxonomy}' ";
+			$wpml_sql['where'][] = $wpdb->prepare( " AND ic.language_code = %s AND ic.element_type = %s ", $current_lang, 'tax_' . $taxonomy );
 		}
 
 		if ( ! is_array( $main_sql ) ) {

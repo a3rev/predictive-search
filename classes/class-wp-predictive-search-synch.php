@@ -35,22 +35,16 @@ class Sync
 		if ( is_admin() ) {
 			// AJAX sync data
 			add_action('wp_ajax_wp_predictive_search_start_sync', array( $this, 'wp_predictive_search_start_sync_ajax' ) );
-			add_action('wp_ajax_nopriv_wp_predictive_search_start_sync', array( $this, 'wp_predictive_search_start_sync_ajax' ) );
 
 			add_action('wp_ajax_wp_predictive_search_sync_posttype', array( $this, 'wp_predictive_search_sync_posts_ajax' ) );
-			add_action('wp_ajax_nopriv_wp_predictive_search_sync_posttype', array( $this, 'wp_predictive_search_sync_posts_ajax' ) );
 
 			add_action('wp_ajax_wp_predictive_search_sync_taxonomy', array( $this, 'wp_predictive_search_sync_taxonomy_ajax' ) );
-			add_action('wp_ajax_nopriv_wp_predictive_search_sync_taxonomy', array( $this, 'wp_predictive_search_sync_taxonomy_ajax' ) );
 
 			add_action('wp_ajax_wp_predictive_search_sync_relationships', array( $this, 'wp_predictive_search_sync_relationships_ajax' ) );
-			add_action('wp_ajax_nopriv_wp_predictive_search_sync_relationships', array( $this, 'wp_predictive_search_sync_relationships_ajax' ) );
 
 			add_action('wp_ajax_wp_predictive_search_sync_end', array( $this, 'wp_predictive_search_sync_end_ajax' ) );
-			add_action('wp_ajax_nopriv_wp_predictive_search_sync_end', array( $this, 'wp_predictive_search_sync_end_ajax' ) );
 
 			add_action('wp_ajax_wp_predictive_search_manual_sync_error', array( $this, 'wp_predictive_search_manual_sync_error_ajax' ) );
-			add_action('wp_ajax_nopriv_wp_predictive_search_manual_sync_error', array( $this, 'wp_predictive_search_manual_sync_error_ajax' ) );
 		}
 	}
 
@@ -225,6 +219,10 @@ class Sync
 	public function wp_predictive_search_start_sync_ajax() {
 		check_ajax_referer( WPPS_KEY . '_a3_admin_ui_event', 'security' );
 
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( -1, 403 );
+		}
+
 		$result = $this->wp_predictive_search_start_sync( $this->error_id );
 
 		echo json_encode( $result );
@@ -234,6 +232,10 @@ class Sync
 
 	public function wp_predictive_search_sync_taxonomy_ajax() {
 		check_ajax_referer( WPPS_KEY . '_a3_admin_ui_event', 'security' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( -1, 403 );
+		}
 
 		if ( isset( $_POST['taxonomy'] ) ) {
 			$taxonomy = is_array( $_POST['taxonomy'] ) ? array_map( 'sanitize_key', wp_unslash( $_POST['taxonomy'] ) ) : array( sanitize_key( wp_unslash( $_POST['taxonomy'] ) ) );
@@ -251,6 +253,10 @@ class Sync
 	public function wp_predictive_search_sync_relationships_ajax() {
 		check_ajax_referer( WPPS_KEY . '_a3_admin_ui_event', 'security' );
 
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( -1, 403 );
+		}
+
 		$result = $this->wp_predictive_search_sync_relationships( $this->error_id );
 
 		echo json_encode( $result );
@@ -260,6 +266,10 @@ class Sync
 
 	public function wp_predictive_search_sync_posts_ajax() {
 		check_ajax_referer( WPPS_KEY . '_a3_admin_ui_event', 'security' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( -1, 403 );
+		}
 
 		if ( isset( $_POST['posttype'] ) ) {
 			$posttype = sanitize_key( wp_unslash( $_POST['posttype'] ) );
@@ -277,6 +287,10 @@ class Sync
 	public function wp_predictive_search_manual_sync_error_ajax() {
 		check_ajax_referer( 'wp_predictive_search_manual_sync_error', 'security' );
 
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( -1, 403 );
+		}
+
 		global $wpps_errors_log;
 
 		$manual_synced_error_log = trim( $wpps_errors_log->get_error( 'manual_sync' ) );
@@ -286,6 +300,10 @@ class Sync
 
 	public function wp_predictive_search_sync_end_ajax() {
 		check_ajax_referer( 'wp_predictive_search_sync_end', 'security' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( -1, 403 );
+		}
 
 		update_option( 'wp_predictive_search_synced_posts_data', 1 );
 		update_option( 'wp_predictive_search_manual_synced_completed_time', current_time( 'timestamp' ) );
