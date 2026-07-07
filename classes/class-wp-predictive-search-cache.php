@@ -42,13 +42,10 @@ class Cache
 		if ( is_admin() ) {
 			// AJAX refresh cache
 			add_action('wp_ajax_wp_predictive_search_refresh_cache_' . $taxonomy, array( $this, 'wp_predictive_search_refresh_cache_ajax' ) );
-			add_action('wp_ajax_nopriv_wp_predictive_search_refresh_cache_' . $taxonomy, array( $this, 'wp_predictive_search_refresh_cache_ajax' ) );
 
 			add_action('wp_ajax_wp_predictive_search_rebuild_cache_' . $taxonomy, array( $this, 'wp_predictive_search_rebuild_cat_cache_ajax' ) );
-			add_action('wp_ajax_nopriv_wp_predictive_search_rebuild_cache_' . $taxonomy, array( $this, 'wp_predictive_search_rebuild_cat_cache_ajax' ) );
 
 			add_action('wp_ajax_wp_predictive_search_build_cache_error_' . $taxonomy, array( $this, 'wp_predictive_search_build_category_cache_error_ajax' ) );
-			add_action('wp_ajax_nopriv_wp_predictive_search_build_cache_error_' . $taxonomy, array( $this, 'wp_predictive_search_build_category_cache_error_ajax' ) );
 		}
 	}
 
@@ -105,6 +102,10 @@ class Cache
 	public function wp_predictive_search_rebuild_cat_cache_ajax() {
 		check_ajax_referer( WPPS_KEY . '_a3_admin_ui_event', 'security' );
 
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( -1, 403 );
+		}
+
 		$this->preload_category_dropdown_cache();
 
 		echo json_encode( array( 'status' => 'success', 'date' => date_i18n( get_option( 'date_format' ) . ' - ' . get_option( 'time_format' ) ) ) );
@@ -117,6 +118,10 @@ class Cache
 
 		check_ajax_referer( 'wp-predictive-search-refresh-cache', 'security' );
 
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( -1, 403 );
+		}
+
 		$this->preload_category_dropdown_cache();
 
 		die();
@@ -124,6 +129,10 @@ class Cache
 
 	public function wp_predictive_search_build_category_cache_error_ajax() {
 		check_ajax_referer( 'wp_predictive_search_build_cache_error_category', 'security' );
+
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( -1, 403 );
+		}
 
 		global $wpps_errors_log;
 

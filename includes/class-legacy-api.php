@@ -45,7 +45,7 @@ class Legacy_API {
 
 	public function get_result_popup() {
 		if ( ! WP_DEBUG || ( WP_DEBUG && ! WP_DEBUG_DISPLAY ) ) {
-            @ini_set( 'display_errors', false ); // Turn off display_errors to prevent malformed JSON.
+            ini_set( 'display_errors', false ); // Turn off display_errors to prevent malformed JSON.
         }
         
 		global $wpps_search_page_id;
@@ -54,7 +54,7 @@ class Legacy_API {
 		$taxonomies_support = $wp_predictive_search->taxonomies_support();
 
 		$current_lang = '';
-		if ( class_exists('SitePress') ) {
+		if ( class_exists('SitePress') && isset( $_REQUEST['ps_lang'] ) ) {
 			$current_lang = sanitize_text_field( wp_unslash( $_REQUEST['ps_lang'] ) );
 		}
 
@@ -238,7 +238,7 @@ class Legacy_API {
 
 	public function get_all_results() {
 		if ( ! WP_DEBUG || ( WP_DEBUG && ! WP_DEBUG_DISPLAY ) ) {
-            @ini_set( 'display_errors', false ); // Turn off display_errors to prevent malformed JSON.
+            ini_set( 'display_errors', false ); // Turn off display_errors to prevent malformed JSON.
         }
 
 		global $wp_predictive_search;
@@ -246,7 +246,7 @@ class Legacy_API {
 		$taxonomies_support = $wp_predictive_search->taxonomies_support();
 
 		$current_lang = '';
-		if ( class_exists('SitePress') ) {
+		if ( class_exists('SitePress') && isset( $_REQUEST['ps_lang'] ) ) {
 			$current_lang = sanitize_text_field( wp_unslash( $_REQUEST['ps_lang'] ) );
 		}
 

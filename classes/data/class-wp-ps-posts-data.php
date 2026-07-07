@@ -192,7 +192,8 @@ class Posts
 		if ( empty( $post_types ) ) {
 			return $wpdb->get_var( "SELECT post_id FROM {$wpdb->ps_posts} ORDER BY post_id DESC LIMIT 0,1" );
 		} else {
-			return $wpdb->get_var( "SELECT post_id FROM {$wpdb->ps_posts} WHERE post_type IN ('". implode("','", $post_types ) ."') ORDER BY post_id DESC LIMIT 0,1" );
+			$post_types = wpps_esc_sql_array_s( $post_types );
+			return $wpdb->get_var( "SELECT post_id FROM {$wpdb->ps_posts} WHERE post_type IN (". implode(",", $post_types ) .") ORDER BY post_id DESC LIMIT 0,1" );
 		}
 	}
 
@@ -218,9 +219,12 @@ class Posts
 
 		$post_status = $wp_predictive_search->post_status_support();
 
+		$post_types_esc  = wpps_esc_sql_array_s( $post_types );
+		$post_status_esc = wpps_esc_sql_array_s( $post_status );
+
 		$is_not_newest = $wpdb->get_var(
 			$wpdb->prepare(
-				"SELECT EXISTS( SELECT 1 FROM {$wpdb->posts} WHERE ID > %d AND post_type IN ('". implode("','", $post_types ) ."') AND post_status IN ('". implode( "','", $post_status ) ."') LIMIT 0,1 )",
+				"SELECT EXISTS( SELECT 1 FROM {$wpdb->posts} WHERE ID > %d AND post_type IN (". implode(",", $post_types_esc ) .") AND post_status IN (". implode( ",", $post_status_esc ) .") LIMIT 0,1 )",
 				$latest_id
 			)
 		);
@@ -252,8 +256,9 @@ class Posts
 		global $wp_predictive_search;
 
 		$post_status = $wp_predictive_search->post_status_support();
+		$post_status = wpps_esc_sql_array_s( $post_status );
 
-		$total_items = $wpdb->get_var( $wpdb->prepare( "SELECT count(id) FROM {$wpdb->posts} WHERE post_type=%s AND post_status IN ('". implode( "','", $post_status ) ."') ", $post_type ) );
+		$total_items = $wpdb->get_var( $wpdb->prepare( "SELECT count(id) FROM {$wpdb->posts} WHERE post_type=%s AND post_status IN (". implode( ",", $post_status ) .") ", $post_type ) );
 		$total_items = ! empty( $total_items ) ? $total_items : 0;
 
 		return $total_items;

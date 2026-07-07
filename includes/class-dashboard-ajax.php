@@ -42,6 +42,10 @@ class Dashboard_AJAX
 	public function get_exclude_options_ajax() {
 		check_ajax_referer( 'wp_predictive_search_get_exclude_options', 'security' );
 
+		if ( ! current_user_can( 'manage_options' ) ) {
+			wp_die( -1, 403 );
+		}
+
 		global $wpdb;
 
 		$keyword = isset( $_GET['keyword']) ? sanitize_text_field( wp_unslash( $_GET['keyword'] ) ) : '';
@@ -57,7 +61,7 @@ class Dashboard_AJAX
 
 		switch ( $from ) {
 			case 'post':
-				$search_results = $wpdb->get_results( $wpdb->prepare( "SELECT post_id, post_title FROM ".$wpdb->prefix."ps_posts WHERE post_type = %s AND post_title LIKE '%s' ORDER BY post_title ASC", $type, '%'. $keyword . '%' ) );
+				$search_results = $wpdb->get_results( $wpdb->prepare( "SELECT post_id, post_title FROM ".$wpdb->prefix."ps_posts WHERE post_type = %s AND post_title LIKE %s ORDER BY post_title ASC", $type, '%'. $wpdb->esc_like( $keyword ) . '%' ) );
 				if ( $search_results ) {
 					foreach( $search_results as $item_data ) {
 						$options_data[] = array( 'value' => $item_data->post_id, 'caption' => $item_data->post_title );
@@ -66,7 +70,7 @@ class Dashboard_AJAX
 				break;
 
 			case 'taxonomy':
-				$search_results = $wpdb->get_results( $wpdb->prepare( "SELECT term_id, name FROM ".$wpdb->prefix."ps_taxonomy WHERE name LIKE '%s' AND taxonomy = %s ORDER BY name ASC", '%'. $keyword . '%', $type ) );
+				$search_results = $wpdb->get_results( $wpdb->prepare( "SELECT term_id, name FROM ".$wpdb->prefix."ps_taxonomy WHERE name LIKE %s AND taxonomy = %s ORDER BY name ASC", '%'. $wpdb->esc_like( $keyword ) . '%', $type ) );
 				if ( $search_results ) {
 					foreach( $search_results as $item_data ) {
 						$options_data[] = array( 'value' => $item_data->term_id, 'caption' => $item_data->name );

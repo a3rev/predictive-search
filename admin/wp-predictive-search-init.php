@@ -117,11 +117,9 @@ add_action('widgets_init', 'register_widget_woops_predictive_search');
 
 // AJAX hide yellow message dontshow
 add_action('wp_ajax_wpps_yellow_message_dontshow', array('\A3Rev\WPPredictiveSearch\Hook_Filter', 'yellow_message_dontshow') );
-add_action('wp_ajax_nopriv_wpps_yellow_message_dontshow', array('\A3Rev\WPPredictiveSearch\Hook_Filter', 'yellow_message_dontshow') );
 
 // AJAX hide yellow message dismiss
 add_action('wp_ajax_wpps_yellow_message_dismiss', array('\A3Rev\WPPredictiveSearch\Hook_Filter', 'yellow_message_dismiss') );
-add_action('wp_ajax_nopriv_wpps_yellow_message_dismiss', array('\A3Rev\WPPredictiveSearch\Hook_Filter', 'yellow_message_dismiss') );
 
 // Add shortcode [wpps_search]
 add_shortcode('wpps_search', array('\A3Rev\WPPredictiveSearch\Shortcodes', 'parse_shortcode_search_result'));

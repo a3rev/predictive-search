@@ -35,7 +35,7 @@ if ( ! empty( $ps_search_list ) && count( $ps_search_list ) > 1 ) {
 ?>
 		<?php echo esc_html( $line_vertical ); ?>
 		<span class="rs_result_other_item">
-			<a class="ps_navigation ps_navigation<?php echo esc_attr( $search_other_item ); ?>" href="<?php echo esc_url( $other_link_search ); ?>" data-href=""<?php echo esc_attr( $data_href ); ?>" alt=""><?php echo esc_html( $items_search_default[$search_other_item]['name'] ); ?></a>
+			<a class="ps_navigation ps_navigation<?php echo esc_attr( $search_other_item ); ?>" href="<?php echo esc_url( $other_link_search ); ?>" data-href="<?php echo esc_attr( $data_href ); ?>" alt=""><?php echo esc_html( $items_search_default[$search_other_item]['name'] ); ?></a>
 		</span>
 <?php
 		} else {

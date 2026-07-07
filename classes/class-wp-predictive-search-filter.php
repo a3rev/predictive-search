@@ -58,16 +58,37 @@ class Hook_Filter
 
 	public static function yellow_message_dontshow() {
 		check_ajax_referer( 'wpps_yellow_message_dontshow', 'security' );
-		$option_name   = sanitize_text_field( wp_unslash( $_REQUEST['option_name'] ) );
-		update_option( $option_name, 1 );
+		if ( ! current_user_can( 'manage_options' ) ) {
+			die();
+		}
+		$allowed_options = array(
+			'wpps_blocks_unavailable_dismiss',
+			'wpps_min_characters_message_dontshow',
+			'wpps_time_delay_message_dontshow',
+			'wpps_cache_timeout_message_dontshow',
+		);
+		$option_name = sanitize_text_field( wp_unslash( $_REQUEST['option_name'] ) );
+		if ( in_array( $option_name, $allowed_options, true ) ) {
+			update_option( $option_name, 1 );
+		}
 		die();
 	}
 
 	public static function yellow_message_dismiss() {
 		check_ajax_referer( 'wpps_yellow_message_dismiss', 'security' );
-		$session_name   = sanitize_key( wp_unslash( $_REQUEST['session_name'] ) );
-		if ( !isset($_SESSION) ) { @session_start(); }
-		$_SESSION[$session_name] = 1 ;
+		if ( ! current_user_can( 'manage_options' ) ) {
+			die();
+		}
+		$allowed_sessions = array(
+			'wpps_min_characters_message_dismiss',
+			'wpps_time_delay_message_dismiss',
+			'wpps_cache_timeout_message_dismiss',
+		);
+		$session_name = sanitize_key( wp_unslash( $_REQUEST['session_name'] ) );
+		if ( in_array( $session_name, $allowed_sessions, true ) ) {
+			if ( session_status() === PHP_SESSION_NONE ) { session_start(); }
+			$_SESSION[ $session_name ] = 1;
+		}
 		die();
 	}
 
